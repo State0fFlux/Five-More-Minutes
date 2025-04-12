@@ -1,0 +1,156 @@
+[gd_scene load_steps=12 format=3 uid="uid://boc0y80gxu823"]
+
+[ext_resource type="Script" uid="uid://da782bhlsn5bx" path="res://Characters/sheep.gd" id="1_hjbt6"]
+[ext_resource type="Texture2D" uid="uid://epglma4xc71u" path="res://Sprites/sheep/white.png" id="1_qsh3u"]
+[ext_resource type="Texture2D" uid="uid://8gw5ajr30rrc" path="res://Sprites/shadow.png" id="3_ouycb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x8kua"]
+radius = 6.0
+height = 18.0
+
+[sub_resource type="Animation" id="Animation_02yij"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ouycb"]
+resource_name = "Jump"
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_sb748"]
+resource_name = "Jump"
+length = 0.75
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_71nq7"]
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [5, 4, 3]
+}
+
+[sub_resource type="Animation" id="Animation_hjbt6"]
+resource_name = "Walk"
+length = 0.5
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_71nq7"]
+_data = {
+&"Idle": SubResource("Animation_02yij"),
+&"Jump": SubResource("Animation_ouycb"),
+&"Sleep": SubResource("Animation_sb748"),
+&"Wake": SubResource("Animation_71nq7"),
+&"Walk": SubResource("Animation_hjbt6")
+}
+
+[sub_resource type="GDScript" id="GDScript_isr81"]
+script/source = "extends PointLight2D
+
+@onready var leftRay = $\"../LeftShadowRay\"
+@onready var rightRay = $\"../RightShadowRay\"
+
+func _process(delta):
+	rightRay.position.x = texture.get_width()/2
+	leftRay.position.x = -texture.get_width()/2
+	global_position.y = min(rightRay.get_collision_point().y, leftRay.get_collision_point().y)
+	energy = pow(50, -position.y * 0.01)
+	texture_scale = pow(50, -position.y * 0.005)
+"
+
+[node name="Sheep" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_hjbt6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_x8kua")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_71nq7")
+}
+
+[node name="RightShadowRay" type="RayCast2D" parent="."]
+target_position = Vector2(8, 14)
+collision_mask = 2
+hit_from_inside = true
+
+[node name="LeftShadowRay" type="RayCast2D" parent="."]
+target_position = Vector2(-8, 14)
+collision_mask = 2
+hit_from_inside = true
+
+[node name="Shadow" type="PointLight2D" parent="."]
+position = Vector2(0, 6)
+blend_mode = 2
+range_item_cull_mask = 4
+texture = ExtResource("3_ouycb")
+script = SubResource("GDScript_isr81")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("1_qsh3u")
+offset = Vector2(0, -1)
+hframes = 3
+vframes = 3
+frame = 1
