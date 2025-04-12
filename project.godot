@@ -15,6 +15,14 @@ run/main_scene="uid://c06hq2wkamsf7"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://Global/Global.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 Jump={
@@ -33,6 +41,7 @@ Sleep={
 2d_render/layer_3="ground"
 2d_physics/layer_2="ground"
 2d_physics/layer_3="player"
+2d_physics/layer_4="fence"
 
 [physics]
 

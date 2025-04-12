@@ -1,0 +1,132 @@
+[gd_scene load_steps=11 format=4 uid="uid://c06hq2wkamsf7"]
+
+[ext_resource type="Texture2D" uid="uid://da7k6v1x42p3c" path="res://terrain.png" id="1_87yj6"]
+[ext_resource type="Script" uid="uid://bktadev8q1ng" path="res://Scenes/Dream.gd" id="1_nls7e"]
+[ext_resource type="PackedScene" uid="uid://boc0y80gxu823" path="res://Prefabs/sheep.tscn" id="2_nls7e"]
+[ext_resource type="Texture2D" uid="uid://cx3tx62s7txxx" path="res://Sprites/environment/fencing.png" id="3_qd6k4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kln2b"]
+texture = ExtResource("1_87yj6")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 1
+0:0/0/terrains_peering_bit/bottom_right_corner = 1
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 1
+1:0/0/terrains_peering_bit/bottom_right_corner = 1
+1:0/0/terrains_peering_bit/bottom_left_corner = 1
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 1
+2:0/0/terrains_peering_bit/bottom_left_corner = 1
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 1
+0:1/0/terrains_peering_bit/bottom_right_corner = 1
+0:1/0/terrains_peering_bit/top_right_corner = 1
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrains_peering_bit/bottom_right_corner = 1
+1:1/0/terrains_peering_bit/bottom_left_corner = 1
+1:1/0/terrains_peering_bit/top_left_corner = 1
+1:1/0/terrains_peering_bit/top_right_corner = 1
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 1
+2:1/0/terrains_peering_bit/bottom_left_corner = 1
+2:1/0/terrains_peering_bit/top_left_corner = 1
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 1
+0:2/0/terrains_peering_bit/top_right_corner = 1
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 1
+1:2/0/terrains_peering_bit/top_left_corner = 1
+1:2/0/terrains_peering_bit/top_right_corner = 1
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 1
+2:2/0/terrains_peering_bit/top_left_corner = 1
+
+[sub_resource type="TileSet" id="TileSet_c1w88"]
+terrain_set_0/mode = 1
+terrain_set_0/terrain_0/name = "Earth"
+terrain_set_0/terrain_0/color = Color(0.296477, 0.194722, 0.13345, 1)
+terrain_set_0/terrain_1/name = "Grass"
+terrain_set_0/terrain_1/color = Color(1, 0.622168, 0.900439, 1)
+terrain_set_0/terrain_2/name = "Top"
+terrain_set_0/terrain_2/color = Color(0.158975, 0.298492, 0.425734, 1)
+sources/0 = SubResource("TileSetAtlasSource_kln2b")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kln2b"]
+size = Vector2(479, 10)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_87yj6"]
+texture = ExtResource("3_qd6k4")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_nls7e"]
+sources/0 = SubResource("TileSetAtlasSource_87yj6")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nls7e"]
+radius = 3.0
+height = 284.0
+
+[node name="Dream" type="Node2D"]
+script = ExtResource("1_nls7e")
+
+[node name="SheepSpawner" type="Node2D" parent="."]
+position = Vector2(-152, 24)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -32)
+zoom = Vector2(4, 4)
+
+[node name="Ground" type="TileMapLayer" parent="."]
+light_mask = 4
+visibility_layer = 4
+tile_map_data = PackedByteArray("AAAIAAAAAAABAAEAAAAHAAAAAAABAAEAAAAGAAAAAAABAAEAAAAFAAAAAAABAAEAAAAEAAAAAAABAAEAAAADAAAAAAABAAEAAAACAAAAAAABAAEAAAABAAAAAAABAAEAAAAAAAAAAAABAAEAAAD//wAAAAABAAEAAAD+/wAAAAABAAEAAAD9/wAAAAABAAEAAAD8/wAAAAABAAEAAAD7/wAAAAABAAEAAAD6/wAAAAABAAEAAAD5/wAAAAABAAEAAAD4/wAAAAABAAEAAAD3/wAAAAABAAEAAAD2/wAAAAABAAEAAAALAAYAAAACAAIAAAALAAUAAAACAAEAAAALAAQAAAACAAEAAAALAAMAAAACAAEAAAALAAIAAAACAAEAAAALAAEAAAACAAEAAAALAAAAAAACAAEAAAALAP//AAACAAAAAAAKAAYAAAABAAIAAAAKAAUAAAABAAEAAAAKAAQAAAABAAEAAAAKAAMAAAABAAEAAAAKAAIAAAABAAEAAAAKAAEAAAABAAEAAAAKAAAAAAABAAEAAAAKAP//AAABAAAAAAAJAAYAAAABAAIAAAAJAAUAAAABAAEAAAAJAAQAAAABAAEAAAAJAAMAAAABAAEAAAAJAAIAAAABAAEAAAAJAAEAAAABAAEAAAAJAAAAAAABAAEAAAAJAP//AAABAAAAAAAIAAYAAAABAAIAAAAIAAUAAAABAAEAAAAIAAQAAAABAAEAAAAIAAMAAAABAAEAAAAIAAIAAAABAAEAAAAIAAEAAAABAAEAAAAIAP//AAABAAAAAAAHAAYAAAABAAIAAAAHAAUAAAABAAEAAAAHAAQAAAABAAEAAAAHAAMAAAABAAEAAAAHAAIAAAABAAEAAAAHAAEAAAABAAEAAAAHAP//AAABAAAAAAAGAAYAAAABAAIAAAAGAAUAAAABAAEAAAAGAAQAAAABAAEAAAAGAAMAAAABAAEAAAAGAAIAAAABAAEAAAAGAAEAAAABAAEAAAAGAP//AAABAAAAAAAFAAYAAAABAAIAAAAFAAUAAAABAAEAAAAFAAQAAAABAAEAAAAFAAMAAAABAAEAAAAFAAIAAAABAAEAAAAFAAEAAAABAAEAAAAFAP//AAABAAAAAAAEAAYAAAABAAIAAAAEAAUAAAABAAEAAAAEAAQAAAABAAEAAAAEAAMAAAABAAEAAAAEAAIAAAABAAEAAAAEAAEAAAABAAEAAAAEAP//AAABAAAAAAADAAYAAAABAAIAAAADAAUAAAABAAEAAAADAAQAAAABAAEAAAADAAMAAAABAAEAAAADAAIAAAABAAEAAAADAAEAAAABAAEAAAADAP//AAABAAAAAAACAAYAAAABAAIAAAACAAUAAAABAAEAAAACAAQAAAABAAEAAAACAAMAAAABAAEAAAACAAIAAAABAAEAAAACAAEAAAABAAEAAAACAP//AAABAAAAAAABAAYAAAABAAIAAAABAAUAAAABAAEAAAABAAQAAAABAAEAAAABAAMAAAABAAEAAAABAAIAAAABAAEAAAABAAEAAAABAAEAAAABAP//AAABAAAAAAAAAAYAAAABAAIAAAAAAAUAAAABAAEAAAAAAAQAAAABAAEAAAAAAAMAAAABAAEAAAAAAAIAAAABAAEAAAAAAAEAAAABAAEAAAAAAP//AAABAAAAAAD//wYAAAABAAIAAAD//wUAAAABAAEAAAD//wQAAAABAAEAAAD//wMAAAABAAEAAAD//wIAAAABAAEAAAD//wEAAAABAAEAAAD/////AAABAAAAAAD+/wYAAAABAAIAAAD+/wUAAAABAAEAAAD+/wQAAAABAAEAAAD+/wMAAAABAAEAAAD+/wIAAAABAAEAAAD+/wEAAAABAAEAAAD+////AAABAAAAAAD9/wYAAAABAAIAAAD9/wUAAAABAAEAAAD9/wQAAAABAAEAAAD9/wMAAAABAAEAAAD9/wIAAAABAAEAAAD9/wEAAAABAAEAAAD9////AAABAAAAAAD8/wYAAAABAAIAAAD8/wUAAAABAAEAAAD8/wQAAAABAAEAAAD8/wMAAAABAAEAAAD8/wIAAAABAAEAAAD8/wEAAAABAAEAAAD8////AAABAAAAAAD7/wYAAAABAAIAAAD7/wUAAAABAAEAAAD7/wQAAAABAAEAAAD7/wMAAAABAAEAAAD7/wIAAAABAAEAAAD7/wEAAAABAAEAAAD7////AAABAAAAAAD6/wYAAAABAAIAAAD6/wUAAAABAAEAAAD6/wQAAAABAAEAAAD6/wMAAAABAAEAAAD6/wIAAAABAAEAAAD6/wEAAAABAAEAAAD6////AAABAAAAAAD5/wYAAAABAAIAAAD5/wUAAAABAAEAAAD5/wQAAAABAAEAAAD5/wMAAAABAAEAAAD5/wIAAAABAAEAAAD5/wEAAAABAAEAAAD5////AAABAAAAAAD4/wYAAAABAAIAAAD4/wUAAAABAAEAAAD4/wQAAAABAAEAAAD4/wMAAAABAAEAAAD4/wIAAAABAAEAAAD4/wEAAAABAAEAAAD4////AAABAAAAAAD3/wYAAAABAAIAAAD3/wUAAAABAAEAAAD3/wQAAAABAAEAAAD3/wMAAAABAAEAAAD3/wIAAAABAAEAAAD3/wEAAAABAAEAAAD3////AAABAAAAAAD2/wYAAAABAAIAAAD2/wUAAAABAAEAAAD2/wQAAAABAAEAAAD2/wMAAAABAAEAAAD2/wIAAAABAAEAAAD2/wEAAAABAAEAAAD2////AAABAAAAAAD1/wYAAAABAAIAAAD1/wUAAAABAAEAAAD1/wQAAAABAAEAAAD1/wMAAAABAAEAAAD1/wIAAAABAAEAAAD1/wEAAAABAAEAAAD1/wAAAAABAAEAAAD1////AAABAAAAAAD0/wYAAAABAAIAAAD0/wUAAAABAAEAAAD0/wQAAAABAAEAAAD0/wMAAAABAAEAAAD0/wIAAAABAAEAAAD0/wEAAAABAAEAAAD0/wAAAAABAAEAAAD0////AAABAAAAAADz/wYAAAAAAAIAAADz/wUAAAAAAAEAAADz/wQAAAAAAAEAAADz/wMAAAAAAAEAAADz/wIAAAAAAAEAAADz/wEAAAAAAAEAAADz/wAAAAAAAAEAAADz////AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_c1w88")
+metadata/_edit_lock_ = true
+
+[node name="Floor" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(-20.5, 35)
+shape = SubResource("RectangleShape2D_kln2b")
+
+[node name="Fencing" type="TileMapLayer" parent="."]
+position = Vector2(0, 8)
+tile_map_data = PackedByteArray("AAALAP//AAAAAAIAAAAKAP//AAAAAAIAAAAJAP//AAAAAAIAAAAIAP//AAAAAAIAAAAHAP//AAAAAAIAAAAGAP//AAAAAAIAAAAFAP//AAAAAAIAAAAEAP//AAAAAAIAAAADAP//AAAAAAIAAAACAP//AAAAAAIAAAABAP//AAAAAAIAAAAAAP//AAAAAAAAAAD/////AAAAAAIAAAD+////AAAAAAIAAAD9////AAAAAAIAAAD8////AAAAAAIAAAD7////AAAAAAIAAAD6////AAAAAAIAAAD5////AAAAAAIAAAD4////AAAAAAIAAAD3////AAAAAAIAAAD2////AAAAAAIAAAD1////AAAAAAIAAAD0////AAAAAAIAAADz////AAAAAAIAAAAAAAAAAAABAAIAAAAAAAEAAAABAAIAAAAAAAIAAAABAAIAAAAAAAMAAAABAAIAAAAAAAQAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_nls7e")
+
+[node name="Sheep" parent="." instance=ExtResource("2_nls7e")]
+position = Vector2(-152, 24)
+
+[node name="DeathPoint" type="Node2D" parent="."]
+position = Vector2(152, 24)
+
+[node name="Wall" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(8, 46)
+shape = SubResource("CapsuleShape2D_nls7e")
+
+[connection signal="body_entered" from="Wall" to="." method="_on_wall_body_entered"]

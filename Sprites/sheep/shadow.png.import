@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc6b5ucnwxjyx"
-path="res://.godot/imported/misc.png-e26f8fb40954b89f5eae96a2241b5cd4.ctex"
+uid="uid://8gw5ajr30rrc"
+path="res://.godot/imported/shadow.png-3f09b98306356c51fd2adbd7564b1063.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/sheep/misc.png"
-dest_files=["res://.godot/imported/misc.png-e26f8fb40954b89f5eae96a2241b5cd4.ctex"]
+source_file="res://Sprites/sheep/shadow.png"
+dest_files=["res://.godot/imported/shadow.png-3f09b98306356c51fd2adbd7564b1063.ctex"]
 
 [params]
 

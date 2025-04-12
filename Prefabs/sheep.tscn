@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://boc0y80gxu823"]
 
-[ext_resource type="Script" uid="uid://da782bhlsn5bx" path="res://Characters/sheep.gd" id="1_hjbt6"]
+[ext_resource type="Script" uid="uid://da782bhlsn5bx" path="res://Prefabs/sheep.gd" id="1_hjbt6"]
 [ext_resource type="Texture2D" uid="uid://epglma4xc71u" path="res://Sprites/sheep/white.png" id="1_qsh3u"]
-[ext_resource type="Texture2D" uid="uid://8gw5ajr30rrc" path="res://Sprites/shadow.png" id="3_ouycb"]
+[ext_resource type="Texture2D" uid="uid://8gw5ajr30rrc" path="res://Sprites/sheep/shadow.png" id="3_ouycb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x8kua"]
 radius = 6.0
@@ -119,9 +119,6 @@ collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_hjbt6")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_x8kua")
@@ -153,4 +150,3 @@ texture = ExtResource("1_qsh3u")
 offset = Vector2(0, -1)
 hframes = 3
 vframes = 3
-frame = 1
