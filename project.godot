@@ -42,7 +42,10 @@ Sleep={
 
 [layer_names]
 
+2d_render/layer_2="fencing"
 2d_render/layer_3="ground"
+2d_render/layer_4="sun or moon"
+2d_render/layer_5="sky"
 2d_physics/layer_2="ground"
 2d_physics/layer_3="player"
 2d_physics/layer_4="fence"

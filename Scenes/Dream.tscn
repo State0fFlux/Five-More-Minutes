@@ -1,12 +1,44 @@
-[gd_scene load_steps=17 format=4 uid="uid://c06hq2wkamsf7"]
+[gd_scene load_steps=18 format=4 uid="uid://c06hq2wkamsf7"]
 
 [ext_resource type="Texture2D" uid="uid://da7k6v1x42p3c" path="res://Sprites/environment/terrain.png" id="1_87yj6"]
 [ext_resource type="Script" uid="uid://bktadev8q1ng" path="res://Scenes/Dream.gd" id="1_nls7e"]
-[ext_resource type="PackedScene" uid="uid://boc0y80gxu823" path="res://Prefabs/sheep.tscn" id="2_nls7e"]
 [ext_resource type="Texture2D" uid="uid://cx3tx62s7txxx" path="res://Sprites/environment/fencing.png" id="3_qd6k4"]
 [ext_resource type="PackedScene" uid="uid://cau12ou8xhme1" path="res://Scenes/UI.tscn" id="5_qd6k4"]
 [ext_resource type="Texture2D" uid="uid://dd8o86lanmb1t" path="res://Sprites/environment/cloud.png" id="6_xpgaj"]
 [ext_resource type="PackedScene" uid="uid://bygx0c73541md" path="res://Prefabs/cloud.tscn" id="7_7j84a"]
+
+[sub_resource type="GDScript" id="GDScript_xpgaj"]
+script/source = "extends ColorRect
+
+# Define your color stops
+@export var midnight_color = Color(0.05, 0.05, 0.2)     # Dark blue
+@export var pre_dawn_color = Color(0.3, 0.1, 0.3)       # Purple
+@export var sunrise_color = Color(1.0, 0.5, 0.2)        # Orange
+@export var morning_color = Color(0.6, 0.8, 1.0)        # Light blue
+
+func _process(_delta):
+	update_sky_color(Global.minutes_since_midnight)
+
+func update_sky_color(minutes: int):
+	var t = clamp(float(minutes) / 480.0, 0.0, 1.0)  # Normalize time to 0.0 - 1.0
+
+	var color := Color.BLACK
+
+	if t < 0.4:
+		# 0:00 - 3:12 (Dark → Purple)
+		var local_t = t / 0.4
+		color = midnight_color.lerp(pre_dawn_color, local_t)
+	elif t < 0.7:
+		# 3:12 - 5:36 (Purple → Orange)
+		var local_t = (t - 0.4) / 0.3
+		color = pre_dawn_color.lerp(sunrise_color, local_t)
+	else:
+		# 5:36 - 8:00 (Orange → Morning Blue)
+		var local_t = (t - 0.7) / 0.3
+		color = sunrise_color.lerp(morning_color, local_t)
+
+	modulate = color
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kln2b"]
 texture = ExtResource("1_87yj6")
@@ -88,9 +120,13 @@ sources/0 = SubResource("TileSetAtlasSource_87yj6")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kln2b"]
 size = Vector2(479, 10)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xpgaj"]
+radius = 3.0
+height = 74.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nls7e"]
-radius = 2.0
-height = 284.0
+radius = 1.0
+height = 22.0
 
 [sub_resource type="Curve" id="Curve_xpgaj"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -120,13 +156,22 @@ turbulence_influence_max = 0.01
 
 [node name="Dream" type="Node2D"]
 script = ExtResource("1_nls7e")
+TIME_MULT = 20
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.206914, 0.206914, 0.206914, 1)
 
 [node name="Sky" type="ColorRect" parent="."]
+light_mask = 16
+visibility_layer = 16
 offset_left = -207.0
 offset_top = -124.0
 offset_right = 191.0
 offset_bottom = 4.0
-color = Color(0.174099, 0.211663, 0.279652, 1)
+script = SubResource("GDScript_xpgaj")
+pre_dawn_color = Color(0.209168, 0.132343, 0.399251, 1)
+sunrise_color = Color(0.887829, 0.415643, 0.24249, 1)
+morning_color = Color(1.80972e-05, 0.586771, 0.981367, 1)
 
 [node name="Ground" type="TileMapLayer" parent="."]
 light_mask = 4
@@ -145,16 +190,36 @@ collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fencing/Track"]
-position = Vector2(-20.5, 35)
+position = Vector2(-23, 35)
 shape = SubResource("RectangleShape2D_kln2b")
 
-[node name="Wall" type="Area2D" parent="."]
+[node name="DimensionalFence" type="Sprite2D" parent="Fencing"]
+z_index = 5
+position = Vector2(8, 24)
+texture = ExtResource("3_qd6k4")
+hframes = 4
+vframes = 3
+frame = 1
+
+[node name="PassWall" type="Area2D" parent="Fencing"]
+position = Vector2(0, -8)
 collision_layer = 8
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
-position = Vector2(10, 46)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fencing/PassWall"]
+position = Vector2(25, -8)
+shape = SubResource("CapsuleShape2D_xpgaj")
+debug_color = Color(0.525806, 0.565981, 0.257946, 0.745098)
+
+[node name="DeathWall" type="Area2D" parent="Fencing"]
+position = Vector2(0, -8)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fencing/DeathWall"]
+position = Vector2(10, 30)
 shape = SubResource("CapsuleShape2D_nls7e")
+debug_color = Color(0, 0.6, 0.701961, 0.745098)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -32)
@@ -192,8 +257,16 @@ lifetime = 5.0
 position = Vector2(0, -90)
 lifetime = 5.0
 
-[node name="Sheep" parent="." groups=["sheep"] instance=ExtResource("2_nls7e")]
+[node name="FirstSheepSpawn" type="Node2D" parent="."]
 position = Vector2(-75, 24)
 
-[connection signal="body_entered" from="Wall" to="." method="_on_wall_body_entered"]
-[connection signal="crashed" from="Sheep" to="." method="_on_sheep_crashed"]
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+light_mask = 8
+range_item_cull_mask = 8
+shadow_enabled = true
+shadow_filter = 2
+shadow_item_cull_mask = 2
+max_distance = 0.0
+
+[connection signal="body_entered" from="Fencing/PassWall" to="." method="_on_pass_wall_body_entered"]
+[connection signal="body_entered" from="Fencing/DeathWall" to="." method="_on_death_wall_body_entered"]
