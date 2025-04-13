@@ -1,9 +1,13 @@
-[gd_scene load_steps=11 format=4 uid="uid://c06hq2wkamsf7"]
+[gd_scene load_steps=12 format=4 uid="uid://c06hq2wkamsf7"]
 
 [ext_resource type="Texture2D" uid="uid://da7k6v1x42p3c" path="res://terrain.png" id="1_87yj6"]
 [ext_resource type="Script" uid="uid://bktadev8q1ng" path="res://Scenes/Dream.gd" id="1_nls7e"]
 [ext_resource type="PackedScene" uid="uid://boc0y80gxu823" path="res://Prefabs/sheep.tscn" id="2_nls7e"]
 [ext_resource type="Texture2D" uid="uid://cx3tx62s7txxx" path="res://Sprites/environment/fencing.png" id="3_qd6k4"]
+[ext_resource type="PackedScene" uid="uid://cau12ou8xhme1" path="res://Scenes/UI.tscn" id="5_qd6k4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kln2b"]
+size = Vector2(479, 10)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kln2b"]
 texture = ExtResource("1_87yj6")
@@ -60,9 +64,6 @@ terrain_set_0/terrain_2/name = "Top"
 terrain_set_0/terrain_2/color = Color(0.158975, 0.298492, 0.425734, 1)
 sources/0 = SubResource("TileSetAtlasSource_kln2b")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kln2b"]
-size = Vector2(479, 10)
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_87yj6"]
 texture = ExtResource("3_qd6k4")
 0:0/0 = 0
@@ -82,7 +83,7 @@ texture = ExtResource("3_qd6k4")
 sources/0 = SubResource("TileSetAtlasSource_87yj6")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nls7e"]
-radius = 3.0
+radius = 2.0
 height = 284.0
 
 [node name="Dream" type="Node2D"]
@@ -91,9 +92,24 @@ script = ExtResource("1_nls7e")
 [node name="SheepSpawner" type="Node2D" parent="."]
 position = Vector2(-152, 24)
 
+[node name="Track" type="StaticBody2D" parent="SheepSpawner"]
+position = Vector2(152, -24)
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SheepSpawner/Track"]
+position = Vector2(-20.5, 35)
+shape = SubResource("RectangleShape2D_kln2b")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -32)
 zoom = Vector2(4, 4)
+
+[node name="Control" parent="Camera2D" instance=ExtResource("5_qd6k4")]
+offset_left = -144.0
+offset_top = -113.0
+offset_right = 144.0
+offset_bottom = 49.0
 
 [node name="Ground" type="TileMapLayer" parent="."]
 light_mask = 4
@@ -102,20 +118,12 @@ tile_map_data = PackedByteArray("AAAIAAAAAAABAAEAAAAHAAAAAAABAAEAAAAGAAAAAAABAAE
 tile_set = SubResource("TileSet_c1w88")
 metadata/_edit_lock_ = true
 
-[node name="Floor" type="StaticBody2D" parent="."]
-collision_layer = 2
-collision_mask = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(-20.5, 35)
-shape = SubResource("RectangleShape2D_kln2b")
-
 [node name="Fencing" type="TileMapLayer" parent="."]
 position = Vector2(0, 8)
 tile_map_data = PackedByteArray("AAALAP//AAAAAAIAAAAKAP//AAAAAAIAAAAJAP//AAAAAAIAAAAIAP//AAAAAAIAAAAHAP//AAAAAAIAAAAGAP//AAAAAAIAAAAFAP//AAAAAAIAAAAEAP//AAAAAAIAAAADAP//AAAAAAIAAAACAP//AAAAAAIAAAABAP//AAAAAAIAAAAAAP//AAAAAAAAAAD/////AAAAAAIAAAD+////AAAAAAIAAAD9////AAAAAAIAAAD8////AAAAAAIAAAD7////AAAAAAIAAAD6////AAAAAAIAAAD5////AAAAAAIAAAD4////AAAAAAIAAAD3////AAAAAAIAAAD2////AAAAAAIAAAD1////AAAAAAIAAAD0////AAAAAAIAAADz////AAAAAAIAAAAAAAAAAAABAAIAAAAAAAEAAAABAAIAAAAAAAIAAAABAAIAAAAAAAMAAAABAAIAAAAAAAQAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_nls7e")
 
-[node name="Sheep" parent="." instance=ExtResource("2_nls7e")]
+[node name="Sheep" parent="." groups=["sheep"] instance=ExtResource("2_nls7e")]
 position = Vector2(-152, 24)
 
 [node name="DeathPoint" type="Node2D" parent="."]
@@ -126,7 +134,7 @@ collision_layer = 8
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
-position = Vector2(8, 46)
+position = Vector2(10, 46)
 shape = SubResource("CapsuleShape2D_nls7e")
 
 [connection signal="body_entered" from="Wall" to="." method="_on_wall_body_entered"]

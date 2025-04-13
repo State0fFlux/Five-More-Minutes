@@ -23,6 +23,10 @@ Global="*res://Global/Global.gd"
 
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+sheep=""
+
 [input]
 
 Jump={

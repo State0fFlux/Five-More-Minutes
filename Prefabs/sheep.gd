@@ -3,8 +3,8 @@ extends CharacterBody2D
 @onready var anim = $AnimationPlayer
 @onready var spriteSheet = $Body
 @onready var deathPoint = $"../DeathPoint"
-@onready var beckonPoint = $"../BeckonPoint"
 @onready var spawnPoint = $"../SheepSpawner"
+@onready var particles = $Particles
 
 const JUMP_VELOCITY = -50.0
 const BOOST = 2
@@ -36,3 +36,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x *= BOOST
 	
 	move_and_slide()
+
+func emit_hearts(emitting: bool):
+	particles.texture = Global.heart
+	particles.emitting = emitting
+
+func emit_snores(emitting: bool):
+	particles.texture = Global.snore
+	particles.emitting = emitting
