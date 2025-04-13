@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da7k6v1x42p3c"
-path="res://.godot/imported/terrain.png-84a626877af7de08ecf24965bda52835.ctex"
+uid="uid://dcb2bju5jp4xd"
+path="res://.godot/imported/leaf.png-1b6d4dbea6eb26dd619768a0c5fd54ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://terrain.png"
-dest_files=["res://.godot/imported/terrain.png-84a626877af7de08ecf24965bda52835.ctex"]
+source_file="res://Sprites/environment/leaf.png"
+dest_files=["res://.godot/imported/leaf.png-1b6d4dbea6eb26dd619768a0c5fd54ff.ctex"]
 
 [params]
 
