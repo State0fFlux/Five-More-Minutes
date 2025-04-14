@@ -1,44 +1,47 @@
-[gd_scene load_steps=18 format=4 uid="uid://c06hq2wkamsf7"]
+[gd_scene load_steps=20 format=4 uid="uid://c06hq2wkamsf7"]
 
 [ext_resource type="Texture2D" uid="uid://da7k6v1x42p3c" path="res://Sprites/environment/terrain.png" id="1_87yj6"]
 [ext_resource type="Script" uid="uid://bktadev8q1ng" path="res://Scenes/Dream.gd" id="1_nls7e"]
+[ext_resource type="PackedScene" uid="uid://wgvmp0rrf62g" path="res://Prefabs/sky.tscn" id="2_7j84a"]
+[ext_resource type="Texture2D" uid="uid://ck8ykgv80pswt" path="res://Sprites/environment/cloud.png" id="2_8bab0"]
 [ext_resource type="Texture2D" uid="uid://cx3tx62s7txxx" path="res://Sprites/environment/fencing.png" id="3_qd6k4"]
 [ext_resource type="PackedScene" uid="uid://cau12ou8xhme1" path="res://Scenes/UI.tscn" id="5_qd6k4"]
-[ext_resource type="Texture2D" uid="uid://dd8o86lanmb1t" path="res://Sprites/environment/cloud.png" id="6_xpgaj"]
 [ext_resource type="PackedScene" uid="uid://bygx0c73541md" path="res://Prefabs/cloud.tscn" id="7_7j84a"]
 
-[sub_resource type="GDScript" id="GDScript_xpgaj"]
-script/source = "extends ColorRect
+[sub_resource type="Gradient" id="Gradient_7j84a"]
+colors = PackedColorArray(1, 1, 1, 0.298039, 1, 1, 1, 1)
 
-# Define your color stops
-@export var midnight_color = Color(0.05, 0.05, 0.2)     # Dark blue
-@export var pre_dawn_color = Color(0.3, 0.1, 0.3)       # Purple
-@export var sunrise_color = Color(1.0, 0.5, 0.2)        # Orange
-@export var morning_color = Color(0.6, 0.8, 1.0)        # Light blue
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8bab0"]
+gradient = SubResource("Gradient_7j84a")
 
-func _process(_delta):
-	update_sky_color(Global.minutes_since_midnight)
+[sub_resource type="Curve" id="Curve_xpgaj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
 
-func update_sky_color(minutes: int):
-	var t = clamp(float(minutes) / 480.0, 0.0, 1.0)  # Normalize time to 0.0 - 1.0
+[sub_resource type="CurveTexture" id="CurveTexture_7j84a"]
+curve = SubResource("Curve_xpgaj")
 
-	var color := Color.BLACK
-
-	if t < 0.4:
-		# 0:00 - 3:12 (Dark → Purple)
-		var local_t = t / 0.4
-		color = midnight_color.lerp(pre_dawn_color, local_t)
-	elif t < 0.7:
-		# 3:12 - 5:36 (Purple → Orange)
-		var local_t = (t - 0.4) / 0.3
-		color = pre_dawn_color.lerp(sunrise_color, local_t)
-	else:
-		# 5:36 - 8:00 (Orange → Morning Blue)
-		var local_t = (t - 0.7) / 0.3
-		color = sunrise_color.lerp(morning_color, local_t)
-
-	modulate = color
-"
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7j84a"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 60, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 5.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_7j84a")
+color = Color(0.957737, 0.896416, 9.2411e-06, 1)
+color_initial_ramp = SubResource("GradientTexture1D_8bab0")
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.28
+turbulence_influence_min = 0.01
+turbulence_influence_max = 0.01
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kln2b"]
 texture = ExtResource("1_87yj6")
@@ -128,126 +131,92 @@ height = 74.0
 radius = 1.0
 height = 22.0
 
-[sub_resource type="Curve" id="Curve_xpgaj"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
-metadata/_snap_enabled = true
-metadata/_snap_count = 16
-
-[sub_resource type="CurveTexture" id="CurveTexture_7j84a"]
-curve = SubResource("Curve_xpgaj")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7j84a"]
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(1, 60, 1)
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-direction = Vector3(-1, 0, 0)
-spread = 0.0
-initial_velocity_min = 5.0
-initial_velocity_max = 20.0
-gravity = Vector3(0, 0, 0)
-scale_min = 0.1
-scale_max = 0.5
-scale_curve = SubResource("CurveTexture_7j84a")
-color = Color(1, 0.984303, 0.353676, 1)
-turbulence_influence_min = 0.01
-turbulence_influence_max = 0.01
-
 [node name="Dream" type="Node2D"]
 script = ExtResource("1_nls7e")
+TIME_MULT = 20
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.206914, 0.206914, 0.206914, 1)
+[node name="Glow" type="CanvasLayer" parent="."]
 
-[node name="Sky" type="ColorRect" parent="."]
-visible = false
-light_mask = 16
-visibility_layer = 16
-offset_left = -207.0
-offset_top = -124.0
-offset_right = 191.0
-offset_bottom = 4.0
-script = SubResource("GDScript_xpgaj")
-pre_dawn_color = Color(0.209168, 0.132343, 0.399251, 1)
-sunrise_color = Color(0.887829, 0.415643, 0.24249, 1)
-morning_color = Color(1.80972e-05, 0.586771, 0.981367, 1)
+[node name="Fireflies" type="GPUParticles2D" parent="Glow"]
+position = Vector2(291, 93)
+amount = 32
+texture = ExtResource("2_8bab0")
+lifetime = 20.0
+trail_lifetime = 4.19
+process_material = SubResource("ParticleProcessMaterial_7j84a")
+
+[node name="Sky" parent="." instance=ExtResource("2_7j84a")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 288.0
+offset_bottom = 117.0
 
 [node name="Ground" type="TileMapLayer" parent="."]
 light_mask = 4
 visibility_layer = 4
-tile_map_data = PackedByteArray("AAAIAAAAAAABAAEAAAAHAAAAAAABAAEAAAAGAAAAAAAAAAEAAAAFAAAAAAABAAEAAAAEAAAAAAABAAIAAAADAAAAAAABAAEAAAACAAAAAAABAAEAAAABAAAAAAABAAEAAAAAAAAAAAAAAAEAAAD//wAAAAABAAEAAAD+/wAAAAAAAAEAAAD9/wAAAAABAAEAAAD8/wAAAAABAAEAAAD7/wAAAAABAAEAAAD6/wAAAAABAAIAAAD5/wAAAAABAAIAAAD4/wAAAAABAAEAAAD3/wAAAAABAAEAAAD2/wAAAAAAAAEAAAALAAYAAAACAAQAAAALAAUAAAABAAEAAAALAAQAAAABAAIAAAALAAMAAAACAAEAAAALAAIAAAABAAEAAAALAAEAAAABAAEAAAALAAAAAAABAAEAAAALAP//AAACAAAAAAAKAAYAAAABAAQAAAAKAAUAAAABAAIAAAAKAAQAAAABAAEAAAAKAAMAAAACAAEAAAAKAAIAAAABAAEAAAAKAAEAAAABAAEAAAAKAAAAAAABAAEAAAAKAP//AAABAAAAAAAJAAYAAAABAAQAAAAJAAUAAAABAAEAAAAJAAQAAAAAAAEAAAAJAAMAAAABAAEAAAAJAAIAAAACAAEAAAAJAAEAAAABAAEAAAAJAAAAAAABAAIAAAAJAP//AAABAAAAAAAIAAYAAAABAAQAAAAIAAUAAAABAAEAAAAIAAQAAAABAAEAAAAIAAMAAAABAAEAAAAIAAIAAAACAAIAAAAIAAEAAAABAAEAAAAIAP//AAABAAAAAAAHAAYAAAABAAQAAAAHAAUAAAAAAAIAAAAHAAQAAAABAAEAAAAHAAMAAAABAAEAAAAHAAIAAAABAAEAAAAHAAEAAAAAAAIAAAAHAP//AAABAAAAAAAGAAYAAAABAAQAAAAGAAUAAAACAAEAAAAGAAQAAAABAAEAAAAGAAMAAAABAAEAAAAGAAIAAAACAAEAAAAGAAEAAAABAAEAAAAGAP//AAABAAAAAAAFAAYAAAABAAQAAAAFAAUAAAABAAEAAAAFAAQAAAABAAEAAAAFAAMAAAAAAAIAAAAFAAIAAAABAAEAAAAFAAEAAAAAAAIAAAAFAP//AAABAAAAAAAEAAYAAAABAAQAAAAEAAUAAAABAAEAAAAEAAQAAAABAAEAAAAEAAMAAAABAAEAAAAEAAIAAAABAAEAAAAEAAEAAAABAAIAAAAEAP//AAABAAAAAAADAAYAAAABAAQAAAADAAUAAAABAAEAAAADAAQAAAABAAEAAAADAAMAAAABAAEAAAADAAIAAAAAAAIAAAADAAEAAAABAAEAAAADAP//AAABAAAAAAACAAYAAAABAAQAAAACAAUAAAABAAEAAAACAAQAAAABAAEAAAACAAMAAAAAAAIAAAACAAIAAAABAAEAAAACAAEAAAACAAEAAAACAP//AAABAAAAAAABAAYAAAABAAQAAAABAAUAAAABAAEAAAABAAQAAAABAAEAAAABAAMAAAABAAEAAAABAAIAAAABAAEAAAABAAEAAAAAAAIAAAABAP//AAABAAAAAAAAAAYAAAABAAQAAAAAAAUAAAABAAEAAAAAAAQAAAABAAEAAAAAAAMAAAACAAIAAAAAAAIAAAABAAEAAAAAAAEAAAACAAIAAAAAAP//AAABAAAAAAD//wYAAAABAAQAAAD//wUAAAABAAEAAAD//wQAAAABAAEAAAD//wMAAAABAAEAAAD//wIAAAABAAEAAAD//wEAAAACAAIAAAD/////AAABAAAAAAD+/wYAAAABAAQAAAD+/wUAAAABAAEAAAD+/wQAAAAAAAEAAAD+/wMAAAABAAEAAAD+/wIAAAACAAEAAAD+/wEAAAAAAAEAAAD+////AAABAAAAAAD9/wYAAAABAAQAAAD9/wUAAAABAAEAAAD9/wQAAAACAAEAAAD9/wMAAAABAAEAAAD9/wIAAAABAAEAAAD9/wEAAAABAAEAAAD9////AAABAAAAAAD8/wYAAAABAAQAAAD8/wUAAAACAAIAAAD8/wQAAAABAAEAAAD8/wMAAAACAAIAAAD8/wIAAAABAAEAAAD8/wEAAAABAAIAAAD8////AAABAAAAAAD7/wYAAAABAAQAAAD7/wUAAAABAAEAAAD7/wQAAAACAAEAAAD7/wMAAAACAAIAAAD7/wIAAAABAAEAAAD7/wEAAAABAAEAAAD7////AAABAAAAAAD6/wYAAAABAAQAAAD6/wUAAAABAAEAAAD6/wQAAAABAAEAAAD6/wMAAAACAAEAAAD6/wIAAAABAAEAAAD6/wEAAAABAAEAAAD6////AAABAAAAAAD5/wYAAAABAAQAAAD5/wUAAAABAAEAAAD5/wQAAAABAAEAAAD5/wMAAAABAAIAAAD5/wIAAAAAAAIAAAD5/wEAAAACAAEAAAD5////AAABAAAAAAD4/wYAAAABAAQAAAD4/wUAAAABAAEAAAD4/wQAAAABAAEAAAD4/wMAAAABAAEAAAD4/wIAAAABAAEAAAD4/wEAAAABAAEAAAD4////AAABAAAAAAD3/wYAAAABAAQAAAD3/wUAAAABAAEAAAD3/wQAAAABAAIAAAD3/wMAAAACAAEAAAD3/wIAAAABAAEAAAD3/wEAAAAAAAEAAAD3////AAABAAAAAAD2/wYAAAABAAQAAAD2/wUAAAAAAAEAAAD2/wQAAAABAAEAAAD2/wMAAAABAAEAAAD2/wIAAAABAAEAAAD2/wEAAAABAAEAAAD2////AAABAAAAAAD1/wYAAAABAAQAAAD1/wUAAAABAAEAAAD1/wQAAAABAAEAAAD1/wMAAAABAAEAAAD1/wIAAAABAAEAAAD1/wEAAAABAAEAAAD1/wAAAAABAAEAAAD1////AAABAAAAAAD0/wYAAAABAAQAAAD0/wUAAAABAAEAAAD0/wQAAAABAAEAAAD0/wMAAAABAAEAAAD0/wIAAAACAAIAAAD0/wEAAAABAAEAAAD0/wAAAAABAAEAAAD0////AAABAAAAAADz/wYAAAAAAAQAAADz/wUAAAABAAEAAADz/wQAAAABAAEAAADz/wMAAAABAAEAAADz/wIAAAABAAEAAADz/wEAAAABAAEAAADz/wAAAAABAAEAAADz////AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAQAAsAAAABAAQAAAAPAAsAAAABAAQAAAAOAAsAAAABAAQAAAANAAsAAAABAAQAAAAMAAsAAAABAAQAAAALAAsAAAABAAQAAAAKAAsAAAABAAQAAAAJAAsAAAABAAQAAAAIAAsAAAABAAQAAAAHAAsAAAABAAQAAAAGAAsAAAABAAQAAAAFAAsAAAABAAQAAAAEAAsAAAABAAQAAAADAAsAAAABAAQAAAACAAsAAAABAAQAAAABAAsAAAABAAQAAAAAAAsAAAAAAAQAAAARAAsAAAACAAQAAAAAAAcAAAABAAMAAAAAAAgAAAABAAMAAAAAAAkAAAACAAIAAAAAAAoAAAABAAMAAAABAAcAAAAAAAEAAAABAAgAAAABAAMAAAABAAkAAAAAAAEAAAABAAoAAAABAAMAAAACAAcAAAABAAMAAAACAAgAAAAAAAIAAAACAAkAAAABAAMAAAACAAoAAAACAAIAAAADAAcAAAAAAAIAAAADAAgAAAABAAMAAAADAAkAAAABAAMAAAADAAoAAAABAAMAAAAEAAcAAAAAAAEAAAAEAAgAAAABAAMAAAAEAAkAAAAAAAIAAAAEAAoAAAABAAMAAAAFAAcAAAABAAMAAAAFAAgAAAACAAIAAAAFAAkAAAABAAMAAAAFAAoAAAABAAMAAAAGAAcAAAABAAMAAAAGAAgAAAABAAMAAAAGAAkAAAABAAMAAAAGAAoAAAACAAIAAAAHAAcAAAABAAIAAAAHAAgAAAABAAMAAAAHAAkAAAABAAMAAAAHAAoAAAAAAAEAAAAIAAcAAAABAAMAAAAIAAgAAAAAAAEAAAAIAAkAAAABAAMAAAAIAAoAAAACAAEAAAAJAAcAAAABAAMAAAAJAAgAAAABAAMAAAAJAAkAAAABAAMAAAAJAAoAAAABAAMAAAAKAAcAAAABAAMAAAAKAAgAAAABAAMAAAAKAAkAAAABAAMAAAAKAAoAAAABAAMAAAALAAcAAAABAAMAAAALAAgAAAABAAMAAAALAAkAAAACAAIAAAALAAoAAAABAAMAAAAMAAcAAAABAAMAAAAMAAgAAAABAAMAAAAMAAkAAAACAAEAAAAMAAoAAAACAAIAAAANAAcAAAAAAAEAAAANAAgAAAABAAMAAAANAAkAAAABAAMAAAANAAoAAAABAAMAAAAOAAcAAAABAAMAAAAOAAgAAAABAAMAAAAOAAkAAAAAAAEAAAAOAAoAAAABAAMAAAAPAAcAAAABAAMAAAAPAAgAAAACAAIAAAAPAAkAAAABAAMAAAAPAAoAAAAAAAIAAAAQAAcAAAAAAAEAAAAQAAgAAAAAAAIAAAAQAAkAAAABAAMAAAAQAAoAAAABAAMAAAARAAcAAAACAAEAAAARAAgAAAABAAMAAAARAAkAAAABAAMAAAARAAoAAAABAAIAAAAAAAYAAAABAAAAAAABAAYAAAABAAAAAAACAAYAAAABAAAAAAADAAYAAAABAAAAAAAEAAYAAAABAAAAAAAFAAYAAAABAAAAAAAGAAYAAAABAAAAAAAHAAYAAAABAAAAAAAIAAYAAAABAAAAAAAJAAYAAAABAAAAAAAKAAYAAAABAAAAAAALAAYAAAABAAAAAAAMAAYAAAABAAAAAAANAAYAAAABAAAAAAAOAAYAAAABAAAAAAAPAAYAAAABAAAAAAAQAAYAAAABAAAAAAARAAYAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_c1w88")
 
 [node name="Fencing" type="TileMapLayer" parent="."]
 position = Vector2(0, 8)
-tile_map_data = PackedByteArray("AAALAP//AAAAAAIAAAAKAP//AAAAAAIAAAAJAP//AAAAAAIAAAAIAP//AAAAAAIAAAAHAP//AAAAAAIAAAAGAP//AAAAAAIAAAAFAP//AAAAAAIAAAAEAP//AAAAAAIAAAADAP//AAAAAAIAAAACAP//AAAAAAIAAAABAP//AAAAAAIAAAAAAP//AAAAAAAAAAD/////AAAAAAIAAAD+////AAAAAAIAAAD9////AAAAAAIAAAD8////AAAAAAIAAAD7////AAAAAAIAAAD6////AAAAAAIAAAD5////AAAAAAIAAAD4////AAAAAAIAAAD3////AAAAAAIAAAD2////AAAAAAIAAAD1////AAAAAAIAAAD0////AAAAAAIAAADz////AAAAAAIAAAAAAAAAAAABAAIAAAAAAAEAAAABAAIAAAAAAAIAAAABAAIAAAAAAAMAAAABAAIAAAAAAAQAAAAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAAJAAgAAAABAAIAAAAJAAcAAAABAAIAAAAJAAYAAAAAAAAAAAAJAAkAAAAAAAEAAAAIAAYAAAAAAAIAAAAHAAYAAAAAAAIAAAAGAAYAAAAAAAIAAAAFAAYAAAAAAAIAAAAEAAYAAAAAAAIAAAADAAYAAAAAAAIAAAACAAYAAAAAAAIAAAABAAYAAAAAAAIAAAAAAAYAAAAAAAIAAAAKAAYAAAAAAAIAAAALAAYAAAAAAAIAAAAMAAYAAAAAAAIAAAANAAYAAAAAAAIAAAAOAAYAAAAAAAIAAAAPAAYAAAAAAAIAAAAQAAYAAAAAAAIAAAARAAYAAAAAAAIAAAA=")
 tile_set = SubResource("TileSet_nls7e")
-
-[node name="Track" type="StaticBody2D" parent="Fencing"]
-position = Vector2(0, -8)
-collision_layer = 2
-collision_mask = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fencing/Track"]
-position = Vector2(-23, 35)
-shape = SubResource("RectangleShape2D_kln2b")
 
 [node name="DimensionalFence" type="Sprite2D" parent="Fencing"]
 z_index = 5
-position = Vector2(8, 24)
+position = Vector2(152, 137)
 texture = ExtResource("3_qd6k4")
 hframes = 4
 vframes = 3
 frame = 1
 
-[node name="PassWall" type="Area2D" parent="Fencing"]
-position = Vector2(0, -8)
+[node name="Track" type="StaticBody2D" parent="."]
+position = Vector2(144, 113)
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Track"]
+position = Vector2(-23, 35)
+shape = SubResource("RectangleShape2D_kln2b")
+
+[node name="PassWall" type="Area2D" parent="."]
+position = Vector2(144, 113)
 collision_layer = 8
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fencing/PassWall"]
-position = Vector2(25, -8)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PassWall"]
+position = Vector2(31, -8)
 shape = SubResource("CapsuleShape2D_xpgaj")
 debug_color = Color(0.525806, 0.565981, 0.257946, 0.745098)
 
-[node name="DeathWall" type="Area2D" parent="Fencing"]
-position = Vector2(0, -8)
+[node name="DeathWall" type="Area2D" parent="."]
+position = Vector2(144, 113)
 collision_layer = 8
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fencing/DeathWall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathWall"]
 position = Vector2(10, 30)
 shape = SubResource("CapsuleShape2D_nls7e")
 debug_color = Color(0, 0.6, 0.701961, 0.745098)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -32)
-zoom = Vector2(4, 4)
-
-[node name="Control" parent="Camera2D" instance=ExtResource("5_qd6k4")]
+[node name="Control" parent="." instance=ExtResource("5_qd6k4")]
 offset_left = -144.0
 offset_top = -113.0
 offset_right = 144.0
 offset_bottom = 49.0
 metadata/_edit_lock_ = true
 
-[node name="SpawnPoint" type="Node2D" parent="Camera2D"]
-position = Vector2(-170, 24)
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(-26, 137)
 
-[node name="DeathPoint" type="Node2D" parent="Camera2D"]
-position = Vector2(170, 24)
+[node name="DeathPoint" type="Node2D" parent="."]
+position = Vector2(314, 137)
 
-[node name="Fireflies" type="GPUParticles2D" parent="."]
-position = Vector2(162, -35)
-amount = 32
-texture = ExtResource("6_xpgaj")
-lifetime = 20.0
-trail_lifetime = 4.19
-process_material = SubResource("ParticleProcessMaterial_7j84a")
-metadata/_edit_lock_ = true
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
 
 [node name="CloudSystem" type="Node2D" parent="."]
+position = Vector2(144, 113)
 
 [node name="Cloud1" parent="CloudSystem" instance=ExtResource("7_7j84a")]
 position = Vector2(-144, -49)
@@ -258,15 +227,7 @@ position = Vector2(0, -90)
 lifetime = 5.0
 
 [node name="FirstSheepSpawn" type="Node2D" parent="."]
-position = Vector2(-75, 24)
+position = Vector2(69, 137)
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-light_mask = 8
-range_item_cull_mask = 8
-shadow_enabled = true
-shadow_filter = 2
-shadow_item_cull_mask = 2
-max_distance = 0.0
-
-[connection signal="body_entered" from="Fencing/PassWall" to="." method="_on_pass_wall_body_entered"]
-[connection signal="body_entered" from="Fencing/DeathWall" to="." method="_on_death_wall_body_entered"]
+[connection signal="body_entered" from="PassWall" to="." method="_on_pass_wall_body_entered"]
+[connection signal="body_entered" from="DeathWall" to="." method="_on_death_wall_body_entered"]

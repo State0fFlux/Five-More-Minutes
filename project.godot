@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Five More Minutes"
-run/main_scene="uid://c06hq2wkamsf7"
+run/main_scene="uid://3ves8bvwoxgq"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -21,6 +21,9 @@ Global="*res://Global/Global.gd"
 
 [display]
 
+window/size/viewport_width=288
+window/size/viewport_height=162
+window/size/mode=2
 window/stretch/mode="canvas_items"
 
 [global_group]

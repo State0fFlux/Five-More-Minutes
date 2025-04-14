@@ -3,15 +3,13 @@ extends Node2D
 const SheepScene = preload("res://Prefabs/sheep.tscn")
 @export var TIME_MULT: int = 1
 
-@onready var spawnPoint = $Camera2D/SpawnPoint.global_position
-
-var active = true
-
 func _ready() -> void:
 	var sheep = spawn_sheep($FirstSheepSpawn.global_position, Global.SheepState.SLEEPING)
+	Global.deathPoint = $DeathPoint.global_position
+	Global.spawnPoint = $SpawnPoint.global_position
 	
 func _process(delta: float) -> void:
-	if active:
+	if not Global.is_paused:
 		# passive time progression
 		Global.minutes_since_midnight += delta * TIME_MULT
 	
@@ -27,7 +25,7 @@ func spawn_sheep(spawnPoint: Vector2, state: Global.SheepState):
 
 
 func _on_sheep_crashed() -> void:
-	active = false
+	Global.is_paused = true
 	Global.battery -= 25
 
 
@@ -43,4 +41,4 @@ func _on_pass_wall_body_entered(body: Node2D) -> void:
 		tween.tween_property(Global, "minutes_since_midnight",
 			new_time, 2.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 		body.emit_hearts(true)
-		spawn_sheep(spawnPoint, Global.SheepState.MOVING)
+		spawn_sheep(Global.spawnPoint, Global.SheepState.MOVING)

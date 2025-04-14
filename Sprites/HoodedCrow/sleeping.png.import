@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy8ynkx77drbw"
-path="res://.godot/imported/top down more assets .png-544a8b9b3eed52bb50a550ba3abd386c.ctex"
+uid="uid://bai3ehphjx8od"
+path="res://.godot/imported/sleeping.png-d34963eb412e665d823b31a406f4bcea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/HoodedCrow/top down more assets .png"
-dest_files=["res://.godot/imported/top down more assets .png-544a8b9b3eed52bb50a550ba3abd386c.ctex"]
+source_file="res://Sprites/HoodedCrow/sleeping.png"
+dest_files=["res://.godot/imported/sleeping.png-d34963eb412e665d823b31a406f4bcea.ctex"]
 
 [params]
 

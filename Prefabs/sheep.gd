@@ -2,8 +2,6 @@ extends CharacterBody2D
 
 @onready var anim = $AnimationPlayer
 @onready var sprite = $Body
-@onready var deathPoint = $"../Camera2D/DeathPoint"
-@onready var spawnPoint = $"../Camera2D/SpawnPoint"
 @onready var particles = $Particles
 
 const JUMP_VELOCITY = -50.0
@@ -20,7 +18,7 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	# Handle out-of-bounds
-	if global_position.x > deathPoint.global_position.x:
+	if global_position.x > Global.deathPoint.x:
 		queue_free()
 		
 	# Add the gravity.

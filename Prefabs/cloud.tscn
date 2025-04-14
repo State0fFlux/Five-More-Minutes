@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bygx0c73541md"]
 
-[ext_resource type="Texture2D" uid="uid://dd8o86lanmb1t" path="res://Sprites/environment/cloud.png" id="1_2g1m2"]
+[ext_resource type="Texture2D" uid="uid://dd8o86lanmb1t" path="res://Sprites/environment/clouddim.png" id="1_2g1m2"]
 
 [sub_resource type="Curve" id="Curve_xpgaj"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -28,14 +28,11 @@ turbulence_influence_max = 0.01
 [sub_resource type="GDScript" id="GDScript_7j84a"]
 script/source = "extends GPUParticles2D
 
-@onready var deathPoint = $\"../../Camera2D/DeathPoint\"
-@onready var spawnPoint = $\"../../Camera2D/SpawnPoint\"
-
 func _process(delta: float) -> void:
 	global_position.x += delta * 5
 	# recycle cloud to front
-	if global_position.x >= deathPoint.global_position.x:
-		global_position.x = spawnPoint.global_position.x
+	if global_position.x >= Global.deathPoint.x:
+		global_position.x = Global.spawnPoint.x
 "
 
 [node name="Cloud" type="GPUParticles2D"]

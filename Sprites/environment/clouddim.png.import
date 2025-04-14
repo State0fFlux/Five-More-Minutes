@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc85tgc36h7se"
-path="res://.godot/imported/top down bed room assets .png-995f0bb3d3894606b557b160e9b52360.ctex"
+uid="uid://dd8o86lanmb1t"
+path="res://.godot/imported/clouddim.png-715be085ce59b2a93f184bafd165ee0c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/HoodedCrow/top down bed room assets .png"
-dest_files=["res://.godot/imported/top down bed room assets .png-995f0bb3d3894606b557b160e9b52360.ctex"]
+source_file="res://Sprites/environment/clouddim.png"
+dest_files=["res://.godot/imported/clouddim.png-715be085ce59b2a93f184bafd165ee0c.ctex"]
 
 [params]
 

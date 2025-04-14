@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cce3n0jwdp3ux"]
+[gd_scene load_steps=4 format=3 uid="uid://pjqell4iy5hc"]
 
 [ext_resource type="FontFile" uid="uid://jijl7mh2tfw3" path="res://Fonts/DigitalDisco.ttf" id="1_vset1"]
-[ext_resource type="StyleBox" uid="uid://drhu1yrvc77jf" path="res://Scenes/Button.tres" id="2_u88ce"]
+[ext_resource type="StyleBox" uid="uid://drhu1yrvc77jf" path="res://Resources/Button.tres" id="3_t7rl6"]
 [ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="3_u88ce"]
 
 [node name="Control" type="Control"]
@@ -41,7 +41,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_vset1")
-theme_override_styles/normal = ExtResource("2_u88ce")
+theme_override_styles/normal = ExtResource("3_t7rl6")
 text = "Wake up"
 
 [node name="Options Button" type="Button" parent="VBoxContainer"]
@@ -49,7 +49,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_vset1")
-theme_override_styles/normal = ExtResource("2_u88ce")
+theme_override_styles/normal = ExtResource("3_t7rl6")
 text = "Options
 "
 
@@ -58,7 +58,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_vset1")
-theme_override_styles/normal = ExtResource("2_u88ce")
+theme_override_styles/normal = ExtResource("3_t7rl6")
 text = "Meet the Devs
 "
 
@@ -67,7 +67,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_vset1")
-theme_override_styles/normal = ExtResource("2_u88ce")
+theme_override_styles/normal = ExtResource("3_t7rl6")
 text = "Quit
 "
 
