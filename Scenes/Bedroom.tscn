@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://3ves8bvwoxgq"]
+
+[ext_resource type="Texture2D" uid="uid://b0gd4u2xs1jfy" path="res://Sprites/HoodedCrow/room only.png" id="1_bn4mn"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(3, 3)
+
+[node name="RoomOnly" type="Sprite2D" parent="."]
+position = Vector2(194, 107)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("1_bn4mn")

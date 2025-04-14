@@ -156,12 +156,12 @@ turbulence_influence_max = 0.01
 
 [node name="Dream" type="Node2D"]
 script = ExtResource("1_nls7e")
-TIME_MULT = 20
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.206914, 0.206914, 0.206914, 1)
 
 [node name="Sky" type="ColorRect" parent="."]
+visible = false
 light_mask = 16
 visibility_layer = 16
 offset_left = -207.0
