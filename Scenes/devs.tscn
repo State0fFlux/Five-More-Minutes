@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://cq4xesx4aebvs"]
+[gd_scene load_steps=3 format=3 uid="uid://dfc1cslj0sirr"]
+
+[ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="1_tt6fu"]
+[ext_resource type="Texture2D" uid="uid://fkljb40j4csy" path="res://Sprites/HoodedCrow/pixilart-sprite.png" id="2_dys5g"]
 
 [node name="Devs" type="Control"]
 layout_mode = 3
@@ -7,3 +10,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TopDownHouseFloorsAndWalls" type="Sprite2D" parent="."]
+position = Vector2(93, -28)
+texture = ExtResource("1_tt6fu")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -32)
+zoom = Vector2(4, 4)
+metadata/_edit_lock_ = true
+
+[node name="Pixilart-sprite" type="Sprite2D" parent="."]
+position = Vector2(57, -30)
+scale = Vector2(0.081782, 0.0781191)
+texture = ExtResource("2_dys5g")
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -14.0
+offset_top = -36.0
+offset_right = 26.0
+offset_bottom = -36.0
+scale = Vector2(0.349943, 1190.62)
+text = "Meet the Developers
+
+Hey, we're Brady and Avah!
+Brady : 
+
+Avah: I'm a Comp Sci Senior at Bothell campus with my main focus being on vido games. This game is my first time using Godot, and so far I like it! "

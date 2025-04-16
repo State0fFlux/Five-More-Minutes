@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp7y0lql4wnse"
-path="res://.godot/imported/Phone.jpg-e57ef58dbd6be08da8db14bab8bdd343.ctex"
+uid="uid://fkljb40j4csy"
+path="res://.godot/imported/pixilart-sprite.png-d213359f42d4f553dae134b38e95f619.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Phone.jpg"
-dest_files=["res://.godot/imported/Phone.jpg-e57ef58dbd6be08da8db14bab8bdd343.ctex"]
+source_file="res://Sprites/HoodedCrow/pixilart-sprite.png"
+dest_files=["res://.godot/imported/pixilart-sprite.png-d213359f42d4f553dae134b38e95f619.ctex"]
 
 [params]
 
