@@ -16,7 +16,7 @@ func _process(_delta: float) -> void:
 	text = \"Battery: \" + str(Global.battery) + \"%\"
 "
 
-[node name="Control" type="Control"]
+[node name="DebugUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,9 +31,7 @@ layout_mode = 0
 offset_left = 29.0
 offset_right = 331.0
 offset_bottom = 140.0
-text = "Time: 12:00 AM
-
-note: this shouldn't be displaying in the final version (player should only know the time when checking their phone)"
+text = "Time: 12:00 AM"
 script = SubResource("GDScript_3iaii")
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
@@ -42,5 +40,5 @@ offset_left = 29.0
 offset_top = 26.0
 offset_right = 136.0
 offset_bottom = 65.0
-text = "Tries: 0"
+text = "Battery: 75%"
 script = SubResource("GDScript_w371h")

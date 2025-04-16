@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://3ves8bvwoxgq"]
+[gd_scene load_steps=6 format=3 uid="uid://3ves8bvwoxgq"]
 
+[ext_resource type="Script" uid="uid://dlaiddotih5wb" path="res://Scenes/bedroom.gd" id="1_3gbim"]
 [ext_resource type="Texture2D" uid="uid://b0gd4u2xs1jfy" path="res://Sprites/HoodedCrow/room only.png" id="1_bn4mn"]
-[ext_resource type="Texture2D" uid="uid://bai3ehphjx8od" path="res://Sprites/HoodedCrow/sleeping.png" id="2_qd8ot"]
 [ext_resource type="PackedScene" uid="uid://wgvmp0rrf62g" path="res://Prefabs/sky.tscn" id="3_0y5hw"]
-[ext_resource type="PackedScene" uid="uid://dencu3yac6vin" path="res://Prefabs/dream_cloud.tscn" id="4_bnvew"]
+[ext_resource type="PackedScene" uid="uid://cw37p0gbimh0a" path="res://Prefabs/player.tscn" id="4_3gbim"]
+[ext_resource type="PackedScene" uid="uid://dencu3yac6vin" path="res://Prefabs/DreamCloud.tscn" id="4_bnvew"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Bedroom" type="Node2D"]
+script = ExtResource("1_3gbim")
 
 [node name="Shadow" type="CanvasModulate" parent="."]
 
@@ -22,11 +24,19 @@ anchor_mode = 0
 position = Vector2(145, 76)
 texture = ExtResource("1_bn4mn")
 
-[node name="Sleeping" type="Sprite2D" parent="."]
-position = Vector2(123, 96)
-texture = ExtResource("2_qd8ot")
-hframes = 2
-vframes = 2
+[node name="Player" parent="." instance=ExtResource("4_3gbim")]
+position = Vector2(124, 95)
 
-[node name="dream_cloud" parent="." instance=ExtResource("4_bnvew")]
+[node name="dreamCloud" parent="." instance=ExtResource("4_bnvew")]
 position = Vector2(145, 51)
+
+[node name="Snooze" type="Button" parent="."]
+offset_left = 157.0
+offset_top = 90.0
+offset_right = 275.0
+offset_bottom = 121.0
+scale = Vector2(0.1, 0.1)
+focus_mode = 0
+text = "Debug Snooze"
+
+[connection signal="pressed" from="Snooze" to="." method="_on_snooze_pressed"]
