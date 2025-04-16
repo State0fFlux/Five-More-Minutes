@@ -29,4 +29,4 @@ hframes = 2
 vframes = 2
 
 [node name="dream_cloud" parent="." instance=ExtResource("4_bnvew")]
-position = Vector2(147, 66)
+position = Vector2(145, 51)

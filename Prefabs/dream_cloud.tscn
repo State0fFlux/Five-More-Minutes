@@ -29,58 +29,68 @@ viewport_path = NodePath("SubViewport")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="DreamCloud" type="Sprite2D" parent="."]
+[node name="MainCloud" type="Sprite2D" parent="."]
 position = Vector2(16, 5)
 texture = ExtResource("1_jk83v")
 
-[node name="Cloud" type="Sprite2D" parent="DreamCloud"]
+[node name="Cloud" type="Sprite2D" parent="MainCloud"]
 position = Vector2(-6, 5)
 texture = ExtResource("1_jk83v")
 
-[node name="Cloud" type="Sprite2D" parent="DreamCloud/Cloud"]
+[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud"]
 position = Vector2(-11, 0)
 texture = ExtResource("1_jk83v")
 
-[node name="Cloud" type="Sprite2D" parent="DreamCloud/Cloud/Cloud"]
+[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud"]
 position = Vector2(-11, 2)
 texture = ExtResource("1_jk83v")
 
-[node name="Cloud" type="Sprite2D" parent="DreamCloud/Cloud/Cloud/Cloud"]
+[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud"]
 position = Vector2(-7, -5)
 texture = ExtResource("1_jk83v")
 
-[node name="Cloud" type="Sprite2D" parent="DreamCloud/Cloud/Cloud/Cloud/Cloud"]
+[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud/Cloud"]
 position = Vector2(-2, -7)
 texture = ExtResource("1_jk83v")
 
-[node name="Cloud" type="Sprite2D" parent="DreamCloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
+[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
 position = Vector2(3, -7)
 texture = ExtResource("1_jk83v")
 
-[node name="Cloud" type="Sprite2D" parent="DreamCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
+[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
 position = Vector2(8, -3)
 texture = ExtResource("1_jk83v")
 
-[node name="Cloud" type="Sprite2D" parent="DreamCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
+[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
 position = Vector2(9, -3)
 texture = ExtResource("1_jk83v")
 
-[node name="Cloud" type="Sprite2D" parent="DreamCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
+[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
 position = Vector2(10, 3)
 texture = ExtResource("1_jk83v")
 
-[node name="Cloud" type="Sprite2D" parent="DreamCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
+[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
 position = Vector2(6, 5)
 texture = ExtResource("1_jk83v")
 
-[node name="ColorRect" type="ColorRect" parent="DreamCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
+[node name="ColorRect" type="ColorRect" parent="MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
 offset_left = -32.0
 offset_top = -7.0
 offset_right = -3.0
 offset_bottom = 18.0
 
-[node name="Cloud" type="Sprite2D" parent="DreamCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
+[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
 position = Vector2(-1, 6)
+texture = ExtResource("1_jk83v")
+
+[node name="CloudTrail" type="Sprite2D" parent="."]
+position = Vector2(-5, 23)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_jk83v")
+
+[node name="CloudTrail" type="Sprite2D" parent="CloudTrail"]
+position = Vector2(-12, 10)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_jk83v")
 
 [node name="SubViewport" type="SubViewport" parent="."]
