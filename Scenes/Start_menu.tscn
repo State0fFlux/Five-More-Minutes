@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://pjqell4iy5hc"]
+[gd_scene load_steps=5 format=3 uid="uid://pjqell4iy5hc"]
 
 [ext_resource type="FontFile" uid="uid://jijl7mh2tfw3" path="res://Fonts/DigitalDisco.ttf" id="1_vset1"]
 [ext_resource type="StyleBox" uid="uid://drhu1yrvc77jf" path="res://Resources/Button.tres" id="3_t7rl6"]
 [ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="3_u88ce"]
+[ext_resource type="Texture2D" uid="uid://bai3ehphjx8od" path="res://Sprites/HoodedCrow/sleeping.png" id="4_t7rl6"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -17,8 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TopDownHouseFloorsAndWalls" type="Sprite2D" parent="."]
-position = Vector2(568, -16)
-scale = Vector2(5.45139, 3.66667)
+position = Vector2(111, -16)
 texture = ExtResource("3_u88ce")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -74,3 +74,9 @@ text = "Quit
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -32)
 zoom = Vector2(4, 4)
+
+[node name="Sleeping" type="Sprite2D" parent="."]
+position = Vector2(13, -3)
+texture = ExtResource("4_t7rl6")
+hframes = 2
+vframes = 2

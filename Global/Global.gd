@@ -9,6 +9,7 @@ var deathPoint
 var spawnPoint
 
 enum SheepState { MOVING, SLEEPING, DEAD }
+enum HumanState { SLEEPING, ON_PHONE }
 
 # stats
 var minutes_since_midnight = 0

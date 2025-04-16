@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b0gd4u2xs1jfy" path="res://Sprites/HoodedCrow/room only.png" id="1_bn4mn"]
 [ext_resource type="Texture2D" uid="uid://bai3ehphjx8od" path="res://Sprites/HoodedCrow/sleeping.png" id="2_qd8ot"]
 [ext_resource type="PackedScene" uid="uid://wgvmp0rrf62g" path="res://Prefabs/sky.tscn" id="3_0y5hw"]
-[ext_resource type="PackedScene" uid="uid://c06hq2wkamsf7" path="res://Scenes/Dream.tscn" id="4_bnvew"]
+[ext_resource type="PackedScene" uid="uid://dencu3yac6vin" path="res://Prefabs/dream_cloud.tscn" id="4_bnvew"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -28,20 +28,5 @@ texture = ExtResource("2_qd8ot")
 hframes = 2
 vframes = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-offset_left = 119.0
-offset_top = 50.0
-offset_right = 407.0
-offset_bottom = 212.0
-scale = Vector2(0.2, 0.2)
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(288, 162)
-render_target_update_mode = 4
-
-[node name="Dream" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_bnvew")]
-metadata/_edit_lock_ = true
-
-[node name="CloudMask" type="TextureRect" parent="SubViewportContainer"]
-layout_mode = 2
+[node name="dream_cloud" parent="." instance=ExtResource("4_bnvew")]
+position = Vector2(147, 66)

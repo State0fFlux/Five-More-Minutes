@@ -9,28 +9,31 @@ script/source = "extends ColorRect
 @export var sunrise_color = Color(1.0, 0.5, 0.2)        # Orange
 @export var morning_color = Color(0.6, 0.8, 1.0)        # Light blue
 
+func _ready():
+	color = Color.WHITE
+
 func _process(_delta):
 	update_sky_color(Global.minutes_since_midnight)
 
 func update_sky_color(minutes: int):
 	var t = clamp(float(minutes) / 480.0, 0.0, 1.0)  # Normalize time to 0.0 - 1.0
 
-	var color := Color.BLACK
+	var new_color := Color.BLACK
 
 	if t < 0.4:
 		# 0:00 - 3:12 (Dark → Purple)
 		var local_t = t / 0.4
-		color = midnight_color.lerp(pre_dawn_color, local_t)
+		new_color = midnight_color.lerp(pre_dawn_color, local_t)
 	elif t < 0.7:
 		# 3:12 - 5:36 (Purple → Orange)
 		var local_t = (t - 0.4) / 0.3
-		color = pre_dawn_color.lerp(sunrise_color, local_t)
+		new_color = pre_dawn_color.lerp(sunrise_color, local_t)
 	else:
 		# 5:36 - 8:00 (Orange → Morning Blue)
 		var local_t = (t - 0.7) / 0.3
-		color = sunrise_color.lerp(morning_color, local_t)
+		new_color = sunrise_color.lerp(morning_color, local_t)
 
-	modulate = color
+	color = new_color
 "
 
 [node name="Sky" type="ColorRect"]
