@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://pjqell4iy5hc"]
+[gd_scene load_steps=8 format=3 uid="uid://pjqell4iy5hc"]
 
 [ext_resource type="Script" path="res://Scenes/start_menu.gd" id="1_1wmxr"]
 [ext_resource type="FontFile" uid="uid://jijl7mh2tfw3" path="res://Fonts/DigitalDisco.ttf" id="1_vset1"]
 [ext_resource type="StyleBox" uid="uid://drhu1yrvc77jf" path="res://Resources/Button.tres" id="3_t7rl6"]
 [ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="3_u88ce"]
+[ext_resource type="Theme" uid="uid://cojrl4cralg3e" path="res://Resources/theme.tres" id="6_5hugr"]
 [ext_resource type="FontFile" uid="uid://bka5fpx4ym5ao" path="res://Fonts/DigitalDisco-Thin.ttf" id="6_7k6f1"]
 [ext_resource type="PackedScene" uid="uid://cw37p0gbimh0a" path="res://Prefabs/player.tscn" id="7_5hugr"]
 
@@ -30,6 +31,18 @@ zoom = Vector2(4, 4)
 
 [node name="Player" parent="." instance=ExtResource("7_5hugr")]
 position = Vector2(-8, -21)
+
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -27.0
+offset_top = -47.0
+offset_right = 180.0
+offset_bottom = -20.0
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("6_5hugr")
+theme_override_fonts/normal_font = ExtResource("6_7k6f1")
+theme_override_font_sizes/normal_font_size = 16
+text = "Five More Minutes..."
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -81,19 +94,6 @@ theme_override_fonts/font = ExtResource("1_vset1")
 theme_override_styles/normal = ExtResource("3_t7rl6")
 text = "Quit
 "
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = -33.0
-offset_top = -50.0
-offset_right = 103.0
-offset_bottom = -10.0
-scale = Vector2(0.25174, 0.224692)
-
-[node name="Label" type="Label" parent="HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("6_7k6f1")
-text = "Five More Minutes...."
 
 [connection signal="pressed" from="VBoxContainer/Wake up Button" to="." method="_on_wake_up_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options Button" to="." method="_on_options_button_pressed"]

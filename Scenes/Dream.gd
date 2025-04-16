@@ -26,10 +26,8 @@ func spawn_sheep(spawnPoint: Vector2, state: Global.SheepState):
 
 
 func _on_sheep_crashed() -> void:
-	Global.is_dreaming = false
+	Global.set_dream_state(false)
 	Global.battery -= 25
-	player.set_state(Global.PlayerState.ON_PHONE)
-	$"../..".end_dream()
 
 func _on_death_wall_body_entered(body: Node2D) -> void:
 	if body.is_in_group("sheep"): # sheep crashed into fence

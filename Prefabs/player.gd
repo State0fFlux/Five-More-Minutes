@@ -1,12 +1,15 @@
 extends Node2D
 
 @onready var anim = $AnimationPlayer
-@onready var dreamCloud = $"../dreamCloud"
 
 var state = Global.PlayerState.SLEEPING
 
 func _ready() -> void:
 	anim.play("Sleeping")
+	Global.connect("dream_state_changed", on_dream_state_changed)
+	
+func on_dream_state_changed():
+	set_state(Global.PlayerState.ON_PHONE)
 
 func set_state(newState: Global.PlayerState):
 		match newState:
@@ -14,8 +17,7 @@ func set_state(newState: Global.PlayerState):
 				anim.play("PhoneOff")
 				await anim.animation_finished
 				anim.play("Sleeping")
-				dreamCloud.start_dream()
 			Global.PlayerState.ON_PHONE:
 				anim.play("PhoneOn")
-				dreamCloud.end_dream()
 		state = newState
+	

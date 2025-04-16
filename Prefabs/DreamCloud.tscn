@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dencu3yac6vin"]
+[gd_scene load_steps=12 format=3 uid="uid://dencu3yac6vin"]
 
 [ext_resource type="Texture2D" uid="uid://ck8ykgv80pswt" path="res://Sprites/environment/cloud.png" id="1_jk83v"]
 [ext_resource type="PackedScene" uid="uid://c06hq2wkamsf7" path="res://Scenes/Dream.tscn" id="2_djysc"]
@@ -10,8 +10,14 @@ script/source = "extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	anim.play(\"Closed\")
+	Global.connect(\"dream_state_changed\", on_dream_state_changed)
 
+func on_dream_state_changed():
+	if Global.is_dreaming:
+		start_dream()
+	else:
+		end_dream()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -184,9 +190,74 @@ tracks/4/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_74ggw"]
+resource_name = "Closed"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainCloud:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Trail1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.375),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Trail2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewport/Dream:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/ColorRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.125),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_74ggw"]
 _data = {
 &"Close": SubResource("Animation_72wsc"),
+&"Closed": SubResource("Animation_74ggw"),
 &"Open": SubResource("Animation_1hfgn"),
 &"RESET": SubResource("Animation_upkrg")
 }
@@ -195,6 +266,7 @@ _data = {
 script = SubResource("GDScript_72wsc")
 
 [node name="MainCloud" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(16, 5)
 texture = ExtResource("1_jk83v")
 
@@ -239,6 +311,7 @@ position = Vector2(6, 5)
 texture = ExtResource("1_jk83v")
 
 [node name="ColorRect" type="ColorRect" parent="MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
+modulate = Color(1, 1, 1, 0)
 offset_left = -32.0
 offset_top = -7.0
 offset_right = -3.0
@@ -249,11 +322,13 @@ position = Vector2(-1, 6)
 texture = ExtResource("1_jk83v")
 
 [node name="Trail1" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(-5, 23)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_jk83v")
 
 [node name="Trail2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(-11, 28)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_jk83v")
@@ -278,6 +353,7 @@ size = Vector2i(288, 162)
 render_target_update_mode = 4
 
 [node name="Dream" parent="SubViewport" instance=ExtResource("2_djysc")]
+modulate = Color(1, 1, 1, 0)
 metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

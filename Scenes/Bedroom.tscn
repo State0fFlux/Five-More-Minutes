@@ -1,10 +1,162 @@
-[gd_scene load_steps=6 format=3 uid="uid://3ves8bvwoxgq"]
+[gd_scene load_steps=16 format=3 uid="uid://3ves8bvwoxgq"]
 
 [ext_resource type="Script" uid="uid://dlaiddotih5wb" path="res://Scenes/bedroom.gd" id="1_3gbim"]
 [ext_resource type="Texture2D" uid="uid://b0gd4u2xs1jfy" path="res://Sprites/HoodedCrow/room only.png" id="1_bn4mn"]
 [ext_resource type="PackedScene" uid="uid://wgvmp0rrf62g" path="res://Prefabs/sky.tscn" id="3_0y5hw"]
 [ext_resource type="PackedScene" uid="uid://cw37p0gbimh0a" path="res://Prefabs/player.tscn" id="4_3gbim"]
 [ext_resource type="PackedScene" uid="uid://dencu3yac6vin" path="res://Prefabs/DreamCloud.tscn" id="4_bnvew"]
+[ext_resource type="Texture2D" uid="uid://bykuv1dhqo838" path="res://Sprites/pixil-frame-0.png" id="6_swbdu"]
+[ext_resource type="Theme" uid="uid://cojrl4cralg3e" path="res://Resources/theme.tres" id="7_cs4vd"]
+
+[sub_resource type="Animation" id="Animation_cs4vd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(146, 213)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Title:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Title:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rgpmg"]
+resource_name = "Phone Down"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(149, 96), Vector2(146, 213)]
+}
+
+[sub_resource type="Animation" id="Animation_swbdu"]
+resource_name = "Phone Up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(146, 213), Vector2(149, 96)]
+}
+
+[sub_resource type="Animation" id="Animation_iwh4a"]
+resource_name = "TextIntro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Title:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Title:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o0d8c"]
+resource_name = "TextExit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Title:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Title:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rgpmg"]
+_data = {
+&"PhoneDown": SubResource("Animation_rgpmg"),
+&"PhoneUp": SubResource("Animation_swbdu"),
+&"RESET": SubResource("Animation_cs4vd"),
+&"TextExit": SubResource("Animation_o0d8c"),
+&"TextIntro": SubResource("Animation_iwh4a")
+}
+
+[sub_resource type="GDScript" id="GDScript_cs4vd"]
+script/source = "extends RichTextLabel
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	text = Global.minutes_to_time(Global.minutes_since_midnight)
+"
+
+[sub_resource type="GDScript" id="GDScript_swbdu"]
+script/source = "extends RichTextLabel
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	text = \"Battery: \" + str(Global.battery) + \"%\"
+"
 
 [node name="Bedroom" type="Node2D"]
 script = ExtResource("1_3gbim")
@@ -30,13 +182,69 @@ position = Vector2(124, 95)
 [node name="dreamCloud" parent="." instance=ExtResource("4_bnvew")]
 position = Vector2(145, 51)
 
-[node name="Snooze" type="Button" parent="."]
-offset_left = 157.0
-offset_top = 90.0
-offset_right = 275.0
-offset_bottom = 121.0
-scale = Vector2(0.1, 0.1)
-focus_mode = 0
-text = "Debug Snooze"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../hand")
+libraries = {
+&"": SubResource("AnimationLibrary_rgpmg")
+}
 
-[connection signal="pressed" from="Snooze" to="." method="_on_snooze_pressed"]
+[node name="hand" type="Sprite2D" parent="."]
+position = Vector2(146, 213)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_swbdu")
+
+[node name="Time" type="RichTextLabel" parent="hand"]
+offset_left = -150.0
+offset_top = -260.0
+offset_right = 60.0
+offset_bottom = -170.0
+theme = ExtResource("7_cs4vd")
+theme_override_font_sizes/normal_font_size = 60
+text = "11:59"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = SubResource("GDScript_cs4vd")
+
+[node name="Battery" type="RichTextLabel" parent="hand"]
+offset_left = -290.0
+offset_top = -250.0
+offset_right = 200.0
+offset_bottom = -80.0001
+theme = ExtResource("7_cs4vd")
+theme_override_font_sizes/normal_font_size = 30
+text = "Battery: 69%"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = SubResource("GDScript_swbdu")
+
+[node name="GetUp" type="Button" parent="hand"]
+offset_left = -110.0
+offset_top = -120.0
+offset_right = 7.99999
+offset_bottom = -89.0
+focus_mode = 0
+theme = ExtResource("7_cs4vd")
+text = "Get Up"
+
+[node name="Snooze" type="Button" parent="hand"]
+offset_left = -110.0
+offset_top = -19.9999
+offset_right = 8.0
+offset_bottom = 11.0001
+focus_mode = 0
+theme = ExtResource("7_cs4vd")
+text = "Snooze"
+
+[node name="Title" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 125.0
+offset_top = 129.0
+offset_right = 333.0
+offset_bottom = 164.0
+scale = Vector2(0.2, 0.2)
+theme = ExtResource("7_cs4vd")
+theme_override_font_sizes/normal_font_size = 0
+text = "\"Five More Minutes...\""
+
+[connection signal="pressed" from="hand/GetUp" to="." method="_on_get_up_pressed"]
+[connection signal="pressed" from="hand/Snooze" to="." method="_on_snooze_pressed"]

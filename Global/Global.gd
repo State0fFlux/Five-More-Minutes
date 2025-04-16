@@ -18,7 +18,14 @@ const time_scale = 1
 # stats
 var minutes_since_midnight = 0
 var battery = 75
-var is_dreaming = true
+var is_dreaming = false
+
+# signals
+signal dream_state_changed
+
+func set_dream_state(state):
+	is_dreaming = state
+	dream_state_changed.emit()
 
 func minutes_to_time(minutes_since_midnight: int) -> String:
 	var hours = (minutes_since_midnight / 60) % 24
@@ -32,4 +39,4 @@ func minutes_to_time(minutes_since_midnight: int) -> String:
 	if hours == 0:
 		hours = 12
 	
-	return "%d:%02d %s" % [hours, minutes, am_pm]
+	return "%d:%02d" % [hours, minutes]

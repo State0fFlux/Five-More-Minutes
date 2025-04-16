@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5owbck814245"]
+[gd_scene load_steps=5 format=3 uid="uid://bgiaxnsuc02us"]
 
 [ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="1_4tmxy"]
-[ext_resource type="Script" uid="uid://b265ko8mkteja" path="res://Scenes/options.gd" id="1_qyyw6"]
+[ext_resource type="Script" path="res://Scenes/options.gd" id="1_qyyw6"]
 [ext_resource type="Texture2D" uid="uid://bykuv1dhqo838" path="res://Sprites/pixil-frame-0.png" id="2_qyyw6"]
 
 [sub_resource type="AudioStreamMP3" id="AudioStreamMP3_qyyw6"]
