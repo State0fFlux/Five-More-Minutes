@@ -2,15 +2,13 @@ extends Control
 
 
 func _on_wake_up_button_pressed() -> void:
-	print("wake up pressed")
-
+	get_tree().change_scene_to_file("res://Scenes/Bedroom.tscn")
 
 func _on_options_button_pressed() -> void:
-	print("options pressed")
-
-
+	get_tree().change_scene_to_file("res://Scenes/options.tscn")
+	
 func _on_meet_the_devs_button_pressed() -> void:
-	print("devs pressed")
+	get_tree().change_scene_to_file("res://Scenes/devs.tscn")
 
 func _on_quit_button_pressed() -> void:
-	print("quit pressed")
+	get_tree().quit()
