@@ -1,38 +1,42 @@
 [gd_scene load_steps=3 format=3 uid="uid://cq4xesx4aebvs"]
 
 [ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="1_tt6fu"]
-[ext_resource type="Texture2D" uid="uid://fkljb40j4csy" path="res://Sprites/HoodedCrow/pixilart-sprite.png" id="2_dys5g"]
+[ext_resource type="Texture2D" uid="uid://dyqec1vof0x3c" path="res://Sprites/Options and devs/Start textbook.png" id="2_dys5g"]
 
 [node name="Devs" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = 56.0
+offset_right = -208.0
+offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TopDownHouseFloorsAndWalls" type="Sprite2D" parent="."]
-position = Vector2(93, -28)
+position = Vector2(680, 184)
+scale = Vector2(5.17596, 3.17863)
 texture = ExtResource("1_tt6fu")
 metadata/_edit_lock_ = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -32)
-zoom = Vector2(4, 4)
-metadata/_edit_lock_ = true
-
-[node name="Pixilart-sprite" type="Sprite2D" parent="."]
-position = Vector2(57, -30)
-scale = Vector2(0.081782, 0.0781191)
+[node name="StartTextbook" type="Sprite2D" parent="."]
+position = Vector2(176, 168)
+scale = Vector2(0.665031, 0.608437)
 texture = ExtResource("2_dys5g")
 metadata/_edit_lock_ = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = -14.0
-offset_top = -36.0
-offset_right = 26.0
-offset_bottom = -36.0
+[node name="RichTextLabel" type="RichTextLabel" parent="StartTextbook"]
+anchors_preset = -1
+anchor_left = 0.399
+anchor_top = 0.425
+anchor_right = 0.399
+anchor_bottom = 0.425
+offset_left = -228.256
+offset_top = -172.2
+offset_right = -148.256
+offset_bottom = -172.2
 scale = Vector2(0.349943, 1190.62)
 text = "Meet the Developers
 
@@ -40,3 +44,9 @@ Hey, we're Brady and Avah!
 Brady : 
 
 Avah: I'm a Comp Sci Senior at Bothell campus with my main focus being on vido games. This game is my first time using Godot, and so far I like it! "
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D2" type="Camera2D" parent="."]
+position = Vector2(32, 88)
+anchor_mode = 0
+metadata/_edit_lock_ = true

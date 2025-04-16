@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://pjqell4iy5hc"]
 
-[ext_resource type="Script" path="res://Scenes/start_menu.gd" id="1_1wmxr"]
+[ext_resource type="Script" uid="uid://devadgr2ibts2" path="res://Scenes/start_menu.gd" id="1_1wmxr"]
 [ext_resource type="FontFile" uid="uid://jijl7mh2tfw3" path="res://Fonts/DigitalDisco.ttf" id="1_vset1"]
 [ext_resource type="StyleBox" uid="uid://drhu1yrvc77jf" path="res://Resources/Button.tres" id="3_t7rl6"]
 [ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="3_u88ce"]
@@ -13,10 +13,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 130.0
-offset_top = 292.0
-offset_right = 130.0
-offset_bottom = 292.0
+offset_left = 122.0
+offset_top = 304.0
+offset_right = 122.0
+offset_bottom = 304.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1wmxr")
@@ -51,10 +51,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -267.0
+offset_left = -293.0
 offset_top = -117.0
 offset_right = -163.0
-offset_bottom = -47.0
+offset_bottom = -31.0
 grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(0.122202, 0.147569)
