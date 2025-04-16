@@ -15,6 +15,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qyyw6")
 
+[node name="TopDownHouseFloorsAndWalls" type="Sprite2D" parent="."]
+position = Vector2(680, 184)
+scale = Vector2(5.17596, 3.17863)
+texture = ExtResource("1_4tmxy")
+metadata/_edit_lock_ = true
+
 [node name="Phone in hand" type="Sprite2D" parent="."]
 top_level = true
 position = Vector2(176, 168)
@@ -73,12 +79,6 @@ layout_mode = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMP3_qyyw6")
-
-[node name="TopDownHouseFloorsAndWalls" type="Sprite2D" parent="."]
-position = Vector2(680, 184)
-scale = Vector2(5.17596, 3.17863)
-texture = ExtResource("1_4tmxy")
-metadata/_edit_lock_ = true
 
 [node name="Camera2D2" type="Camera2D" parent="."]
 position = Vector2(32, 88)
