@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://pjqell4iy5hc"]
 
-[ext_resource type="Script" uid="uid://devadgr2ibts2" path="res://Scenes/start_menu.gd" id="1_1wmxr"]
+[ext_resource type="Script" path="res://Scenes/start_menu.gd" id="1_1wmxr"]
 [ext_resource type="FontFile" uid="uid://jijl7mh2tfw3" path="res://Fonts/DigitalDisco.ttf" id="1_vset1"]
 [ext_resource type="StyleBox" uid="uid://drhu1yrvc77jf" path="res://Resources/Button.tres" id="3_t7rl6"]
 [ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="3_u88ce"]

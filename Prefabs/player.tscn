@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://dgkdvb5nuti5" path="res://Prefabs/player.gd" id="1_5wxv7"]
 [ext_resource type="Texture2D" uid="uid://bai3ehphjx8od" path="res://Sprites/HoodedCrow/sleeping.png" id="1_y6xdh"]
 
-[sub_resource type="Animation" id="Animation_y6xdh"]
-resource_name = "Sleeping"
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_2nftw"]
+resource_name = "PhoneOff"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -13,25 +12,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.4, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 1]
-}
-
-[sub_resource type="Animation" id="Animation_5wxv7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
+"values": [3, 2, 1]
 }
 
 [sub_resource type="Animation" id="Animation_y5hcb"]
@@ -49,8 +33,8 @@ tracks/0/keys = {
 "values": [1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_2nftw"]
-resource_name = "PhoneOff"
+[sub_resource type="Animation" id="Animation_5wxv7"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -58,10 +42,26 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [3, 2, 1]
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_y6xdh"]
+resource_name = "Sleeping"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_knrd4"]
