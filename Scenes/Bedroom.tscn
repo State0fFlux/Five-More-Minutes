@@ -11,9 +11,9 @@
 
 [node name="Sky" parent="." instance=ExtResource("3_0y5hw")]
 offset_left = 0.0
-offset_top = 1.0
+offset_top = -1.0
 offset_right = 384.0
-offset_bottom = 216.0
+offset_bottom = 214.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
