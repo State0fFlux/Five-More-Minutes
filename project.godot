@@ -30,6 +30,11 @@ window/stretch/mode="canvas_items"
 
 sheep=""
 
+[gui]
+
+theme/custom="uid://cojrl4cralg3e"
+theme/custom_font="uid://jijl7mh2tfw3"
+
 [input]
 
 Jump={

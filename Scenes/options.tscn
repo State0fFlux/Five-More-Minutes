@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 [gd_scene load_steps=6 format=3 uid="uid://b5owbck814245"]
+=======
+[gd_scene load_steps=5 format=3 uid="uid://bgiaxnsuc02us"]
+>>>>>>> 16838f83646d9a98eca6c55f55df5f17e2f7b435
 
 [ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="1_4tmxy"]
-[ext_resource type="Script" uid="uid://b265ko8mkteja" path="res://Scenes/options.gd" id="1_qyyw6"]
+[ext_resource type="Script" path="res://Scenes/options.gd" id="1_qyyw6"]
 [ext_resource type="Texture2D" uid="uid://bykuv1dhqo838" path="res://Sprites/pixil-frame-0.png" id="2_qyyw6"]
 [ext_resource type="FontFile" uid="uid://bka5fpx4ym5ao" path="res://Fonts/DigitalDisco-Thin.ttf" id="4_ww8vx"]
 
@@ -17,55 +21,66 @@ grow_vertical = 2
 script = ExtResource("1_qyyw6")
 
 [node name="TopDownHouseFloorsAndWalls" type="Sprite2D" parent="."]
-position = Vector2(93, -28)
+position = Vector2(681.338, 188.861)
+scale = Vector2(5.17596, 3.17863)
 texture = ExtResource("1_4tmxy")
-metadata/_edit_lock_ = true
-
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -32)
-zoom = Vector2(4, 4)
-metadata/_edit_lock_ = true
 
 [node name="Phone in hand" type="Sprite2D" parent="."]
-position = Vector2(-1, -32)
-scale = Vector2(0.0670166, 0.0552979)
+top_level = true
+position = Vector2(177.338, 172.861)
+scale = Vector2(0.265797, 0.236989)
 texture = ExtResource("2_qyyw6")
-metadata/_edit_lock_ = true
+
+[node name="home button" type="Button" parent="Phone in hand"]
+z_index = 4
+offset_left = -108.195
+offset_top = 88.8117
+offset_right = -50.1951
+offset_bottom = 119.812
+scale = Vector2(1.93518, 1.89201)
+text = "Home"
 
 [node name="Music Volumes" type="VBoxContainer" parent="."]
+z_index = 4
 layout_mode = 0
-offset_left = -10.0
-offset_top = -44.0
-offset_right = 167.0
-offset_bottom = 14.0
-scale = Vector2(0.0614948, 0.13236)
+offset_left = 137.338
+offset_top = 124.861
+offset_right = 330.338
+offset_bottom = 182.861
+scale = Vector2(0.26254, 0.303079)
 
 [node name="Label" type="Label" parent="Music Volumes"]
+z_index = 4
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Alarm Volume (Music)"
 horizontal_alignment = 1
 
 [node name="Music slider" type="HSlider" parent="Music Volumes"]
+z_index = 4
 layout_mode = 2
 
-[node name="SFX Volumes" type="VBoxContainer" parent="."]
+[node name="SFX Volume" type="VBoxContainer" parent="."]
+z_index = 4
 layout_mode = 0
-offset_left = -10.0
-offset_top = -36.0
-offset_right = 167.0
-offset_bottom = 22.0
-scale = Vector2(0.0614948, 0.13236)
+offset_left = 137.338
+offset_top = 143.861
+offset_right = 330.338
+offset_bottom = 201.861
+scale = Vector2(0.26254, 0.303079)
 
-[node name="Label" type="Label" parent="SFX Volumes"]
+[node name="Label" type="Label" parent="SFX Volume"]
+z_index = 4
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Haptics (SFX Sound)"
+text = "Haptics (SFX)"
 horizontal_alignment = 1
 
-[node name="SFX slider" type="HSlider" parent="SFX Volumes"]
+[node name="Music slider" type="HSlider" parent="SFX Volume"]
+z_index = 4
 layout_mode = 2
 
+<<<<<<< HEAD
 [node name="home button" type="Button" parent="."]
 layout_mode = 0
 offset_left = -7.0
@@ -76,7 +91,14 @@ scale = Vector2(0.0799297, 0.0919679)
 theme_override_fonts/font = ExtResource("4_ww8vx")
 text = "Home"
 
+=======
+>>>>>>> 16838f83646d9a98eca6c55f55df5f17e2f7b435
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMP3_qyyw6")
 
-[connection signal="pressed" from="home button" to="." method="_on_home_button_pressed"]
+[node name="Camera2D2" type="Camera2D" parent="."]
+position = Vector2(32, 88)
+anchor_mode = 0
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Phone in hand/home button" to="." method="_on_home_button_pressed"]

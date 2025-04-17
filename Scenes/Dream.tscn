@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://c06hq2wkamsf7"]
+[gd_scene load_steps=23 format=4 uid="uid://c06hq2wkamsf7"]
 
 [ext_resource type="Texture2D" uid="uid://da7k6v1x42p3c" path="res://Sprites/environment/terrain.png" id="1_87yj6"]
 [ext_resource type="Script" uid="uid://bktadev8q1ng" path="res://Scenes/Dream.gd" id="1_nls7e"]
@@ -6,73 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ck8ykgv80pswt" path="res://Sprites/environment/cloud.png" id="2_8bab0"]
 [ext_resource type="Texture2D" uid="uid://dcb2bju5jp4xd" path="res://Sprites/environment/leaf.png" id="3_8bab0"]
 [ext_resource type="Texture2D" uid="uid://cx3tx62s7txxx" path="res://Sprites/environment/fencing.png" id="3_qd6k4"]
-[ext_resource type="PackedScene" uid="uid://cau12ou8xhme1" path="res://Scenes/UI.tscn" id="5_qd6k4"]
 [ext_resource type="PackedScene" uid="uid://bygx0c73541md" path="res://Prefabs/cloud.tscn" id="7_7j84a"]
-
-[sub_resource type="Gradient" id="Gradient_7j84a"]
-offsets = PackedFloat32Array(0, 0.981818)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_8bab0"]
-gradient = SubResource("Gradient_7j84a")
-
-[sub_resource type="Curve" id="Curve_xpgaj"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
-metadata/_snap_enabled = true
-metadata/_snap_count = 16
-
-[sub_resource type="CurveTexture" id="CurveTexture_7j84a"]
-curve = SubResource("Curve_xpgaj")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7j84a"]
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(1, 60, 1)
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-direction = Vector3(-1, 0, 0)
-spread = 0.0
-initial_velocity_min = 5.0
-initial_velocity_max = 20.0
-gravity = Vector3(0, 0, 0)
-scale_min = 0.1
-scale_max = 0.5
-scale_curve = SubResource("CurveTexture_7j84a")
-color = Color(0.957737, 0.896416, 9.2411e-06, 1)
-color_initial_ramp = SubResource("GradientTexture1D_8bab0")
-hue_variation_min = -2.23517e-08
-hue_variation_max = 0.28
-turbulence_influence_min = 0.01
-turbulence_influence_max = 0.01
-
-[sub_resource type="Curve" id="Curve_w8sux"]
-_limits = [-90.0, 90.0, 0.0, 1.0]
-_data = [Vector2(0, 13.9024), 0.0, 0.0, 0, 0, Vector2(0.978102, -10.2439), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_y0s6l"]
-curve = SubResource("Curve_w8sux")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nyd0l"]
-particle_flag_rotate_y = true
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(1, 60, 1)
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-angle_min = -153.1
-angle_max = 177.9
-angle_curve = SubResource("CurveTexture_y0s6l")
-direction = Vector3(1, 0.1, 0)
-spread = 0.0
-initial_velocity_min = 30.0
-initial_velocity_max = 40.0
-gravity = Vector3(0, 0, 0)
-scale_min = 0.5
-color = Color(0.762804, 0.455685, 0.0811968, 1)
-hue_variation_min = -2.23517e-08
-hue_variation_max = 0.28
-turbulence_influence_min = 0.01
-turbulence_influence_max = 0.01
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kln2b"]
 texture = ExtResource("1_87yj6")
@@ -162,32 +96,77 @@ height = 74.0
 radius = 1.0
 height = 22.0
 
+[sub_resource type="Gradient" id="Gradient_7j84a"]
+offsets = PackedFloat32Array(0, 0.981818)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8bab0"]
+gradient = SubResource("Gradient_7j84a")
+
+[sub_resource type="Curve" id="Curve_xpgaj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[sub_resource type="CurveTexture" id="CurveTexture_7j84a"]
+curve = SubResource("Curve_xpgaj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7j84a"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 60, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 5.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_7j84a")
+color = Color(0.957737, 0.896416, 9.2411e-06, 1)
+color_initial_ramp = SubResource("GradientTexture1D_8bab0")
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.28
+turbulence_influence_min = 0.01
+turbulence_influence_max = 0.01
+
+[sub_resource type="Curve" id="Curve_w8sux"]
+_limits = [-90.0, 90.0, 0.0, 1.0]
+_data = [Vector2(0, 13.9024), 0.0, 0.0, 0, 0, Vector2(0.978102, -10.2439), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_y0s6l"]
+curve = SubResource("Curve_w8sux")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nyd0l"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 60, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -153.1
+angle_max = 177.9
+angle_curve = SubResource("CurveTexture_y0s6l")
+direction = Vector3(1, 0.1, 0)
+spread = 0.0
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+color = Color(0.762804, 0.455685, 0.0811968, 1)
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.28
+turbulence_influence_min = 0.01
+turbulence_influence_max = 0.01
+
 [node name="Dream" type="Node2D"]
 script = ExtResource("1_nls7e")
 
 [node name="SkyTint" type="CanvasModulate" parent="."]
 position = Vector2(-4, 78)
 color = Color(0.965629, 0.834653, 0.710914, 1)
-
-[node name="Glow" type="CanvasLayer" parent="."]
-
-[node name="Fireflies" type="GPUParticles2D" parent="Glow"]
-position = Vector2(291, 93)
-emitting = false
-amount = 32
-texture = ExtResource("2_8bab0")
-lifetime = 20.0
-trail_lifetime = 4.19
-process_material = SubResource("ParticleProcessMaterial_7j84a")
-metadata/_edit_lock_ = true
-
-[node name="Leaves" type="GPUParticles2D" parent="Glow"]
-position = Vector2(-9, 64)
-amount = 32
-texture = ExtResource("3_8bab0")
-lifetime = 20.0
-trail_lifetime = 4.19
-process_material = SubResource("ParticleProcessMaterial_nyd0l")
 
 [node name="Sky" parent="." instance=ExtResource("2_7j84a")]
 offset_left = 0.0
@@ -245,13 +224,6 @@ position = Vector2(10, 30)
 shape = SubResource("CapsuleShape2D_nls7e")
 debug_color = Color(0, 0.6, 0.701961, 0.745098)
 
-[node name="Control" parent="." instance=ExtResource("5_qd6k4")]
-offset_left = -144.0
-offset_top = -113.0
-offset_right = 144.0
-offset_bottom = 49.0
-metadata/_edit_lock_ = true
-
 [node name="SpawnPoint" type="Node2D" parent="."]
 position = Vector2(-26, 137)
 
@@ -274,6 +246,41 @@ lifetime = 5.0
 
 [node name="FirstSheepSpawn" type="Node2D" parent="."]
 position = Vector2(88, 138)
+
+[node name="Fireflies" type="GPUParticles2D" parent="."]
+position = Vector2(291, 93)
+emitting = false
+amount = 32
+texture = ExtResource("2_8bab0")
+lifetime = 20.0
+trail_lifetime = 4.19
+process_material = SubResource("ParticleProcessMaterial_7j84a")
+metadata/_edit_lock_ = true
+
+[node name="Leaves" type="GPUParticles2D" parent="."]
+position = Vector2(-9, 64)
+amount = 32
+texture = ExtResource("3_8bab0")
+lifetime = 20.0
+trail_lifetime = 4.19
+process_material = SubResource("ParticleProcessMaterial_nyd0l")
+
+[node name="DebugUI" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+modulate = Color(0, 0, 0, 1)
+offset_left = 39.0
+offset_top = 55.0
+offset_right = 327.0
+offset_bottom = 217.0
+script = null
 
 [connection signal="body_entered" from="PassWall" to="." method="_on_pass_wall_body_entered"]
 [connection signal="body_entered" from="DeathWall" to="." method="_on_death_wall_body_entered"]

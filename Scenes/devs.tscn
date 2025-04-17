@@ -1,36 +1,53 @@
+<<<<<<< HEAD
 [gd_scene load_steps=7 format=3 uid="uid://dfc1cslj0sirr"]
+=======
+[gd_scene load_steps=3 format=3 uid="uid://cq4xesx4aebvs"]
+>>>>>>> 16838f83646d9a98eca6c55f55df5f17e2f7b435
 
 [ext_resource type="Script" uid="uid://bokfrfyte7psw" path="res://Scenes/devs.gd" id="1_q1xvy"]
 [ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="1_tt6fu"]
+<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://fkljb40j4csy" path="res://Sprites/HoodedCrow/pixilart-sprite.png" id="2_dys5g"]
 [ext_resource type="Texture2D" uid="uid://b3uta05m2uptg" path="res://Sprites/sheep/phone.png" id="3_as1si"]
 [ext_resource type="FontFile" uid="uid://bka5fpx4ym5ao" path="res://Fonts/DigitalDisco-Thin.ttf" id="4_jfeqj"]
 [ext_resource type="StyleBox" uid="uid://drhu1yrvc77jf" path="res://Resources/Button.tres" id="5_q1xvy"]
+=======
+[ext_resource type="Texture2D" uid="uid://dyqec1vof0x3c" path="res://Sprites/Options and devs/Start textbook.png" id="2_dys5g"]
+>>>>>>> 16838f83646d9a98eca6c55f55df5f17e2f7b435
 
 [node name="Devs" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = 56.0
+offset_right = -208.0
+offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
+<<<<<<< HEAD
 script = ExtResource("1_q1xvy")
+=======
+scale = Vector2(0.936341, 0.9576)
+>>>>>>> 16838f83646d9a98eca6c55f55df5f17e2f7b435
 
 [node name="TopDownHouseFloorsAndWalls" type="Sprite2D" parent="."]
-position = Vector2(93, -28)
+position = Vector2(680, 184)
+scale = Vector2(5.17596, 3.17863)
 texture = ExtResource("1_tt6fu")
 metadata/_edit_lock_ = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -32)
-zoom = Vector2(4, 4)
-metadata/_edit_lock_ = true
-
-[node name="Pixilart-sprite" type="Sprite2D" parent="."]
-position = Vector2(57, -30)
-scale = Vector2(0.081782, 0.0781191)
+[node name="StartTextbook" type="Sprite2D" parent="."]
+position = Vector2(176, 168)
+scale = Vector2(0.665031, 0.608437)
 texture = ExtResource("2_dys5g")
+
+[node name="Camera2D2" type="Camera2D" parent="."]
+position = Vector2(32, 88)
+anchor_mode = 0
 metadata/_edit_lock_ = true
+<<<<<<< HEAD
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
@@ -66,3 +83,5 @@ text = "5 am
 (Options)"
 
 [connection signal="pressed" from="Phone/Set Alarm button" to="." method="_on_set_alarm_button_pressed"]
+=======
+>>>>>>> 16838f83646d9a98eca6c55f55df5f17e2f7b435

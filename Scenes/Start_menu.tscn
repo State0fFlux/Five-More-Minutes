@@ -1,38 +1,48 @@
-[gd_scene load_steps=7 format=3 uid="uid://pjqell4iy5hc"]
+[gd_scene load_steps=8 format=3 uid="uid://pjqell4iy5hc"]
 
-[ext_resource type="Script" uid="uid://devadgr2ibts2" path="res://Scenes/start_menu.gd" id="1_1wmxr"]
+[ext_resource type="Script" path="res://Scenes/start_menu.gd" id="1_1wmxr"]
 [ext_resource type="FontFile" uid="uid://jijl7mh2tfw3" path="res://Fonts/DigitalDisco.ttf" id="1_vset1"]
 [ext_resource type="StyleBox" uid="uid://drhu1yrvc77jf" path="res://Resources/Button.tres" id="3_t7rl6"]
 [ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="3_u88ce"]
-[ext_resource type="Texture2D" uid="uid://bai3ehphjx8od" path="res://Sprites/HoodedCrow/sleeping.png" id="4_t7rl6"]
+[ext_resource type="Theme" uid="uid://cojrl4cralg3e" path="res://Resources/theme.tres" id="6_5hugr"]
 [ext_resource type="FontFile" uid="uid://bka5fpx4ym5ao" path="res://Fonts/DigitalDisco-Thin.ttf" id="6_7k6f1"]
+[ext_resource type="PackedScene" uid="uid://cw37p0gbimh0a" path="res://Prefabs/player.tscn" id="7_5hugr"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 130.0
-offset_top = 292.0
-offset_right = 130.0
-offset_bottom = 292.0
+offset_left = 122.0
+offset_top = 304.0
+offset_right = 122.0
+offset_bottom = 304.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1wmxr")
 
 [node name="TopDownHouseFloorsAndWalls" type="Sprite2D" parent="."]
-position = Vector2(93, -28)
+position = Vector2(681.338, 188.861)
+scale = Vector2(5.17596, 3.17863)
 texture = ExtResource("3_u88ce")
+metadata/_edit_lock_ = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -32)
-zoom = Vector2(4, 4)
+[node name="Player" parent="." instance=ExtResource("7_5hugr")]
+position = Vector2(153, 210)
+scale = Vector2(3.5919, 3.34832)
 
-[node name="Sleeping" type="Sprite2D" parent="."]
-position = Vector2(-8, -21)
-texture = ExtResource("4_t7rl6")
-hframes = 2
-vframes = 2
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 104.0
+offset_right = 261.0
+offset_bottom = 131.0
+scale = Vector2(1.19955, 1.16918)
+theme = ExtResource("6_5hugr")
+theme_override_fonts/normal_font = ExtResource("6_7k6f1")
+theme_override_font_sizes/normal_font_size = 16
+text = "Five More Minutes..."
+metadata/_edit_lock_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -41,13 +51,13 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -267.0
-offset_top = -117.0
-offset_right = -163.0
-offset_bottom = -47.0
+offset_left = -74.0
+offset_top = 55.0
+offset_right = 56.0
+offset_bottom = 141.0
 grow_horizontal = 0
 grow_vertical = 2
-scale = Vector2(0.122202, 0.147569)
+scale = Vector2(0.775288, 0.926547)
 theme_override_constants/separation = 2
 
 [node name="Wake up Button" type="Button" parent="VBoxContainer"]
@@ -85,18 +95,10 @@ theme_override_styles/normal = ExtResource("3_t7rl6")
 text = "Quit
 "
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = -33.0
-offset_top = -50.0
-offset_right = 103.0
-offset_bottom = -10.0
-scale = Vector2(0.25174, 0.224692)
-
-[node name="Label" type="Label" parent="HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("6_7k6f1")
-text = "Five More Minutes...."
+[node name="Camera2D2" type="Camera2D" parent="."]
+position = Vector2(32, 88)
+anchor_mode = 0
+metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="VBoxContainer/Wake up Button" to="." method="_on_wake_up_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options Button" to="." method="_on_options_button_pressed"]
