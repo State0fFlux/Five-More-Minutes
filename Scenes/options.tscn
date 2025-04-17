@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=6 format=3 uid="uid://b5owbck814245"]
-=======
-[gd_scene load_steps=5 format=3 uid="uid://bgiaxnsuc02us"]
->>>>>>> 16838f83646d9a98eca6c55f55df5f17e2f7b435
+[gd_scene load_steps=6 format=3 uid="uid://bgiaxnsuc02us"]
 
 [ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="1_4tmxy"]
 [ext_resource type="Script" path="res://Scenes/options.gd" id="1_qyyw6"]
@@ -80,7 +76,6 @@ horizontal_alignment = 1
 z_index = 4
 layout_mode = 2
 
-<<<<<<< HEAD
 [node name="home button" type="Button" parent="."]
 layout_mode = 0
 offset_left = -7.0
@@ -91,8 +86,6 @@ scale = Vector2(0.0799297, 0.0919679)
 theme_override_fonts/font = ExtResource("4_ww8vx")
 text = "Home"
 
-=======
->>>>>>> 16838f83646d9a98eca6c55f55df5f17e2f7b435
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMP3_qyyw6")
 
