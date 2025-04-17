@@ -14,6 +14,7 @@ offset_right = -208.0
 offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.936341, 0.9576)
 
 [node name="TopDownHouseFloorsAndWalls" type="Sprite2D" parent="."]
 position = Vector2(680, 184)
@@ -25,26 +26,6 @@ metadata/_edit_lock_ = true
 position = Vector2(176, 168)
 scale = Vector2(0.665031, 0.608437)
 texture = ExtResource("2_dys5g")
-metadata/_edit_lock_ = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="StartTextbook"]
-anchors_preset = -1
-anchor_left = 0.399
-anchor_top = 0.425
-anchor_right = 0.399
-anchor_bottom = 0.425
-offset_left = -228.256
-offset_top = -172.2
-offset_right = -148.256
-offset_bottom = -172.2
-scale = Vector2(0.349943, 1190.62)
-text = "Meet the Developers
-
-Hey, we're Brady and Avah!
-Brady : 
-
-Avah: I'm a Comp Sci Senior at Bothell campus with my main focus being on vido games. This game is my first time using Godot, and so far I like it! "
-metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D2" type="Camera2D" parent="."]
 position = Vector2(32, 88)
