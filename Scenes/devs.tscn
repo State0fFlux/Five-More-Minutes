@@ -71,6 +71,7 @@ text = "5 am
 
 [node name="Debug home button" type="Button" parent="."]
 z_index = 4
+layout_mode = 0
 offset_left = 141.0
 offset_top = 186.0
 offset_right = 199.0

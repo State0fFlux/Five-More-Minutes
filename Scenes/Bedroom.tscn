@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://3ves8bvwoxgq"]
+[gd_scene load_steps=18 format=3 uid="uid://3ves8bvwoxgq"]
 
 [ext_resource type="Script" uid="uid://dlaiddotih5wb" path="res://Scenes/bedroom.gd" id="1_3gbim"]
 [ext_resource type="Texture2D" uid="uid://b0gd4u2xs1jfy" path="res://Sprites/HoodedCrow/room only.png" id="1_bn4mn"]
@@ -64,7 +64,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -76,7 +76,31 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Camera2D:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Camera2D:zoom")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_o0d8c"]
@@ -133,8 +157,67 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_o633n"]
+resource_name = "CamZoomIn"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(4, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_rsf82"]
+resource_name = "CamZoomOut"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4, 4), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Camera2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -30), Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rgpmg"]
 _data = {
+&"CamZoomIn": SubResource("Animation_o633n"),
+&"CamZoomOut": SubResource("Animation_rsf82"),
 &"PhoneDown": SubResource("Animation_rgpmg"),
 &"PhoneUp": SubResource("Animation_swbdu"),
 &"RESET": SubResource("Animation_cs4vd"),
@@ -168,9 +251,6 @@ offset_left = 0.0
 offset_top = -1.0
 offset_right = 384.0
 offset_bottom = 214.0
-
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
 
 [node name="RoomOnly" type="Sprite2D" parent="."]
 position = Vector2(145, 76)
@@ -236,7 +316,6 @@ theme = ExtResource("7_cs4vd")
 text = "Snooze"
 
 [node name="Title" type="RichTextLabel" parent="."]
-modulate = Color(1, 1, 1, 0)
 offset_left = 125.0
 offset_top = 129.0
 offset_right = 333.0
@@ -245,6 +324,11 @@ scale = Vector2(0.2, 0.2)
 theme = ExtResource("7_cs4vd")
 theme_override_font_sizes/normal_font_size = 0
 text = "\"Five More Minutes...\""
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(144, 81)
 
 [connection signal="pressed" from="hand/GetUp" to="." method="_on_get_up_pressed"]
 [connection signal="pressed" from="hand/Snooze" to="." method="_on_snooze_pressed"]

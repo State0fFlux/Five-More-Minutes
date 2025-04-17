@@ -230,9 +230,6 @@ position = Vector2(-26, 137)
 [node name="DeathPoint" type="Node2D" parent="."]
 position = Vector2(314, 137)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(144, 113)
-
 [node name="CloudSystem" type="Node2D" parent="."]
 position = Vector2(144, 113)
 
