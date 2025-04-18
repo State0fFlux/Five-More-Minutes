@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://boc0y80gxu823"]
+[gd_scene load_steps=19 format=3 uid="uid://boc0y80gxu823"]
 
 [ext_resource type="Script" uid="uid://da782bhlsn5bx" path="res://Prefabs/sheep.gd" id="1_hjbt6"]
 [ext_resource type="Texture2D" uid="uid://epglma4xc71u" path="res://Sprites/sheep/white.png" id="1_qsh3u"]
 [ext_resource type="Shader" uid="uid://b217v6jcdwxb2" path="res://Shaders/damage.gdshader" id="1_ut7ki"]
 [ext_resource type="Texture2D" uid="uid://8gw5ajr30rrc" path="res://Sprites/sheep/shadow.png" id="3_ouycb"]
 [ext_resource type="Texture2D" uid="uid://b2ag0h1od5am2" path="res://Sprites/sheep/snore.png" id="4_d31gs"]
+[ext_resource type="AudioStream" uid="uid://d3xfgvwm8lh1h" path="res://Audio/SFX/sfx_UI_click_01.wav" id="6_pwu8p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x8kua"]
 radius = 6.0
@@ -216,3 +217,6 @@ texture = ExtResource("4_d31gs")
 lifetime = 2.0
 trail_lifetime = 3.28
 process_material = SubResource("ParticleProcessMaterial_vhidr")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_pwu8p")

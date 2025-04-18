@@ -1,16 +1,74 @@
-[gd_scene load_steps=16 format=3 uid="uid://3ves8bvwoxgq"]
+[gd_scene load_steps=18 format=3 uid="uid://3ves8bvwoxgq"]
 
 [ext_resource type="Script" uid="uid://dlaiddotih5wb" path="res://Scenes/bedroom.gd" id="1_3gbim"]
-[ext_resource type="Texture2D" uid="uid://b0gd4u2xs1jfy" path="res://Sprites/HoodedCrow/room only.png" id="1_bn4mn"]
 [ext_resource type="PackedScene" uid="uid://wgvmp0rrf62g" path="res://Prefabs/sky.tscn" id="3_0y5hw"]
+[ext_resource type="Texture2D" uid="uid://b802ue1efjmtf" path="res://Sprites/environment/room.png" id="3_cs4vd"]
 [ext_resource type="PackedScene" uid="uid://cw37p0gbimh0a" path="res://Prefabs/player.tscn" id="4_3gbim"]
 [ext_resource type="PackedScene" uid="uid://dencu3yac6vin" path="res://Prefabs/DreamCloud.tscn" id="4_bnvew"]
 [ext_resource type="Texture2D" uid="uid://bykuv1dhqo838" path="res://Sprites/pixil-frame-0.png" id="6_swbdu"]
 [ext_resource type="Theme" uid="uid://cojrl4cralg3e" path="res://Resources/theme.tres" id="7_cs4vd"]
 
+[sub_resource type="Animation" id="Animation_o633n"]
+resource_name = "CamZoomIn"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(4, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_rsf82"]
+resource_name = "CamZoomOut"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4, 4), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Camera2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -30), Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_rgpmg"]
 resource_name = "Phone Down"
 length = 0.5
+step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -21,12 +79,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(149, 96), Vector2(146, 213)]
+"values": [Vector2(0, 39), Vector2(0, 133)]
 }
 
 [sub_resource type="Animation" id="Animation_swbdu"]
 resource_name = "Phone Up"
 length = 0.5
+step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -37,7 +96,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(146, 213), Vector2(149, 96)]
+"values": [Vector2(0, 133), Vector2(0, 39)]
 }
 
 [sub_resource type="Animation" id="Animation_cs4vd"]
@@ -52,7 +111,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(146, 213)]
+"values": [Vector2(0, 133)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -64,7 +123,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -76,7 +135,31 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Camera2D:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Camera2D:zoom")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_o0d8c"]
@@ -135,6 +218,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rgpmg"]
 _data = {
+&"CamZoomIn": SubResource("Animation_o633n"),
+&"CamZoomOut": SubResource("Animation_rsf82"),
 &"PhoneDown": SubResource("Animation_rgpmg"),
 &"PhoneUp": SubResource("Animation_swbdu"),
 &"RESET": SubResource("Animation_cs4vd"),
@@ -161,26 +246,30 @@ func _process(_delta: float) -> void:
 [node name="Bedroom" type="Node2D"]
 script = ExtResource("1_3gbim")
 
-[node name="Shadow" type="CanvasModulate" parent="."]
-
 [node name="Sky" parent="." instance=ExtResource("3_0y5hw")]
-offset_left = 0.0
-offset_top = -1.0
-offset_right = 384.0
-offset_bottom = 214.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -107.5
+offset_right = 192.0
+offset_bottom = 107.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Room" type="Sprite2D" parent="."]
+texture = ExtResource("3_cs4vd")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-
-[node name="RoomOnly" type="Sprite2D" parent="."]
-position = Vector2(145, 76)
-texture = ExtResource("1_bn4mn")
 
 [node name="Player" parent="." instance=ExtResource("4_3gbim")]
-position = Vector2(124, 95)
+position = Vector2(-14, 11)
 
 [node name="dreamCloud" parent="." instance=ExtResource("4_bnvew")]
-position = Vector2(145, 51)
+position = Vector2(0, -31)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../hand")
@@ -189,7 +278,7 @@ libraries = {
 }
 
 [node name="hand" type="Sprite2D" parent="."]
-position = Vector2(146, 213)
+position = Vector2(0, 133)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("6_swbdu")
 
@@ -236,15 +325,17 @@ theme = ExtResource("7_cs4vd")
 text = "Snooze"
 
 [node name="Title" type="RichTextLabel" parent="."]
-modulate = Color(1, 1, 1, 0)
-offset_left = 125.0
-offset_top = 129.0
-offset_right = 333.0
-offset_bottom = 164.0
+offset_left = -27.0
+offset_top = -10.0
+offset_right = 181.0
+offset_bottom = 25.0
 scale = Vector2(0.2, 0.2)
+mouse_filter = 2
 theme = ExtResource("7_cs4vd")
 theme_override_font_sizes/normal_font_size = 0
 text = "\"Five More Minutes...\""
+visible_characters = 0
+visible_ratio = 0.0
 
 [connection signal="pressed" from="hand/GetUp" to="." method="_on_get_up_pressed"]
 [connection signal="pressed" from="hand/Snooze" to="." method="_on_snooze_pressed"]

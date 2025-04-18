@@ -173,6 +173,7 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 288.0
 offset_bottom = 117.0
+mouse_filter = 2
 color = Color(0.49071, 0.734549, 0.849941, 1)
 script = null
 
@@ -230,9 +231,6 @@ position = Vector2(-26, 137)
 [node name="DeathPoint" type="Node2D" parent="."]
 position = Vector2(314, 137)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(144, 113)
-
 [node name="CloudSystem" type="Node2D" parent="."]
 position = Vector2(144, 113)
 
@@ -264,23 +262,6 @@ texture = ExtResource("3_8bab0")
 lifetime = 20.0
 trail_lifetime = 4.19
 process_material = SubResource("ParticleProcessMaterial_nyd0l")
-
-[node name="DebugUI" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-modulate = Color(0, 0, 0, 1)
-offset_left = 39.0
-offset_top = 55.0
-offset_right = 327.0
-offset_bottom = 217.0
-script = null
 
 [connection signal="body_entered" from="PassWall" to="." method="_on_pass_wall_body_entered"]
 [connection signal="body_entered" from="DeathWall" to="." method="_on_death_wall_body_entered"]

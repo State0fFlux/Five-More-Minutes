@@ -8,12 +8,20 @@ const heart = preload("res://Sprites/sheep/heart.png")
 var deathPoint
 var spawnPoint
 
+var ba_sounds = [
+	preload("res://Audio/ba1.mp3"),
+	preload("res://Audio/ba2.mp3"),
+	preload("res://Audio/ba3.mp3"),
+]
+
+var crack = preload("res://Audio/crack.mp3")
+
 # data types
 enum SheepState { MOVING, SLEEPING, DEAD }
 enum PlayerState { SLEEPING, ON_PHONE }
 
 # settings
-const time_scale = 1
+const time_scale = 3
 
 # stats
 var minutes_since_midnight = 0
@@ -21,11 +29,17 @@ var battery = 75
 var is_dreaming = false
 
 # signals
-signal dream_state_changed
+signal dream_opened
+signal dream_closed
+signal phone_ringing
+signal phone_answered
 
 func set_dream_state(state):
 	is_dreaming = state
-	dream_state_changed.emit()
+	if state == true: # entering dream
+		dream_opened.emit()
+	else: # leaving dream
+		dream_closed.emit()
 
 func minutes_to_time(minutes_since_midnight: int) -> String:
 	var hours = (minutes_since_midnight / 60) % 24
@@ -40,3 +54,8 @@ func minutes_to_time(minutes_since_midnight: int) -> String:
 		hours = 12
 	
 	return "%d:%02d" % [hours, minutes]
+
+func reset():
+	battery = 75
+	is_dreaming = false
+	minutes_since_midnight = 0

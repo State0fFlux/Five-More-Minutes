@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Global/Global.gd"
+Soundtrack="*res://Global/soundtrack.tscn"
+Night="*res://Global/night.tscn"
 
 [display]
 
@@ -57,6 +59,7 @@ Sleep={
 2d_physics/layer_2="ground"
 2d_physics/layer_3="player"
 2d_physics/layer_4="fence"
+2d_physics/layer_5="phone button"
 
 [physics]
 

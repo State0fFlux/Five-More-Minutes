@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://chdvcwbqy45gv"]
+
+[sub_resource type="GDScript" id="GDScript_ckflx"]
+script/source = "extends Node2D
+
+func _on_home_button_pressed() -> void:
+	Global.reset()
+	Soundtrack.play()
+	get_tree().change_scene_to_file(\"res://Scenes/Start_menu.tscn\")
+"
+
+[node name="Win" type="Node2D"]
+script = SubResource("GDScript_ckflx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 52.0
+offset_top = 28.0
+offset_right = 237.0
+offset_bottom = 79.0
+text = "Wow... you delayed the inevitable..."
+
+[node name="home button" type="Button" parent="."]
+z_index = 4
+offset_left = 73.0
+offset_top = 81.0
+offset_right = 131.0
+offset_bottom = 112.0
+scale = Vector2(1.93518, 1.89201)
+text = "Home"
+
+[connection signal="pressed" from="home button" to="." method="_on_home_button_pressed"]

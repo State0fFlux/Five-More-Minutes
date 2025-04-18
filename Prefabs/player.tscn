@@ -1,7 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cw37p0gbimh0a"]
+[gd_scene load_steps=17 format=3 uid="uid://cw37p0gbimh0a"]
 
 [ext_resource type="Script" uid="uid://dgkdvb5nuti5" path="res://Prefabs/player.gd" id="1_5wxv7"]
-[ext_resource type="Texture2D" uid="uid://bai3ehphjx8od" path="res://Sprites/HoodedCrow/sleeping.png" id="1_y6xdh"]
+[ext_resource type="Texture2D" uid="uid://cp7yksgvdb53a" path="res://Sprites/environment/Bedroom/sleeping.png" id="2_5wxv7"]
+[ext_resource type="AudioStream" uid="uid://bo7mlvyc26u07" path="res://Audio/snore.mp3" id="2_juxdh"]
+[ext_resource type="Texture2D" uid="uid://cggwybsmq6pu3" path="res://Sprites/environment/Bedroom/phone.png" id="3_y5hcb"]
+[ext_resource type="Script" uid="uid://bfclp6t58fv70" path="res://Prefabs/phone.gd" id="4_2nftw"]
+[ext_resource type="AudioStream" uid="uid://huhn3rxikqys" path="res://Audio/vibrate.mp3" id="5_knrd4"]
+[ext_resource type="AudioStream" uid="uid://d3yyek1deit67" path="res://Audio/alarm.mp3" id="6_hck1p"]
 
 [sub_resource type="Animation" id="Animation_2nftw"]
 resource_name = "PhoneOff"
@@ -15,7 +20,31 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [3, 2, 1]
+"values": [4, 3, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Phone:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Phone:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_y5hcb"]
@@ -30,7 +59,31 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [1, 2, 3]
+"values": [2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Phone:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Phone:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_5wxv7"]
@@ -47,10 +100,89 @@ tracks/0/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Phone:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Phone:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-24, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_knrd4"]
+resource_name = "Ringing"
+length = 4.0
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Phone:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Phone:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 1, 1.125, 1.25, 1.375, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-25, 2), Vector2(-25, 1), Vector2(-25, 2), Vector2(-25, 1), Vector2(-25, 2), Vector2(-25, 2), Vector2(-25, 1), Vector2(-25, 2), Vector2(-25, 1), Vector2(-25, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Phone:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
 
 [sub_resource type="Animation" id="Animation_y6xdh"]
 resource_name = "Sleeping"
 loop_mode = 1
+step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -58,10 +190,22 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1]
+"values": [0, 1, 2, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Phone:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_knrd4"]
@@ -69,11 +213,41 @@ _data = {
 &"PhoneOff": SubResource("Animation_2nftw"),
 &"PhoneOn": SubResource("Animation_y5hcb"),
 &"RESET": SubResource("Animation_5wxv7"),
+&"Ringing": SubResource("Animation_knrd4"),
 &"Sleeping": SubResource("Animation_y6xdh")
 }
 
+[sub_resource type="Shader" id="Shader_2nftw"]
+code = "shader_type canvas_item;
+uniform vec4 flash_color : source_color = vec4(.5,0,0,1);
+uniform float strength: hint_range(0.0, 1.0) = 0.0;
+
+uniform float shadow_strength: hint_range(0.0,1.0) = 0.0;
+
+void fragment() {
+    vec4 texture_color = texture(TEXTURE, UV);
+
+	vec4 final_color = mix(texture_color, flash_color, strength); // apply flash
+	final_color = mix(final_color, vec4(0,0,0,1), shadow_strength); // apply shadow
+	final_color.a = texture_color.a;
+    COLOR = final_color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_knrd4"]
+shader = SubResource("Shader_2nftw")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/strength = 0.0
+shader_parameter/shadow_strength = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5hcb"]
+size = Vector2(6.75, 3)
+
 [node name="Player" type="Node2D"]
 script = ExtResource("1_5wxv7")
+
+[node name="Snore" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-25, 1.30753)
+stream = ExtResource("2_juxdh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sleeping")
@@ -82,7 +256,36 @@ libraries = {
 }
 
 [node name="Sleeping" type="Sprite2D" parent="."]
-texture = ExtResource("1_y6xdh")
-hframes = 2
+texture = ExtResource("2_5wxv7")
+hframes = 3
 vframes = 2
 frame = 1
+
+[node name="Phone" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_knrd4")
+position = Vector2(-24, 2)
+texture = ExtResource("3_y5hcb")
+hframes = 2
+frame = 1
+script = ExtResource("4_2nftw")
+
+[node name="Area2D" type="Area2D" parent="Phone"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phone/Area2D"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_y5hcb")
+debug_color = Color(0, 0.6, 0.701961, 0.0509804)
+
+[node name="Vibrate" type="AudioStreamPlayer2D" parent="Phone"]
+position = Vector2(0, -1.5)
+stream = ExtResource("5_knrd4")
+
+[node name="Ringer" type="AudioStreamPlayer2D" parent="Phone"]
+position = Vector2(0, -1.5)
+stream = ExtResource("6_hck1p")
+
+[connection signal="input_event" from="Phone/Area2D" to="Phone" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Phone/Area2D" to="Phone" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Phone/Area2D" to="Phone" method="_on_area_2d_mouse_exited"]
