@@ -265,22 +265,5 @@ lifetime = 20.0
 trail_lifetime = 4.19
 process_material = SubResource("ParticleProcessMaterial_nyd0l")
 
-[node name="DebugUI" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-modulate = Color(0, 0, 0, 1)
-offset_left = 39.0
-offset_top = 55.0
-offset_right = 327.0
-offset_bottom = 217.0
-script = null
-
 [connection signal="body_entered" from="PassWall" to="." method="_on_pass_wall_body_entered"]
 [connection signal="body_entered" from="DeathWall" to="." method="_on_death_wall_body_entered"]
