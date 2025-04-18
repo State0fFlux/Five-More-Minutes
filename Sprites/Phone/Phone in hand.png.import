@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3uta05m2uptg"
-path="res://.godot/imported/phone.png-80e88c414c879f726360a7eda4c6093b.ctex"
+uid="uid://bu0aiemr2hitv"
+path="res://.godot/imported/Phone in hand.png-2f742c3d4024a03903ad88e701e80032.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/sheep/phone.png"
-dest_files=["res://.godot/imported/phone.png-80e88c414c879f726360a7eda4c6093b.ctex"]
+source_file="res://Sprites/Phone/Phone in hand.png"
+dest_files=["res://.godot/imported/Phone in hand.png-2f742c3d4024a03903ad88e701e80032.ctex"]
 
 [params]
 

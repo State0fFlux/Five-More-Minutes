@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://brdi2luivha2t"]
+
+[ext_resource type="Script" uid="uid://bpcp8587rhucu" path="res://Scenes/credits.gd" id="1_f64u0"]
+[ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="2_lpub1"]
+[ext_resource type="Texture2D" uid="uid://dyqec1vof0x3c" path="res://Sprites/Options and devs/Start textbook.png" id="3_640q4"]
+[ext_resource type="Texture2D" uid="uid://b3uta05m2uptg" path="res://Sprites/Phone/phone.png" id="4_5qoai"]
+[ext_resource type="FontFile" uid="uid://bka5fpx4ym5ao" path="res://Fonts/DigitalDisco-Thin.ttf" id="5_jpdlp"]
+[ext_resource type="StyleBox" uid="uid://drhu1yrvc77jf" path="res://Resources/Button.tres" id="6_cmrso"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f64u0")
+
+[node name="TopDownHouseFloorsAndWalls" type="Sprite2D" parent="."]
+position = Vector2(679.338, 188.861)
+scale = Vector2(5.17596, 3.17863)
+texture = ExtResource("2_lpub1")
+metadata/_edit_lock_ = true
+
+[node name="StartTextbook" type="Sprite2D" parent="."]
+position = Vector2(201, 176)
+scale = Vector2(0.67, 0.67)
+texture = ExtResource("3_640q4")
+metadata/_edit_lock_ = true
+
+[node name="Phone" type="Sprite2D" parent="."]
+position = Vector2(291, 201)
+scale = Vector2(0.085, 0.085)
+texture = ExtResource("4_5qoai")
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Phone"]
+offset_left = -100.0
+offset_top = -183.333
+offset_right = -60.0
+offset_bottom = -143.333
+scale = Vector2(1.70271, 3.21286)
+
+[node name="Options" type="Button" parent="Phone/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_jpdlp")
+theme_override_styles/normal = ExtResource("6_cmrso")
+text = "Set for 8 A
+(Options)"
+
+[node name="Home" type="Button" parent="Phone/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_jpdlp")
+theme_override_styles/normal = ExtResource("6_cmrso")
+text = "Head to
+BEd (Home)"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(180, 175)
+
+[connection signal="pressed" from="Phone/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Phone/VBoxContainer/Home" to="." method="_on_home_pressed"]
