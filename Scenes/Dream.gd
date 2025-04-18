@@ -26,6 +26,7 @@ func spawn_sheep(spawnPoint: Vector2, state: Global.SheepState):
 
 
 func _on_sheep_crashed() -> void:
+	await get_tree().create_timer(0.5).timeout
 	Global.set_dream_state(false)
 	Global.battery -= 25
 
