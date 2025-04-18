@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://dencu3yac6vin"]
+[gd_scene load_steps=11 format=3 uid="uid://dencu3yac6vin"]
 
 [ext_resource type="Texture2D" uid="uid://ck8ykgv80pswt" path="res://Sprites/environment/cloud.png" id="1_jk83v"]
-[ext_resource type="PackedScene" uid="uid://c06hq2wkamsf7" path="res://Scenes/Dream.tscn" id="2_djysc"]
 
 [sub_resource type="GDScript" id="GDScript_72wsc"]
 script/source = "extends Node2D
@@ -24,15 +23,15 @@ func _process(delta: float) -> void:
 	pass
 	
 func start_dream():
+	var new_scene = preload(\"res://Scenes/Dream.tscn\").instantiate()
+	new_scene.modulate = \"ffffff00\"
+	$SubViewport.add_child(new_scene)
 	anim.play(\"Open\")
 	
 func end_dream():
 	anim.play(\"Close\")
 	await anim.animation_finished
 	$SubViewport/Dream.free()
-	var new_scene = preload(\"res://Scenes/Dream.tscn\").instantiate()
-	new_scene.modulate = \"ffffff00\"
-	$SubViewport.add_child(new_scene)
 	
 "
 
@@ -355,9 +354,6 @@ handle_input_locally = false
 audio_listener_enable_2d = true
 size = Vector2i(288, 162)
 render_target_update_mode = 4
-
-[node name="Dream" parent="SubViewport" instance=ExtResource("2_djysc")]
-metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

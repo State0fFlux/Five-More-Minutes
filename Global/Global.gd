@@ -13,7 +13,7 @@ enum SheepState { MOVING, SLEEPING, DEAD }
 enum PlayerState { SLEEPING, ON_PHONE }
 
 # settings
-const time_scale = 1
+const time_scale = 3
 
 # stats
 var minutes_since_midnight = 0
