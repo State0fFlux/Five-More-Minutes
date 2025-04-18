@@ -15,10 +15,6 @@ run/main_scene="uid://pjqell4iy5hc"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
-[audio]
-
-buses/default_bus_layout="res://Audio/default_bus_layout.tres"
-
 [autoload]
 
 Global="*res://Global/Global.gd"
