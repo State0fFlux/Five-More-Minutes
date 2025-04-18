@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://3ves8bvwoxgq"]
 
 [ext_resource type="Script" uid="uid://dlaiddotih5wb" path="res://Scenes/bedroom.gd" id="1_3gbim"]
-[ext_resource type="Texture2D" uid="uid://b0gd4u2xs1jfy" path="res://Sprites/HoodedCrow/room only.png" id="1_bn4mn"]
 [ext_resource type="PackedScene" uid="uid://wgvmp0rrf62g" path="res://Prefabs/sky.tscn" id="3_0y5hw"]
+[ext_resource type="Texture2D" uid="uid://b802ue1efjmtf" path="res://Sprites/environment/room.png" id="3_cs4vd"]
 [ext_resource type="PackedScene" uid="uid://cw37p0gbimh0a" path="res://Prefabs/player.tscn" id="4_3gbim"]
 [ext_resource type="PackedScene" uid="uid://dencu3yac6vin" path="res://Prefabs/DreamCloud.tscn" id="4_bnvew"]
 [ext_resource type="Texture2D" uid="uid://bykuv1dhqo838" path="res://Sprites/pixil-frame-0.png" id="6_swbdu"]
@@ -169,18 +169,18 @@ offset_top = -1.0
 offset_right = 384.0
 offset_bottom = 214.0
 
+[node name="Room" type="Sprite2D" parent="."]
+position = Vector2(136, 80)
+texture = ExtResource("3_cs4vd")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
-
-[node name="RoomOnly" type="Sprite2D" parent="."]
-position = Vector2(145, 76)
-texture = ExtResource("1_bn4mn")
 
 [node name="Player" parent="." instance=ExtResource("4_3gbim")]
 position = Vector2(124, 95)
 
 [node name="dreamCloud" parent="." instance=ExtResource("4_bnvew")]
-position = Vector2(145, 51)
+position = Vector2(144, 48)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../hand")
