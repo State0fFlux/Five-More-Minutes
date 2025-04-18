@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://pjqell4iy5hc"]
+[gd_scene load_steps=7 format=3 uid="uid://pjqell4iy5hc"]
 
 [ext_resource type="Script" uid="uid://devadgr2ibts2" path="res://Scenes/start_menu.gd" id="1_1wmxr"]
 [ext_resource type="FontFile" uid="uid://jijl7mh2tfw3" path="res://Fonts/DigitalDisco.ttf" id="1_vset1"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="3_u88ce"]
 [ext_resource type="Theme" uid="uid://cojrl4cralg3e" path="res://Resources/theme.tres" id="6_5hugr"]
 [ext_resource type="PackedScene" uid="uid://cw37p0gbimh0a" path="res://Prefabs/player.tscn" id="7_5hugr"]
-[ext_resource type="AudioStream" uid="uid://cantvbtjrikpv" path="res://Audio/Music/theme.mp3" id="7_uyqt2"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -104,16 +103,6 @@ metadata/_edit_lock_ = true
 position = Vector2(163.864, 152.665)
 scale = Vector2(-44.3243, -5.45491)
 zoom = Vector2(0.2, 0.2)
-
-[node name="Audio" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("7_uyqt2")
-volume_db = -20.0
-bus = &"Music"
 
 [connection signal="pressed" from="VBoxContainer/Wake up Button" to="." method="_on_wake_up_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options Button" to="." method="_on_options_button_pressed"]

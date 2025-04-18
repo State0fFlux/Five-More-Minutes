@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://brdi2luivha2t"]
+[gd_scene load_steps=7 format=3 uid="uid://brdi2luivha2t"]
 
 [ext_resource type="Script" uid="uid://bpcp8587rhucu" path="res://Scenes/credits.gd" id="1_f64u0"]
 [ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="2_lpub1"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://b3uta05m2uptg" path="res://Sprites/Phone/phone.png" id="4_5qoai"]
 [ext_resource type="FontFile" uid="uid://bka5fpx4ym5ao" path="res://Fonts/DigitalDisco-Thin.ttf" id="5_jpdlp"]
 [ext_resource type="StyleBox" uid="uid://drhu1yrvc77jf" path="res://Resources/Button.tres" id="6_cmrso"]
-[ext_resource type="AudioStream" uid="uid://d3xfgvwm8lh1h" path="res://Audio/SFX/sfx_UI_click_01.wav" id="7_lpub1"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -67,10 +66,6 @@ BEd (Home)"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(180, 175)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_lpub1")
-bus = &"SFX"
 
 [connection signal="pressed" from="Phone/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Phone/VBoxContainer/Home" to="." method="_on_home_pressed"]

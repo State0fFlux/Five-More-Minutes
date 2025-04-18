@@ -1,12 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://0gcemigwd7nd"]
+[gd_scene load_steps=13 format=3 uid="uid://0gcemigwd7nd"]
 
 [ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="1_4tmxy"]
 [ext_resource type="Script" uid="uid://bm1nxfoqd2v5c" path="res://Scenes/options.gd" id="1_qyyw6"]
 [ext_resource type="Texture2D" uid="uid://bykuv1dhqo838" path="res://Sprites/pixil-frame-0.png" id="2_qyyw6"]
 [ext_resource type="Script" uid="uid://kj2mh1ikphtb" path="res://Scenes/audio.gd" id="2_srb65"]
-[ext_resource type="Script" uid="uid://c50idnvos1ila" path="res://Scenes/music_slider.gd" id="3_kftxf"]
-[ext_resource type="Script" uid="uid://c8gtt8j2aegsi" path="res://Scenes/sfx_slider.gd" id="4_663nc"]
-[ext_resource type="AudioStream" uid="uid://d3xfgvwm8lh1h" path="res://Audio/SFX/sfx_UI_click_01.wav" id="5_hvj8k"]
+[ext_resource type="AudioStream" uid="uid://d3yyek1deit67" path="res://Audio/SFX/alarm.mp3" id="4_g5vgl"]
+[ext_resource type="AudioStream" uid="uid://ddqsejsheku13" path="res://Audio/SFX/ba1.mp3" id="5_srb65"]
+[ext_resource type="AudioStream" uid="uid://0c0vvslg6cfl" path="res://Audio/SFX/ba2.mp3" id="6_qcivb"]
+[ext_resource type="AudioStream" uid="uid://xb47bmvpv53o" path="res://Audio/SFX/ba3.mp3" id="7_aag3x"]
+[ext_resource type="AudioStream" uid="uid://b1doxv6a2vnxb" path="res://Audio/SFX/crack.mp3" id="8_033dp"]
+[ext_resource type="AudioStream" uid="uid://c37bwoxrt1fwr" path="res://Audio/SFX/page_edited.mp3" id="9_fpdr8"]
+[ext_resource type="AudioStream" uid="uid://cantvbtjrikpv" path="res://Audio/Music/theme.mp3" id="10_r103k"]
+
+[sub_resource type="AudioStreamMP3" id="AudioStreamMP3_qyyw6"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -26,10 +32,10 @@ script = ExtResource("2_srb65")
 [node name="Volumes" type="VBoxContainer" parent="Audio"]
 z_index = 5
 layout_mode = 0
-offset_left = 139.0
-offset_top = 123.0
-offset_right = 332.0
-offset_bottom = 219.0
+offset_left = 137.338
+offset_top = 124.861
+offset_right = 330.338
+offset_bottom = 182.861
 scale = Vector2(0.26254, 0.303079)
 theme_override_constants/separation = 8
 
@@ -46,7 +52,6 @@ layout_mode = 2
 max_value = 1.0
 step = 0.05
 value = 1.0
-script = ExtResource("3_kftxf")
 
 [node name="Label2" type="Label" parent="Audio/Volumes"]
 z_index = 5
@@ -61,11 +66,6 @@ layout_mode = 2
 max_value = 1.0
 step = 0.05
 value = 1.0
-script = ExtResource("4_663nc")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("5_hvj8k")
-bus = &"SFX"
 
 [node name="TopDownHouseFloorsAndWalls" type="Sprite2D" parent="."]
 position = Vector2(681.338, 188.861)
@@ -87,13 +87,52 @@ offset_bottom = 119.812
 scale = Vector2(1.93518, 1.89201)
 text = "Home"
 
+[node name="save button" type="Button" parent="Phone in hand"]
+z_index = 4
+offset_left = -108.195
+offset_top = 17.0783
+offset_right = -50.1951
+offset_bottom = 48.0786
+scale = Vector2(1.93518, 1.89201)
+text = "Save"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMP3_qyyw6")
+
+[node name="Alarm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_g5vgl")
+bus = &"SFX"
+
+[node name="Ba1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_srb65")
+bus = &"SFX"
+
+[node name="Ba2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_qcivb")
+bus = &"SFX"
+
+[node name="Ba3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_aag3x")
+bus = &"SFX"
+
+[node name="Crack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_033dp")
+bus = &"SFX"
+
+[node name="PageEdited" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_fpdr8")
+bus = &"SFX"
+
+[node name="Theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_r103k")
+bus = &"Music"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(32, 88)
 anchor_mode = 0
 metadata/_edit_lock_ = true
 
 [connection signal="mouse_exited" from="Audio/Volumes/Music slider" to="." method="_on_music_slider_mouse_exited"]
-[connection signal="value_changed" from="Audio/Volumes/Music slider" to="." method="_on_music_slider_value_changed"]
 [connection signal="mouse_exited" from="Audio/Volumes/SFX slider" to="." method="_on_sfx_slider_mouse_exited"]
-[connection signal="value_changed" from="Audio/Volumes/SFX slider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="Phone in hand/home button" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="Phone in hand/save button" to="." method="_on_save_button_pressed"]
