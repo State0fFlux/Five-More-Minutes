@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cw37p0gbimh0a"]
+[gd_scene load_steps=14 format=3 uid="uid://cw37p0gbimh0a"]
 
 [ext_resource type="Script" uid="uid://dgkdvb5nuti5" path="res://Prefabs/player.gd" id="1_5wxv7"]
 [ext_resource type="Texture2D" uid="uid://cp7yksgvdb53a" path="res://Sprites/environment/Bedroom/sleeping.png" id="2_5wxv7"]
 [ext_resource type="Texture2D" uid="uid://cggwybsmq6pu3" path="res://Sprites/environment/Bedroom/phone.png" id="3_y5hcb"]
+[ext_resource type="Script" uid="uid://bfclp6t58fv70" path="res://Prefabs/phone.gd" id="4_2nftw"]
 
 [sub_resource type="Animation" id="Animation_2nftw"]
 resource_name = "PhoneOff"
@@ -150,6 +151,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(-25, 2), Vector2(-25, 1), Vector2(-25, 2), Vector2(-25, 1), Vector2(-25, 2), Vector2(-25, 2), Vector2(-25, 1), Vector2(-25, 2), Vector2(-25, 1), Vector2(-25, 2)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Phone:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
 
 [sub_resource type="Animation" id="Animation_y6xdh"]
 resource_name = "Sleeping"
@@ -189,6 +214,31 @@ _data = {
 &"Sleeping": SubResource("Animation_y6xdh")
 }
 
+[sub_resource type="Shader" id="Shader_2nftw"]
+code = "shader_type canvas_item;
+uniform vec4 flash_color : source_color = vec4(.5,0,0,1);
+uniform float strength: hint_range(0.0, 1.0) = 0.0;
+
+uniform float shadow_strength: hint_range(0.0,1.0) = 0.0;
+
+void fragment() {
+    vec4 texture_color = texture(TEXTURE, UV);
+
+	vec4 final_color = mix(texture_color, flash_color, strength); // apply flash
+	final_color = mix(final_color, vec4(0,0,0,1), shadow_strength); // apply shadow
+	final_color.a = texture_color.a;
+    COLOR = final_color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_knrd4"]
+shader = SubResource("Shader_2nftw")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/strength = 0.0
+shader_parameter/shadow_strength = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5hcb"]
+size = Vector2(6.75, 3)
+
 [node name="Player" type="Node2D"]
 script = ExtResource("1_5wxv7")
 
@@ -205,7 +255,22 @@ vframes = 2
 frame = 1
 
 [node name="Phone" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_knrd4")
 position = Vector2(-24, 2)
 texture = ExtResource("3_y5hcb")
 hframes = 2
 frame = 1
+script = ExtResource("4_2nftw")
+
+[node name="Area2D" type="Area2D" parent="Phone"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Phone/Area2D"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_y5hcb")
+debug_color = Color(0, 0.6, 0.701961, 0.0509804)
+
+[connection signal="input_event" from="Phone/Area2D" to="Phone" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Phone/Area2D" to="Phone" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Phone/Area2D" to="Phone" method="_on_area_2d_mouse_exited"]

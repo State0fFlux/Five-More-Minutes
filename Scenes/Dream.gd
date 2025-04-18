@@ -2,8 +2,6 @@ extends Node2D
 
 const SheepScene = preload("res://Prefabs/sheep.tscn")
 
-@onready var player = $"../../../Player"
-
 func _ready() -> void:
 	var sheep = spawn_sheep($FirstSheepSpawn.global_position, Global.SheepState.SLEEPING)
 	Global.deathPoint = $DeathPoint.global_position

@@ -10,13 +10,14 @@ script/source = "extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	anim.play(\"Closed\")
-	Global.connect(\"dream_state_changed\", on_dream_state_changed)
+	Global.connect(\"dream_opened\", on_dream_opened)
+	Global.connect(\"dream_closed\", on_dream_closed)
 
-func on_dream_state_changed():
-	if Global.is_dreaming:
-		start_dream()
-	else:
-		end_dream()
+func on_dream_opened():
+	start_dream()
+
+func on_dream_closed():
+	end_dream()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
