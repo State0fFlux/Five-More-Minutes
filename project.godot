@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Global/Global.gd"
+Soundtrack="*res://Global/soundtrack.tscn"
+Night="*res://Global/night.tscn"
 
 [display]
 

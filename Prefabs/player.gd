@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var anim = $AnimationPlayer
 @onready var phoneSensor = $Phone/Area2D/CollisionShape2D
+@onready var audio = $Snore
 
 var state = Global.PlayerState.SLEEPING
 
@@ -15,9 +16,11 @@ func _ready() -> void:
 
 func on_dream_opened():
 	set_state(Global.PlayerState.SLEEPING)
+	audio.play()
 	
 func on_dream_closed():
 	anim.play("Ringing")
+	audio.stop()
 
 func on_phone_answered():
 	phoneSensor.disabled = true

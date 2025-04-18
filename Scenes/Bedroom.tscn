@@ -246,8 +246,6 @@ func _process(_delta: float) -> void:
 [node name="Bedroom" type="Node2D"]
 script = ExtResource("1_3gbim")
 
-[node name="Shadow" type="CanvasModulate" parent="."]
-
 [node name="Sky" parent="." instance=ExtResource("3_0y5hw")]
 anchors_preset = 8
 anchor_left = 0.5

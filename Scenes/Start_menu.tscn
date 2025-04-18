@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://pjqell4iy5hc"]
+[gd_scene load_steps=7 format=3 uid="uid://pjqell4iy5hc"]
 
 [ext_resource type="Script" uid="uid://devadgr2ibts2" path="res://Scenes/start_menu.gd" id="1_1wmxr"]
 [ext_resource type="FontFile" uid="uid://jijl7mh2tfw3" path="res://Fonts/DigitalDisco.ttf" id="1_vset1"]
 [ext_resource type="StyleBox" uid="uid://drhu1yrvc77jf" path="res://Resources/Button.tres" id="3_t7rl6"]
 [ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="3_u88ce"]
 [ext_resource type="Theme" uid="uid://cojrl4cralg3e" path="res://Resources/theme.tres" id="6_5hugr"]
-[ext_resource type="FontFile" uid="uid://bka5fpx4ym5ao" path="res://Fonts/DigitalDisco-Thin.ttf" id="6_7k6f1"]
 [ext_resource type="PackedScene" uid="uid://cw37p0gbimh0a" path="res://Prefabs/player.tscn" id="7_5hugr"]
 
 [node name="Main Menu" type="Control"]
@@ -22,11 +21,13 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4.45491, 4.2839)
 script = ExtResource("1_1wmxr")
+metadata/_edit_lock_ = true
 
 [node name="TopDownHouseFloorsAndWalls" type="Sprite2D" parent="."]
 position = Vector2(681.338, 188.861)
 scale = Vector2(5.17596, 3.17863)
 texture = ExtResource("3_u88ce")
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("7_5hugr")]
 position = Vector2(153, 210)
@@ -34,16 +35,14 @@ scale = Vector2(3.5919, 3.34832)
 
 [node name="Title" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 26.0387
-offset_top = 70.73
-offset_right = 233.039
-offset_bottom = 97.73
+offset_left = 41.5272
+offset_top = 82.4016
+offset_right = 248.528
+offset_bottom = 109.402
 scale = Vector2(1.19955, 1.16918)
 theme = ExtResource("6_5hugr")
-theme_override_fonts/normal_font = ExtResource("6_7k6f1")
 theme_override_font_sizes/normal_font_size = 16
 text = "Five More Minutes..."
-metadata/_edit_lock_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -52,10 +51,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -123.37
-offset_top = -89.5698
-offset_right = 6.62964
-offset_bottom = -3.56976
+offset_left = -133.874
+offset_top = -100.654
+offset_right = -3.87482
+offset_bottom = -14.6543
 grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(0.775288, 0.926547)
@@ -68,6 +67,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_vset1")
 theme_override_styles/normal = ExtResource("3_t7rl6")
 text = "Wake up"
+metadata/_edit_lock_ = true
 
 [node name="Options Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -77,6 +77,7 @@ theme_override_fonts/font = ExtResource("1_vset1")
 theme_override_styles/normal = ExtResource("3_t7rl6")
 text = "Options
 "
+metadata/_edit_lock_ = true
 
 [node name="Credits Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -86,6 +87,7 @@ theme_override_fonts/font = ExtResource("1_vset1")
 theme_override_styles/normal = ExtResource("3_t7rl6")
 text = "Credits
 "
+metadata/_edit_lock_ = true
 
 [node name="Quit Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -95,6 +97,7 @@ theme_override_fonts/font = ExtResource("1_vset1")
 theme_override_styles/normal = ExtResource("3_t7rl6")
 text = "Quit
 "
+metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(163.864, 152.665)

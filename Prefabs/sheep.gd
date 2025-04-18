@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var anim = $AnimationPlayer
 @onready var sprite = $Body
 @onready var particles = $Particles
+@onready var audio = $AudioStreamPlayer2D
 
 const JUMP_VELOCITY = -50.0
 const BOOST = 2
@@ -39,6 +40,9 @@ func _physics_process(delta: float) -> void:
 				
 			# Handle jump.
 			if Input.is_action_just_pressed("Jump") and is_on_floor():
+				var ba = Global.ba_sounds[randi_range(0, Global.ba_sounds.size() - 1)]
+				audio.stream = ba
+				audio.play()
 				velocity.y = JUMP_VELOCITY
 				velocity.x *= BOOST
 	
@@ -67,6 +71,10 @@ func set_state(newState: Global.SheepState):
 			velocity = Vector2.DOWN
 			emit_snores(false)
 			anim.play("Die")
+			
+			audio.stream = Global.crack
+			audio.play()
+			
 			var tween = create_tween().set_parallel(false)
 			tween.tween_method(set_flash_modifier, 1.0, 0.0, 0.5)
 			crashed.emit()

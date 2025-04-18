@@ -12,6 +12,13 @@ func _ready() -> void:
 	
 	Global.phone_ringing.emit()
 	
+	# fade out lobby music
+	var tween = create_tween()
+	tween.tween_property(Soundtrack, "volume_linear", 0, 5)  # Fade to silence over 5 seconds
+	await tween.finished
+	Soundtrack.stop()
+	Soundtrack.volume_linear = 1
+	
 func on_dream_opened():
 	anim.play("PhoneDown")
 	await anim.animation_finished
@@ -29,6 +36,8 @@ func on_dream_closed():
 	camTween = create_tween().set_parallel(true)
 	camTween.tween_property($Camera2D, "offset", Vector2(0, 0), 0.5)
 	camTween.tween_property($Camera2D, "zoom", Vector2(1, 1), 0.5)
+	
+	Global.phone_ringing.emit()
 
 func _on_snooze_pressed() -> void:
 	Global.set_dream_state(true)

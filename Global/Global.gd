@@ -8,6 +8,14 @@ const heart = preload("res://Sprites/sheep/heart.png")
 var deathPoint
 var spawnPoint
 
+var ba_sounds = [
+	preload("res://Audio/ba1.mp3"),
+	preload("res://Audio/ba2.mp3"),
+	preload("res://Audio/ba3.mp3"),
+]
+
+var crack = preload("res://Audio/crack.mp3")
+
 # data types
 enum SheepState { MOVING, SLEEPING, DEAD }
 enum PlayerState { SLEEPING, ON_PHONE }
