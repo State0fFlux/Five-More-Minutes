@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bai3ehphjx8od"
-path="res://.godot/imported/sleeping.png-d34963eb412e665d823b31a406f4bcea.ctex"
+uid="uid://cp7yksgvdb53a"
+path="res://.godot/imported/sleeping.png-12cfc7ea9bc299f49eab191ed106f182.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/HoodedCrow/sleeping.png"
-dest_files=["res://.godot/imported/sleeping.png-d34963eb412e665d823b31a406f4bcea.ctex"]
+source_file="res://Sprites/environment/Bedroom/sleeping.png"
+dest_files=["res://.godot/imported/sleeping.png-12cfc7ea9bc299f49eab191ed106f182.ctex"]
 
 [params]
 

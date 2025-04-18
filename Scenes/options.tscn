@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://by4q2t2y6kt44"]
 
 [ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="1_4tmxy"]
-[ext_resource type="Script" uid="uid://b265ko8mkteja" path="res://Scenes/options.gd" id="1_qyyw6"]
+[ext_resource type="Script" uid="uid://bm1nxfoqd2v5c" path="res://Scenes/options.gd" id="1_qyyw6"]
 [ext_resource type="Texture2D" uid="uid://bykuv1dhqo838" path="res://Sprites/pixil-frame-0.png" id="2_qyyw6"]
 [ext_resource type="FontFile" uid="uid://bka5fpx4ym5ao" path="res://Fonts/DigitalDisco-Thin.ttf" id="4_ww8vx"]
 
@@ -89,7 +89,7 @@ text = "Home"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMP3_qyyw6")
 
-[node name="Camera2D2" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(32, 88)
 anchor_mode = 0
 metadata/_edit_lock_ = true

@@ -68,6 +68,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_rgpmg"]
 resource_name = "Phone Down"
 length = 0.5
+step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -78,12 +79,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(149, 96), Vector2(146, 213)]
+"values": [Vector2(0, 39), Vector2(0, 133)]
 }
 
 [sub_resource type="Animation" id="Animation_swbdu"]
 resource_name = "Phone Up"
 length = 0.5
+step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -94,7 +96,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(146, 213), Vector2(149, 96)]
+"values": [Vector2(0, 133), Vector2(0, 39)]
 }
 
 [sub_resource type="Animation" id="Animation_cs4vd"]
@@ -247,23 +249,28 @@ script = ExtResource("1_3gbim")
 [node name="Shadow" type="CanvasModulate" parent="."]
 
 [node name="Sky" parent="." instance=ExtResource("3_0y5hw")]
-offset_left = 0.0
-offset_top = -1.0
-offset_right = 384.0
-offset_bottom = 214.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -107.5
+offset_right = 192.0
+offset_bottom = 107.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Room" type="Sprite2D" parent="."]
-position = Vector2(136, 80)
 texture = ExtResource("3_cs4vd")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
 
 [node name="Player" parent="." instance=ExtResource("4_3gbim")]
-position = Vector2(124, 95)
+position = Vector2(-14, 11)
 
 [node name="dreamCloud" parent="." instance=ExtResource("4_bnvew")]
-position = Vector2(144, 48)
+position = Vector2(0, -31)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../hand")
@@ -329,9 +336,6 @@ theme_override_font_sizes/normal_font_size = 0
 text = "\"Five More Minutes...\""
 visible_characters = 0
 visible_ratio = 0.0
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(144, 81)
 
 [connection signal="pressed" from="hand/GetUp" to="." method="_on_get_up_pressed"]
 [connection signal="pressed" from="hand/Snooze" to="." method="_on_snooze_pressed"]

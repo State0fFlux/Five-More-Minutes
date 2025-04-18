@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0gd4u2xs1jfy"
-path="res://.godot/imported/room only.png-d9dc0bf5b66745137b9ef0fe108fd87e.ctex"
+uid="uid://cggwybsmq6pu3"
+path="res://.godot/imported/phone.png-e6cf509407324c8d82c50dcf1340d0d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/HoodedCrow/room only.png"
-dest_files=["res://.godot/imported/room only.png-d9dc0bf5b66745137b9ef0fe108fd87e.ctex"]
+source_file="res://Sprites/environment/Bedroom/phone.png"
+dest_files=["res://.godot/imported/phone.png-e6cf509407324c8d82c50dcf1340d0d9.ctex"]
 
 [params]
 

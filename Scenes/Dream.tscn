@@ -165,6 +165,7 @@ turbulence_influence_max = 0.01
 script = ExtResource("1_nls7e")
 
 [node name="SkyTint" type="CanvasModulate" parent="."]
+visible = false
 position = Vector2(-4, 78)
 color = Color(0.965629, 0.834653, 0.710914, 1)
 
