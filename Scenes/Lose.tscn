@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy2oaarqi2bma"]
+
+[sub_resource type="GDScript" id="GDScript_5qbvn"]
+script/source = "extends Node2D
+
+func _on_home_button_pressed() -> void:
+	Global.reset()
+	Soundtrack.play()
+	get_tree().change_scene_to_file(\"res://Scenes/Start_menu.tscn\")
+"
+
+[node name="Lose" type="Node2D"]
+script = SubResource("GDScript_5qbvn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 32.0
+offset_top = 15.0
+offset_right = 296.0
+offset_bottom = 114.0
+text = "So much for delaying the inevitable! You slept right through your alarm and missed your final exam!"
+
+[node name="home button" type="Button" parent="."]
+z_index = 4
+offset_left = 96.0
+offset_top = 103.0
+offset_right = 154.0
+offset_bottom = 131.0
+scale = Vector2(1.93518, 1.89201)
+text = "Home"
+
+[connection signal="pressed" from="home button" to="." method="_on_home_button_pressed"]

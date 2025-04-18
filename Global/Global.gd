@@ -54,3 +54,8 @@ func minutes_to_time(minutes_since_midnight: int) -> String:
 		hours = 12
 	
 	return "%d:%02d" % [hours, minutes]
+
+func reset():
+	battery = 75
+	is_dreaming = false
+	minutes_since_midnight = 0

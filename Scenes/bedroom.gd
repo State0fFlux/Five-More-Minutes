@@ -19,6 +19,13 @@ func _ready() -> void:
 	Soundtrack.stop()
 	Soundtrack.volume_linear = 1
 	
+func _process(float) -> void:
+	if Global.battery <= 0 or Global.minutes_since_midnight > 480:
+		get_tree().change_scene_to_file("res://Scenes/Lose.tscn")
+	elif Global.minutes_since_midnight == 480:
+		get_tree().change_scene_to_file("res://Scenes/Win.tscn")
+
+
 func on_dream_opened():
 	anim.play("PhoneDown")
 	await anim.animation_finished
