@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bug31h00htb5s"]
+[gd_scene format=3 uid="uid://cwgbhjw87cbr3"]
 
 [node name="Night" type="CanvasModulate"]
 position = Vector2(-27, -10)

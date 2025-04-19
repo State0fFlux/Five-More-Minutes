@@ -341,5 +341,8 @@ text = "i just asdfaedsfasdf"
 visible_characters = 0
 visible_ratio = 0.0
 
+[node name="Shadow" type="CanvasModulate" parent="."]
+color = Color(0.235294, 0.309804, 0.568627, 1)
+
 [connection signal="pressed" from="hand/GetUp" to="." method="_on_get_up_pressed"]
 [connection signal="pressed" from="hand/Snooze" to="." method="_on_snooze_pressed"]

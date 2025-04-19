@@ -54,7 +54,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -133.874
 offset_top = -100.654
-offset_right = -3.87482
+offset_right = -3.87485
 offset_bottom = -14.6543
 grow_horizontal = 0
 grow_vertical = 2
@@ -100,6 +100,9 @@ zoom = Vector2(0.2, 0.2)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_uyqt2")
 volume_db = 24.0
+
+[node name="Shadow" type="CanvasModulate" parent="."]
+color = Color(0.235294, 0.309804, 0.568627, 1)
 
 [connection signal="pressed" from="VBoxContainer/Wake up Button" to="." method="_on_wake_up_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/How to play Button" to="." method="_on_options_button_pressed"]

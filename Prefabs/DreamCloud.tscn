@@ -229,19 +229,19 @@ uniform float softness : hint_range(0.0, 0.5) = 0.05;
 void fragment() {
     vec2 uv = UV;
     vec4 scene_tex = texture(TEXTURE, uv);
-    
+
     // Cloud alpha from PNG
     float mask_alpha = texture(cloud_mask, uv).a;
-    
+
     // Radial distance from center
     float dist = distance(uv, center);
-    
+
     // Create a circular fade mask using smoothstep
     float circle_fade = smoothstep(radius, radius - softness, dist);
-    
+
     // Combine with cloud mask for smooth, organic fade edges
     float final_alpha = mask_alpha * circle_fade;
-    
+
     COLOR = vec4(scene_tex.rgb, scene_tex.a * final_alpha);
 }
 "
