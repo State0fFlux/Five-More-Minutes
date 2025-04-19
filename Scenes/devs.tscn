@@ -1,11 +1,18 @@
 [gd_scene load_steps=7 format=3 uid="uid://dn4rhfeacj3px"]
 
-[ext_resource type="Script" uid="uid://bokfrfyte7psw" path="res://Scenes/devs.gd" id="1_q1xvy"]
+[ext_resource type="Script" uid="uid://bl8ditv3s0smk" path="res://Scenes/devs.gd" id="1_q1xvy"]
 [ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="1_tt6fu"]
 [ext_resource type="Texture2D" uid="uid://fkljb40j4csy" path="res://Sprites/HoodedCrow/pixilart-sprite.png" id="2_dys5g"]
-[ext_resource type="Texture2D" uid="uid://b3uta05m2uptg" path="res://Sprites/sheep/phone.png" id="3_as1si"]
+[ext_resource type="Texture2D" uid="uid://b3uta05m2uptg" path="res://Sprites/Phone/phone.png" id="3_as1si"]
 [ext_resource type="FontFile" uid="uid://bka5fpx4ym5ao" path="res://Fonts/DigitalDisco-Thin.ttf" id="4_jfeqj"]
-[ext_resource type="StyleBox" uid="uid://drhu1yrvc77jf" path="res://Resources/Button.tres" id="5_q1xvy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfeqj"]
+bg_color = Color(1.50409e-09, 0.0541672, 0.0228085, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.528403, 0.10172, 0.532903, 1)
 
 [node name="Devs" type="Control"]
 layout_mode = 3
@@ -65,7 +72,7 @@ size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_jfeqj")
 theme_override_font_sizes/font_size = 0
-theme_override_styles/normal = ExtResource("5_q1xvy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jfeqj")
 text = "5 am
 (Options)"
 
@@ -77,6 +84,7 @@ offset_top = 186.0
 offset_right = 199.0
 offset_bottom = 217.0
 scale = Vector2(1.93518, 1.89201)
+focus_mode = 0
 text = "Home"
 
 [connection signal="pressed" from="Phone/Set Alarm button" to="." method="_on_set_alarm_button_pressed"]

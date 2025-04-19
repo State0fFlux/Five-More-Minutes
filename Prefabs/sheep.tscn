@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://b217v6jcdwxb2" path="res://Shaders/damage.gdshader" id="1_ut7ki"]
 [ext_resource type="Texture2D" uid="uid://8gw5ajr30rrc" path="res://Sprites/sheep/shadow.png" id="3_ouycb"]
 [ext_resource type="Texture2D" uid="uid://b2ag0h1od5am2" path="res://Sprites/sheep/snore.png" id="4_d31gs"]
-[ext_resource type="AudioStream" uid="uid://d3xfgvwm8lh1h" path="res://Audio/SFX/sfx_UI_click_01.wav" id="6_pwu8p"]
+[ext_resource type="AudioStream" uid="uid://ya8gk46h7yd5" path="res://Audio/chime.mp3" id="6_pwu8p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x8kua"]
 radius = 6.0

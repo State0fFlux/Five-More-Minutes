@@ -1,6 +1,7 @@
 extends Node2D
 
 const SheepScene = preload("res://Prefabs/sheep.tscn")
+@onready var chime = $Chime
 
 func _ready() -> void:
 	var sheep = spawn_sheep($FirstSheepSpawn.global_position, Global.SheepState.SLEEPING)
@@ -34,6 +35,12 @@ func _on_death_wall_body_entered(body: Node2D) -> void:
 
 func _on_pass_wall_body_entered(body: Node2D) -> void:
 	if body.is_in_group("sheep") and body.state == Global.SheepState.MOVING: # sheep jumped the fence
+		match body.value:
+			5: chime.pitch_scale = 1
+			10: chime.pitch_scale = 1
+			30: chime.pitch_scale = 1.2
+			60: chime.pitch_scale = 1.3
+		chime.play()
 		var new_time = Global.minutes_since_midnight + body.value
 		Global.minutes_since_midnight = new_time
 		body.emit_hearts(true)

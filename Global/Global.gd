@@ -15,6 +15,7 @@ var ba_sounds = [
 ]
 
 var crack = preload("res://Audio/crack.mp3")
+var chime = preload("res://Audio/chime.mp3")
 
 # data types
 enum SheepState { MOVING, SLEEPING, DEAD }

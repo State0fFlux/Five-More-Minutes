@@ -27,7 +27,6 @@ offset_left = 49.0
 offset_top = 7.0
 offset_right = 234.0
 offset_bottom = 58.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "Wow... you delayed the inevitable...
 
 Good on you for waking up on time!
@@ -44,6 +43,7 @@ offset_top = 132.0
 offset_right = 167.0
 offset_bottom = 163.0
 scale = Vector2(0.9101, 0.776903)
+focus_mode = 0
 text = "Home"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

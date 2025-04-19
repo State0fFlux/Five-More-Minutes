@@ -79,7 +79,7 @@ func set_state(newState: Global.SheepState):
 			tween.tween_method(set_flash_modifier, 1.0, 0.0, 0.5)
 			crashed.emit()
 	state = newState
-		
+
 func set_flash_modifier(value: float) -> void:
 	if sprite.material:
 		sprite.material.set_shader_parameter("strength", value)
