@@ -1,4 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dy2oaarqi2bma"]
+[gd_scene load_steps=4 format=3 uid="uid://dy2oaarqi2bma"]
+
+[ext_resource type="Texture2D" uid="uid://dw714vp5rdjf7" path="res://Sprites/environment/Bedroom/Lose_bac.png" id="1_a71vo"]
+[ext_resource type="AudioStream" uid="uid://ds13d5mtrof32" path="res://Audio/SFX/sfx_UI_click_03.wav" id="1_n7fri"]
 
 [sub_resource type="GDScript" id="GDScript_5qbvn"]
 script/source = "extends Node2D
@@ -6,26 +9,40 @@ script/source = "extends Node2D
 func _on_home_button_pressed() -> void:
 	Global.reset()
 	Soundtrack.play()
+	$AudioStreamPlayer.play()
 	get_tree().change_scene_to_file(\"res://Scenes/Start_menu.tscn\")
 "
 
 [node name="Lose" type="Node2D"]
 script = SubResource("GDScript_5qbvn")
 
+[node name="LoseBac" type="Sprite2D" parent="."]
+position = Vector2(147, 81)
+scale = Vector2(0.455, 0.455)
+texture = ExtResource("1_a71vo")
+metadata/_edit_lock_ = true
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 32.0
+offset_left = 14.0
 offset_top = 15.0
-offset_right = 296.0
+offset_right = 278.0
 offset_bottom = 114.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "So much for delaying the inevitable! You slept right through your alarm and missed your final exam!"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="home button" type="Button" parent="."]
 z_index = 4
-offset_left = 96.0
-offset_top = 103.0
-offset_right = 154.0
-offset_bottom = 131.0
-scale = Vector2(1.93518, 1.89201)
+offset_left = 114.0
+offset_top = 120.0
+offset_right = 172.0
+offset_bottom = 148.0
+scale = Vector2(0.816115, 0.986659)
 text = "Home"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_n7fri")
+volume_db = 24.0
 
 [connection signal="pressed" from="home button" to="." method="_on_home_button_pressed"]

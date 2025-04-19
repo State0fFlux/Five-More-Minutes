@@ -1,4 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://chdvcwbqy45gv"]
+[gd_scene load_steps=4 format=3 uid="uid://chdvcwbqy45gv"]
+
+[ext_resource type="AudioStream" uid="uid://ds13d5mtrof32" path="res://Audio/SFX/sfx_UI_click_03.wav" id="1_3vusp"]
+[ext_resource type="Texture2D" uid="uid://dyy1j6a547lle" path="res://Sprites/environment/Bedroom/Win_bac.jpg" id="1_jo0u0"]
 
 [sub_resource type="GDScript" id="GDScript_ckflx"]
 script/source = "extends Node2D
@@ -6,26 +9,45 @@ script/source = "extends Node2D
 func _on_home_button_pressed() -> void:
 	Global.reset()
 	Soundtrack.play()
+	$AudioStreamPlayer.play()
 	get_tree().change_scene_to_file(\"res://Scenes/Start_menu.tscn\")
 "
 
 [node name="Win" type="Node2D"]
 script = SubResource("GDScript_ckflx")
 
+[node name="WinBac" type="Sprite2D" parent="."]
+position = Vector2(143, 72)
+scale = Vector2(0.215, 0.215)
+texture = ExtResource("1_jo0u0")
+metadata/_edit_lock_ = true
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 52.0
-offset_top = 28.0
-offset_right = 237.0
-offset_bottom = 79.0
-text = "Wow... you delayed the inevitable..."
+offset_left = 49.0
+offset_top = 7.0
+offset_right = 234.0
+offset_bottom = 58.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Wow... you delayed the inevitable...
+
+Good on you for waking up on time!
+"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="home button" type="Button" parent="."]
 z_index = 4
-offset_left = 73.0
-offset_top = 81.0
-offset_right = 131.0
-offset_bottom = 112.0
-scale = Vector2(1.93518, 1.89201)
+offset_left = 109.0
+offset_top = 132.0
+offset_right = 167.0
+offset_bottom = 163.0
+scale = Vector2(0.9101, 0.776903)
 text = "Home"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_3vusp")
+volume_db = 24.0
 
 [connection signal="pressed" from="home button" to="." method="_on_home_button_pressed"]
