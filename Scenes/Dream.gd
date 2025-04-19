@@ -17,17 +17,10 @@ func spawn_sheep(spawnPoint: Vector2, state: Global.SheepState):
 	var sheep = SheepScene.instantiate()
 	sheep.value = Global.VARIANTS.keys()[randi_range(0, Global.VARIANTS.size() - 1)]
 	sheep.global_position = spawnPoint
-	sheep.connect("crashed", _on_sheep_crashed)
 	sheep.add_to_group("sheep")
 	add_child(sheep)
 	sheep.set_state(state)
 	return sheep
-
-
-func _on_sheep_crashed() -> void:
-	await get_tree().create_timer(0.5).timeout
-	Global.set_dream_state(false)
-	Global.battery -= 25
 
 func _on_death_wall_body_entered(body: Node2D) -> void:
 	if body.is_in_group("sheep"): # sheep crashed into fence

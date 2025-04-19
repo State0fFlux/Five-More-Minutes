@@ -52,18 +52,23 @@ text = "Home"
 [node name="Text" type="VBoxContainer" parent="."]
 z_index = 4
 layout_mode = 0
-offset_left = 137.338
-offset_top = 124.861
-offset_right = 330.338
-offset_bottom = 182.861
+offset_left = 134.0
+offset_top = 130.0
+offset_right = 361.0
+offset_bottom = 229.0
 scale = Vector2(0.26254, 0.303079)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Text"]
 layout_mode = 2
 text = "Spacebar = Jump
-Interact = Left Mouse"
+Interact = Left Mouse
+
+Goal:
+
+Wake up between 8-10 AM"
 fit_content = true
 horizontal_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ww8vx")

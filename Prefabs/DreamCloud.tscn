@@ -6,6 +6,9 @@
 script/source = "extends Node2D
 
 @onready var anim = $AnimationPlayer
+@onready var dreamWindow = $CanvasLayer/DreamWindow
+
+var fadeTween: Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,37 +31,26 @@ func start_dream():
 	new_scene.modulate = \"ffffff00\"
 	$SubViewport.add_child(new_scene)
 	anim.play(\"Open\")
+	await get_tree().create_timer(2).timeout
+	# widen the lense
+	if fadeTween:
+		fadeTween.kill()
+	fadeTween = create_tween()
+	fadeTween.tween_property(dreamWindow.material, \"shader_parameter/radius\", 1, 2.0)
+
 	
 func end_dream():
+	# close the lense
+	if fadeTween:
+		fadeTween.kill()
+	fadeTween = create_tween()
+	fadeTween.tween_property(dreamWindow.material, \"shader_parameter/radius\", 0.5, 0.5)
+	
 	anim.play(\"Close\")
 	await anim.animation_finished
 	$SubViewport/Dream.free()
 	
 "
-
-[sub_resource type="Shader" id="Shader_3gbim"]
-code = "shader_type canvas_item;
-
-uniform sampler2D cloud_mask; // Use a PNG with transparency
-uniform float softness : hint_range(0.0, 0.5) = 0.05;
-
-void fragment() {
-    vec4 scene_tex = texture(TEXTURE, UV);
-    float mask_alpha = texture(cloud_mask, UV).a;
-
-    // Optional smoothing around edges
-    float alpha = smoothstep(softness, 1.0, mask_alpha);
-    COLOR = vec4(scene_tex.rgb, scene_tex.a * alpha);
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nvmnl"]
-shader = SubResource("Shader_3gbim")
-shader_parameter/cloud_mask = ExtResource("1_jk83v")
-shader_parameter/softness = 0.0
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_u27hw"]
-viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_72wsc"]
 resource_name = "Close"
@@ -66,7 +58,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MainCloud:modulate")
+tracks/0/path = NodePath("CanvasLayer/MainCloud:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -78,7 +70,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Trail1:modulate")
+tracks/1/path = NodePath("CanvasLayer/Trail1:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -90,7 +82,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Trail2:modulate")
+tracks/2/path = NodePath("CanvasLayer/Trail2:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -118,7 +110,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MainCloud:modulate")
+tracks/0/path = NodePath("CanvasLayer/MainCloud:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -130,7 +122,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Trail1:modulate")
+tracks/1/path = NodePath("CanvasLayer/Trail1:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -142,7 +134,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Trail2:modulate")
+tracks/2/path = NodePath("CanvasLayer/Trail2:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -169,7 +161,7 @@ resource_name = "Open"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MainCloud:modulate")
+tracks/0/path = NodePath("CanvasLayer/MainCloud:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -181,7 +173,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Trail1:modulate")
+tracks/1/path = NodePath("CanvasLayer/Trail1:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -193,7 +185,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Trail2:modulate")
+tracks/2/path = NodePath("CanvasLayer/Trail2:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -226,111 +218,45 @@ _data = {
 &"RESET": SubResource("Animation_upkrg")
 }
 
+[sub_resource type="Shader" id="Shader_3gbim"]
+code = "shader_type canvas_item;
+
+uniform sampler2D cloud_mask; // Your transparent cloud PNG
+uniform vec2 center = vec2(0.5, 0.5); // Expansion origin (normalized UV)
+uniform float radius : hint_range(0.0, 2.0) = 0.0; // Expands over time
+uniform float softness : hint_range(0.0, 0.5) = 0.05;
+
+void fragment() {
+    vec2 uv = UV;
+    vec4 scene_tex = texture(TEXTURE, uv);
+    
+    // Cloud alpha from PNG
+    float mask_alpha = texture(cloud_mask, uv).a;
+    
+    // Radial distance from center
+    float dist = distance(uv, center);
+    
+    // Create a circular fade mask using smoothstep
+    float circle_fade = smoothstep(radius, radius - softness, dist);
+    
+    // Combine with cloud mask for smooth, organic fade edges
+    float final_alpha = mask_alpha * circle_fade;
+    
+    COLOR = vec4(scene_tex.rgb, scene_tex.a * final_alpha);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nvmnl"]
+shader = SubResource("Shader_3gbim")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/radius = 0.5
+shader_parameter/softness = 0.5
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_u27hw"]
+viewport_path = NodePath("SubViewport")
+
 [node name="DreamCloud" type="Node2D"]
 script = SubResource("GDScript_72wsc")
-
-[node name="MainCloud" type="Sprite2D" parent="."]
-position = Vector2(16, 5)
-texture = ExtResource("1_jk83v")
-
-[node name="Cloud" type="Sprite2D" parent="MainCloud"]
-position = Vector2(-6, 5)
-texture = ExtResource("1_jk83v")
-
-[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud"]
-position = Vector2(-11, 0)
-texture = ExtResource("1_jk83v")
-
-[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud"]
-position = Vector2(-11, 2)
-texture = ExtResource("1_jk83v")
-
-[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud"]
-position = Vector2(-7, -5)
-texture = ExtResource("1_jk83v")
-
-[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud/Cloud"]
-position = Vector2(-2, -7)
-texture = ExtResource("1_jk83v")
-
-[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
-position = Vector2(3, -7)
-texture = ExtResource("1_jk83v")
-
-[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
-position = Vector2(8, -3)
-texture = ExtResource("1_jk83v")
-
-[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
-position = Vector2(9, -3)
-texture = ExtResource("1_jk83v")
-
-[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
-position = Vector2(10, 3)
-texture = ExtResource("1_jk83v")
-
-[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
-position = Vector2(6, 5)
-texture = ExtResource("1_jk83v")
-
-[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
-position = Vector2(-1, 6)
-texture = ExtResource("1_jk83v")
-
-[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
-position = Vector2(-9, 3)
-texture = ExtResource("1_jk83v")
-
-[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
-position = Vector2(1, -7)
-texture = ExtResource("1_jk83v")
-
-[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
-position = Vector2(-7, -2)
-texture = ExtResource("1_jk83v")
-
-[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
-position = Vector2(-3, 7)
-texture = ExtResource("1_jk83v")
-
-[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
-position = Vector2(-7, -4)
-texture = ExtResource("1_jk83v")
-
-[node name="Cloud" type="Sprite2D" parent="MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
-position = Vector2(1, 8)
-texture = ExtResource("1_jk83v")
-
-[node name="Trail1" type="Sprite2D" parent="."]
-position = Vector2(-5, 23)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_jk83v")
-
-[node name="Trail2" type="Sprite2D" parent="."]
-position = Vector2(-11, 28)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_jk83v")
-
-[node name="DreamWindow" type="TextureRect" parent="."]
-clip_children = 2
-material = SubResource("ShaderMaterial_nvmnl")
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -135.0
-offset_top = -75.0
-offset_right = 126.333
-offset_bottom = 72.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.2, 0.2)
-pivot_offset = Vector2(135.029, 75.0117)
-texture = SubResource("ViewportTexture_u27hw")
-expand_mode = 3
-stretch_mode = 5
-metadata/_edit_lock_ = true
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
@@ -343,3 +269,111 @@ render_target_update_mode = 4
 libraries = {
 &"": SubResource("AnimationLibrary_74ggw")
 }
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(1, -32)
+transform = Transform2D(1, 0, 0, 1, 1, -32)
+follow_viewport_enabled = true
+
+[node name="MainCloud" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(16, 5)
+texture = ExtResource("1_jk83v")
+
+[node name="Cloud" type="Sprite2D" parent="CanvasLayer/MainCloud"]
+position = Vector2(-6, 5)
+texture = ExtResource("1_jk83v")
+
+[node name="Cloud" type="Sprite2D" parent="CanvasLayer/MainCloud/Cloud"]
+position = Vector2(-11, 0)
+texture = ExtResource("1_jk83v")
+
+[node name="Cloud" type="Sprite2D" parent="CanvasLayer/MainCloud/Cloud/Cloud"]
+position = Vector2(-11, 2)
+texture = ExtResource("1_jk83v")
+
+[node name="Cloud" type="Sprite2D" parent="CanvasLayer/MainCloud/Cloud/Cloud/Cloud"]
+position = Vector2(-7, -5)
+texture = ExtResource("1_jk83v")
+
+[node name="Cloud" type="Sprite2D" parent="CanvasLayer/MainCloud/Cloud/Cloud/Cloud/Cloud"]
+position = Vector2(-2, -7)
+texture = ExtResource("1_jk83v")
+
+[node name="Cloud" type="Sprite2D" parent="CanvasLayer/MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
+position = Vector2(3, -7)
+texture = ExtResource("1_jk83v")
+
+[node name="Cloud" type="Sprite2D" parent="CanvasLayer/MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
+position = Vector2(8, -3)
+texture = ExtResource("1_jk83v")
+
+[node name="Cloud" type="Sprite2D" parent="CanvasLayer/MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
+position = Vector2(9, -3)
+texture = ExtResource("1_jk83v")
+
+[node name="Cloud" type="Sprite2D" parent="CanvasLayer/MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
+position = Vector2(10, 3)
+texture = ExtResource("1_jk83v")
+
+[node name="Cloud" type="Sprite2D" parent="CanvasLayer/MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
+position = Vector2(6, 5)
+texture = ExtResource("1_jk83v")
+
+[node name="Cloud" type="Sprite2D" parent="CanvasLayer/MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
+position = Vector2(-1, 6)
+texture = ExtResource("1_jk83v")
+
+[node name="Cloud" type="Sprite2D" parent="CanvasLayer/MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
+position = Vector2(-9, 3)
+texture = ExtResource("1_jk83v")
+
+[node name="Cloud" type="Sprite2D" parent="CanvasLayer/MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
+position = Vector2(1, -7)
+texture = ExtResource("1_jk83v")
+
+[node name="Cloud" type="Sprite2D" parent="CanvasLayer/MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
+position = Vector2(-7, -2)
+texture = ExtResource("1_jk83v")
+
+[node name="Cloud" type="Sprite2D" parent="CanvasLayer/MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
+position = Vector2(-3, 7)
+texture = ExtResource("1_jk83v")
+
+[node name="Cloud" type="Sprite2D" parent="CanvasLayer/MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
+position = Vector2(-7, -4)
+texture = ExtResource("1_jk83v")
+
+[node name="Cloud" type="Sprite2D" parent="CanvasLayer/MainCloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud/Cloud"]
+position = Vector2(1, 8)
+texture = ExtResource("1_jk83v")
+
+[node name="Trail1" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(-5, 23)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_jk83v")
+
+[node name="Trail2" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(-11, 28)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_jk83v")
+
+[node name="DreamWindow" type="TextureRect" parent="CanvasLayer"]
+clip_children = 2
+material = SubResource("ShaderMaterial_nvmnl")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.0
+offset_top = -156.0
+offset_right = -17.667
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(135.029, 75.0117)
+texture = SubResource("ViewportTexture_u27hw")
+expand_mode = 3
+stretch_mode = 5
+metadata/_edit_lock_ = true

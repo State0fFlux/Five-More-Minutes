@@ -34,6 +34,7 @@ signal dream_opened
 signal dream_closed
 signal phone_ringing
 signal phone_answered
+signal sheep_crashed
 
 func set_dream_state(state):
 	is_dreaming = state

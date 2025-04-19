@@ -12,8 +12,6 @@ const SPEED = 20
 var state
 var value = 5 # the amount of time that will pass with this sheep
 
-signal crashed
-
 func _ready():
 	sprite.texture = Global.VARIANTS.get(value)
 
@@ -77,7 +75,7 @@ func set_state(newState: Global.SheepState):
 			
 			var tween = create_tween().set_parallel(false)
 			tween.tween_method(set_flash_modifier, 1.0, 0.0, 0.5)
-			crashed.emit()
+			Global.sheep_crashed.emit()
 	state = newState
 
 func set_flash_modifier(value: float) -> void:
