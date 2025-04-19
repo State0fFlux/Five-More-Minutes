@@ -143,8 +143,8 @@ script/source = "extends PointLight2D
 @onready var rightRay = $\"../RightShadowRay\"
 
 func _process(_delta):
-	rightRay.position.x = texture.get_width()/2
-	leftRay.position.x = -texture.get_width()/2
+	rightRay.position.x = float(texture.get_width())/2
+	leftRay.position.x = -float(texture.get_width())/2
 	global_position.y = min(rightRay.get_collision_point().y, leftRay.get_collision_point().y)
 	energy = pow(50, -position.y * 0.01)
 	texture_scale = pow(50, -position.y * 0.005)

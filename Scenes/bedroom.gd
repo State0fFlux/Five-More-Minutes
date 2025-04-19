@@ -27,7 +27,7 @@ func _ready() -> void:
 	Soundtrack.stop()
 	Soundtrack.volume_linear = 1
 	
-func _process(float) -> void:
+func _process(_delta: float) -> void:
 	if Global.battery <= 0 or Global.minutes_since_midnight > 480 + 120: # after 10 or battery dead
 		get_tree().change_scene_to_file("res://Scenes/Lose.tscn")
 	elif Global.minutes_since_midnight >= 480: # between 8 and 10

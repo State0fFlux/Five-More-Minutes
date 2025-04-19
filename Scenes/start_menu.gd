@@ -10,7 +10,7 @@ func _on_wake_up_button_pressed() -> void:
 
 func _on_options_button_pressed() -> void:
 	$AudioStreamPlayer.play()
-	get_tree().change_scene_to_file("res://Scenes/Options.tscn")
+	get_tree().change_scene_to_file("res://Scenes/options.tscn")
 
 func _on_meet_the_devs_button_pressed() -> void:
 	$AudioStreamPlayer.play()

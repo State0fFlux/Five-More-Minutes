@@ -30,10 +30,10 @@ var battery = 75
 var is_dreaming = false
 
 # signals
-signal dream_opened
-signal dream_closed
 signal phone_ringing
 signal phone_answered
+signal dream_opened
+signal dream_closed
 signal sheep_crashed
 
 func set_dream_state(state):
@@ -43,13 +43,10 @@ func set_dream_state(state):
 	else: # leaving dream
 		dream_closed.emit()
 
-func minutes_to_time(minutes_since_midnight: int) -> String:
-	var hours = (minutes_since_midnight / 60) % 24
-	var minutes = minutes_since_midnight % 60
-	var am_pm = "AM"
+func minutes_to_time(mins: int) -> String:
+	var hours = (mins / 60) % 24
+	var minutes = mins % 60
 	
-	if hours >= 12:
-		am_pm = "PM"
 	if hours > 12:
 		hours -= 12
 	if hours == 0:

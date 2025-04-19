@@ -4,7 +4,7 @@ const SheepScene = preload("res://Prefabs/sheep.tscn")
 @onready var chime = $Chime
 
 func _ready() -> void:
-	var sheep = spawn_sheep($FirstSheepSpawn.global_position, Global.SheepState.SLEEPING)
+	spawn_sheep($FirstSheepSpawn.global_position, Global.SheepState.SLEEPING)
 	Global.deathPoint = $DeathPoint.global_position
 	Global.spawnPoint = $SpawnPoint.global_position
 	

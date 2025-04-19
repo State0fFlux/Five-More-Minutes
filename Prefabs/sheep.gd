@@ -78,6 +78,6 @@ func set_state(newState: Global.SheepState):
 			Global.sheep_crashed.emit()
 	state = newState
 
-func set_flash_modifier(value: float) -> void:
+func set_flash_modifier(newValue: float) -> void:
 	if sprite.material:
-		sprite.material.set_shader_parameter("strength", value)
+		sprite.material.set_shader_parameter("strength", newValue)
