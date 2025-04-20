@@ -4,29 +4,48 @@ extends CharacterBody2D
 @onready var sprite = $Body
 @onready var particles = $Particles
 @onready var audio = $AudioStreamPlayer2D
+
 @export var track = 2
 
 var state
-var value = 5 # the amount of time that will pass with this sheep
+var value = 1 # the amount of time that will pass with this sheep
+var jump_action_name
+var jumpable = true
 
 func _ready():
 	sprite.texture = Global.VARIANTS.get(value)
 	sprite.z_index = track * 2
-	collision_layer = 1 << (track+3)
-	collision_mask = 1 << (track-1)
+	var layer = 1 << (track+3)
+	var mask = 1 << (track-1)
+	collision_layer = layer
+	collision_mask = mask
+	$RightShadowRay.collision_mask = mask
+	$LeftShadowRay.collision_mask = mask
+	
+	jump_action_name = "Jump" + str(track)
 
 func _physics_process(delta: float) -> void:
 	# Handle out-of-bounds
 	if global_position.x > Global.deathPoint.x:
 		queue_free()
-		
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		
-	if state == Global.SheepState.WALKING and is_on_floor():
-		anim.play("Walk")
+	elif state == Global.SheepState.WALKING:
 		velocity.x = Global.SPEED
+		anim.play("Walk")
+
+	# Handle jump.
+	if Input.is_action_just_pressed(jump_action_name) and is_on_floor() and $"..".get_frontmost_sheep() == self:
+		if state == Global.SheepState.SLEEPING:
+			set_state(Global.SheepState.WALKING)
+		else:
+			var ba = Global.ba_sounds[randi_range(0, Global.ba_sounds.size() - 1)]
+			audio.stream = ba
+			audio.play()
+			velocity.y = Global.JUMP_VELOCITY
+			velocity.x *= Global.BOOST
 		
 	move_and_slide()
 
@@ -66,10 +85,3 @@ func set_state(newState: Global.SheepState):
 func set_flash_modifier(newValue: float) -> void:
 	if sprite.material:
 		sprite.material.set_shader_parameter("strength", newValue)
-
-func jump():
-	var ba = Global.ba_sounds[randi_range(0, Global.ba_sounds.size() - 1)]
-	audio.stream = ba
-	audio.play()
-	velocity.y = Global.JUMP_VELOCITY
-	velocity.x *= Global.BOOST

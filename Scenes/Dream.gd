@@ -2,6 +2,8 @@ extends Node2D
 @onready var tracks = [$Track1, $Track2, $Track3]
 
 func _ready() -> void:
+	$SpawnTimer.wait_time = Global.WAIT_TIME
+	
 	Global.spawnPoint = $SpawnPoint.position
 	Global.deathPoint = $DeathPoint.position
 	var track = tracks.pick_random()

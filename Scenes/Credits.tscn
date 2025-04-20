@@ -27,16 +27,18 @@ texture = ExtResource("3_640q4")
 
 [node name="Creators" type="RichTextLabel" parent="StartTextbook"]
 offset_left = -60.8696
-offset_top = -29.4722
+offset_top = -35.6409
 offset_right = 134.13
-offset_bottom = 50.5278
+offset_bottom = 76.3591
 scale = Vector2(0.38, 0.8)
 theme_type_variation = &"simpleText"
 text = "		  Game Made by:
 
 Avah Afshari - UW Bothell
+* UI, QA
 
-Brady Manske - UW Seattle"
+Brady Manske - UW Seattle
+* Game Design, Scripting"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -127,7 +129,7 @@ volume_db = 24.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-637, 172)
-zoom = Vector2(0.35, 0.35)
+zoom = Vector2(0.5, 0.5)
 
 [connection signal="pressed" from="Phone/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Phone/VBoxContainer/Home" to="." method="_on_home_pressed"]

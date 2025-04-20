@@ -2,7 +2,7 @@ extends Node
 
 # code quick reference
 const VARIANT_PATH = "res://Sprites/sheep/"
-const VARIANTS = {5: preload(VARIANT_PATH + "white.png"), 10: preload(VARIANT_PATH + "brown.png"), 30: preload(VARIANT_PATH + "black.png"), 60: preload(VARIANT_PATH + "purple.png")}
+const VARIANTS = {1: preload(VARIANT_PATH + "white.png"), 5: preload(VARIANT_PATH + "brown.png"), 10: preload(VARIANT_PATH + "black.png"), 20: preload(VARIANT_PATH + "purple.png")}
 const snore = preload("res://Sprites/sheep/snore.png")
 const heart = preload("res://Sprites/sheep/heart.png")
 var deathPoint: Vector2
@@ -25,6 +25,7 @@ enum PlayerState { SLEEPING, ON_PHONE }
 const BOOST = 2
 const JUMP_VELOCITY = -40
 const SPEED = 25
+const WAIT_TIME = 2
 
 # stats
 var minutes_since_midnight = 0
@@ -43,7 +44,7 @@ func set_dream_state(state):
 	if state == true: # entering dream
 		dream_opened.emit()
 	else: # leaving dream
-		if minutes_since_midnight > 480 + 120 or battery <= 0: # after 10
+		if minutes_since_midnight > 480 + 120 or battery < 1: # after 10
 			get_tree().change_scene_to_file("res://Scenes/Lose.tscn")
 		elif minutes_since_midnight >= 480: # between 8 and 10
 			get_tree().change_scene_to_file("res://Scenes/Win.tscn")

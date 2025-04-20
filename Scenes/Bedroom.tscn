@@ -79,7 +79,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 39), Vector2(0, 133)]
+"values": [Vector2(0, 18), Vector2(0, 133)]
 }
 
 [sub_resource type="Animation" id="Animation_swbdu"]
@@ -96,7 +96,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 133), Vector2(0, 39)]
+"values": [Vector2(0, 133), Vector2(0, 18)]
 }
 
 [sub_resource type="Animation" id="Animation_cs4vd"]
@@ -111,7 +111,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 133)]
+"values": [Vector2(0, 114)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -159,7 +159,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(1.3, 1.3)]
 }
 
 [sub_resource type="Animation" id="Animation_o0d8c"]
@@ -264,6 +264,7 @@ mouse_filter = 2
 texture = ExtResource("3_cs4vd")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.3, 1.3)
 
 [node name="Player" parent="." instance=ExtResource("4_3gbim")]
 position = Vector2(-14, 11)
@@ -277,7 +278,7 @@ libraries = {
 }
 
 [node name="hand" type="Sprite2D" parent="."]
-position = Vector2(0, 133)
+position = Vector2(0, 114)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("6_cs4vd")
 
@@ -293,6 +294,7 @@ text = "11:59"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = SubResource("GDScript_cs4vd")
+metadata/_edit_lock_ = true
 
 [node name="Battery" type="RichTextLabel" parent="hand"]
 offset_left = -290.0
@@ -306,6 +308,7 @@ text = "Battery: 69%"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = SubResource("GDScript_swbdu")
+metadata/_edit_lock_ = true
 
 [node name="GetUp" type="Button" parent="hand"]
 offset_left = -140.0
@@ -317,6 +320,7 @@ focus_mode = 0
 theme = ExtResource("7_cs4vd")
 theme_type_variation = &"phoneButton"
 text = "Get Up"
+metadata/_edit_lock_ = true
 
 [node name="Snooze" type="Button" parent="hand"]
 offset_left = -140.0
@@ -328,6 +332,7 @@ focus_mode = 0
 theme = ExtResource("7_cs4vd")
 theme_type_variation = &"phoneButton"
 text = "Snooze"
+metadata/_edit_lock_ = true
 
 [node name="Title" type="RichTextLabel" parent="."]
 offset_left = -28.0

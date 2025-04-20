@@ -4,7 +4,6 @@ extends Node2D
 const SheepScene = preload("res://Prefabs/sheep.tscn")
 
 @onready var chime = $Chime
-var jump_action_name
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,18 +15,6 @@ func _ready() -> void:
 	$PassWall.collision_mask = mask
 	$DeathWall.collision_layer = layer
 	$DeathWall.collision_mask = mask
-	
-	jump_action_name = "Jump" + str(track)
-
-
-func _physics_process(delta: float) -> void:
-	var lead = get_frontmost_sheep()
-	# Handle jump.
-	if Input.is_action_just_pressed(jump_action_name) and lead and lead.is_on_floor():
-		if lead.state == Global.SheepState.SLEEPING:
-			lead.set_state(Global.SheepState.WALKING)
-		else:
-			lead.jump()
 
 func spawn_sheep(spawnFromCenter: bool, state: Global.SheepState):
 	var sheep = SheepScene.instantiate()
@@ -46,10 +33,10 @@ func _on_death_wall_body_entered(body: Node2D) -> void:
 func _on_pass_wall_body_entered(body: Node2D) -> void:
 	if body.is_in_group("sheep") and body.state == Global.SheepState.WALKING: # sheep jumped the fence
 		match body.value:
-			5: chime.pitch_scale = 1
-			10: chime.pitch_scale = 1
-			30: chime.pitch_scale = 1.2
-			60: chime.pitch_scale = 1.3
+			1: chime.pitch_scale = 1
+			5: chime.pitch_scale = 1.2
+			10: chime.pitch_scale = 1.4
+			20: chime.pitch_scale = 1.6
 		chime.play()
 		var new_time = Global.minutes_since_midnight + body.value
 		Global.minutes_since_midnight = new_time
@@ -61,7 +48,7 @@ func get_frontmost_sheep() -> Node2D:
 
 	for child in get_children():
 		if child.is_in_group("sheep") and child.state != Global.SheepState.DEAD:
-			if child.global_position.x > highest_x:
+			if child.global_position.x > highest_x and child.global_position.x < $PassWall.global_position.x:
 				highest_x = child.global_position.x
 				frontmost_sheep = child
 	return frontmost_sheep
