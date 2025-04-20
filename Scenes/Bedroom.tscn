@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b802ue1efjmtf" path="res://Sprites/environment/room.png" id="3_cs4vd"]
 [ext_resource type="PackedScene" uid="uid://cw37p0gbimh0a" path="res://Prefabs/player.tscn" id="4_3gbim"]
 [ext_resource type="PackedScene" uid="uid://dencu3yac6vin" path="res://Prefabs/DreamCloud.tscn" id="4_bnvew"]
-[ext_resource type="Texture2D" uid="uid://bykuv1dhqo838" path="res://Sprites/pixil-frame-0.png" id="6_swbdu"]
+[ext_resource type="Texture2D" uid="uid://bu0aiemr2hitv" path="res://Sprites/Phone/phoneInHand.png" id="6_cs4vd"]
 [ext_resource type="Theme" uid="uid://cojrl4cralg3e" path="res://Resources/theme.tres" id="7_cs4vd"]
 
 [sub_resource type="Animation" id="Animation_o633n"]
@@ -21,7 +21,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -30)]
+"values": [Vector2(0, 0), Vector2(0, -32.1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -33,7 +33,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(4, 4)]
+"values": [Vector2(1.3, 1.3), Vector2(5.6, 5.6)]
 }
 
 [sub_resource type="Animation" id="Animation_rsf82"]
@@ -50,7 +50,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(4, 4), Vector2(1, 1)]
+"values": [Vector2(5.6, 5.6), Vector2(1.3, 1.3)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -62,7 +62,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -30), Vector2(0, 0)]
+"values": [Vector2(0, -32.1), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_rgpmg"]
@@ -79,7 +79,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 39), Vector2(0, 133)]
+"values": [Vector2(0, 18), Vector2(0, 133)]
 }
 
 [sub_resource type="Animation" id="Animation_swbdu"]
@@ -96,7 +96,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 133), Vector2(0, 39)]
+"values": [Vector2(0, 133), Vector2(0, 18)]
 }
 
 [sub_resource type="Animation" id="Animation_cs4vd"]
@@ -111,7 +111,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 133)]
+"values": [Vector2(0, 114)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -159,7 +159,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(1.3, 1.3)]
 }
 
 [sub_resource type="Animation" id="Animation_o0d8c"]
@@ -264,12 +264,12 @@ mouse_filter = 2
 texture = ExtResource("3_cs4vd")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.3, 1.3)
 
 [node name="Player" parent="." instance=ExtResource("4_3gbim")]
 position = Vector2(-14, 11)
 
 [node name="dreamCloud" parent="." instance=ExtResource("4_bnvew")]
-position = Vector2(0, -31)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../hand")
@@ -278,9 +278,9 @@ libraries = {
 }
 
 [node name="hand" type="Sprite2D" parent="."]
-position = Vector2(0, 133)
+position = Vector2(0, 114)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("6_swbdu")
+texture = ExtResource("6_cs4vd")
 
 [node name="Time" type="RichTextLabel" parent="hand"]
 offset_left = -150.0
@@ -288,11 +288,13 @@ offset_top = -260.0
 offset_right = 60.0
 offset_bottom = -170.0
 theme = ExtResource("7_cs4vd")
+theme_override_constants/outline_size = 7
 theme_override_font_sizes/normal_font_size = 60
 text = "11:59"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = SubResource("GDScript_cs4vd")
+metadata/_edit_lock_ = true
 
 [node name="Battery" type="RichTextLabel" parent="hand"]
 offset_left = -290.0
@@ -300,42 +302,52 @@ offset_top = -250.0
 offset_right = 200.0
 offset_bottom = -80.0001
 theme = ExtResource("7_cs4vd")
+theme_override_constants/outline_size = 7
 theme_override_font_sizes/normal_font_size = 30
 text = "Battery: 69%"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = SubResource("GDScript_swbdu")
+metadata/_edit_lock_ = true
 
 [node name="GetUp" type="Button" parent="hand"]
-offset_left = -110.0
+offset_left = -140.0
 offset_top = -120.0
-offset_right = 7.99999
+offset_right = -22.0
 offset_bottom = -89.0
+scale = Vector2(1.5, 1.5)
 focus_mode = 0
 theme = ExtResource("7_cs4vd")
+theme_type_variation = &"phoneButton"
 text = "Get Up"
+metadata/_edit_lock_ = true
 
 [node name="Snooze" type="Button" parent="hand"]
-offset_left = -110.0
-offset_top = -19.9999
-offset_right = 8.0
-offset_bottom = 11.0001
+offset_left = -140.0
+offset_top = -39.9999
+offset_right = -22.0
+offset_bottom = -8.9999
+scale = Vector2(1.5, 1.5)
 focus_mode = 0
 theme = ExtResource("7_cs4vd")
+theme_type_variation = &"phoneButton"
 text = "Snooze"
+metadata/_edit_lock_ = true
 
 [node name="Title" type="RichTextLabel" parent="."]
-offset_left = -27.0
+offset_left = -28.0
 offset_top = -10.0
-offset_right = 181.0
-offset_bottom = 25.0
-scale = Vector2(0.2, 0.2)
+offset_right = 205.0
+offset_bottom = 67.0
+scale = Vector2(0.3, 0.3)
 mouse_filter = 2
 theme = ExtResource("7_cs4vd")
-theme_override_font_sizes/normal_font_size = 0
-text = "\"Five More Minutes...\""
+text = "i just asdfaedsfasdf"
 visible_characters = 0
 visible_ratio = 0.0
+
+[node name="Shadow" type="CanvasModulate" parent="."]
+color = Color(0.235294, 0.309804, 0.568627, 1)
 
 [connection signal="pressed" from="hand/GetUp" to="." method="_on_get_up_pressed"]
 [connection signal="pressed" from="hand/Snooze" to="." method="_on_snooze_pressed"]

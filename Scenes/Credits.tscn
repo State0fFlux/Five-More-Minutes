@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://brdi2luivha2t"]
+[gd_scene load_steps=6 format=3 uid="uid://brdi2luivha2t"]
 
 [ext_resource type="Script" uid="uid://bpcp8587rhucu" path="res://Scenes/credits.gd" id="1_f64u0"]
 [ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="2_lpub1"]
 [ext_resource type="Texture2D" uid="uid://dyqec1vof0x3c" path="res://Sprites/Options and devs/Start textbook.png" id="3_640q4"]
 [ext_resource type="Texture2D" uid="uid://b3uta05m2uptg" path="res://Sprites/Phone/phone.png" id="4_5qoai"]
-[ext_resource type="FontFile" uid="uid://bka5fpx4ym5ao" path="res://Fonts/DigitalDisco-Thin.ttf" id="5_jpdlp"]
-[ext_resource type="StyleBox" uid="uid://drhu1yrvc77jf" path="res://Resources/Button.tres" id="6_cmrso"]
+[ext_resource type="AudioStream" uid="uid://d3xfgvwm8lh1h" path="res://Audio/SFX/sfx_UI_click_01.wav" id="7_lpub1"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -18,54 +17,119 @@ script = ExtResource("1_f64u0")
 
 [node name="TopDownHouseFloorsAndWalls" type="Sprite2D" parent="."]
 position = Vector2(679.338, 188.861)
-scale = Vector2(5.17596, 3.17863)
+scale = Vector2(13.561, 8.329)
 texture = ExtResource("2_lpub1")
-metadata/_edit_lock_ = true
 
 [node name="StartTextbook" type="Sprite2D" parent="."]
-position = Vector2(172, 178)
-scale = Vector2(0.84475, 0.765897)
+position = Vector2(-643, 181)
+scale = Vector2(1.61, 1.459)
 texture = ExtResource("3_640q4")
 
-[node name="Label" type="Label" parent="StartTextbook"]
-offset_left = -59.7015
-offset_top = -37.3134
-offset_right = -19.7015
-offset_bottom = -17.3134
-scale = Vector2(1.65672, 4.9403)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_jpdlp")
-metadata/_edit_use_anchors_ = true
+[node name="Creators" type="RichTextLabel" parent="StartTextbook"]
+offset_left = -60.8696
+offset_top = -35.6409
+offset_right = 134.13
+offset_bottom = 76.3591
+scale = Vector2(0.38, 0.8)
+theme_type_variation = &"simpleText"
+text = "		  Game Made by:
+
+Avah Afshari - UW Bothell
+* UI, QA
+
+Brady Manske - UW Seattle
+* Game Design, Scripting"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="People" type="RichTextLabel" parent="StartTextbook"]
+offset_left = 21.118
+offset_top = -41.1241
+offset_right = 210.118
+offset_bottom = 83.8759
+scale = Vector2(0.38, 0.8)
+theme_type_variation = &"simpleText"
+text = "			Assets Used:
+
+Bedroom Furniture:
+	Top Down House
+	(Penzilla - itch.io)
+
+Sheep and Fence:
+	Animated Sheep Pixel Art
+	(NMR9 - itch.io)
+
+Open Pixel Book:
+	Libro Abierto xd
+	(xDreamCouldx - Pixilart)
+
+Phone in Hand:
+	Asset id: 2394472319
+	(Terng THI TIvat - Shutterstock)
+
+\"Lose\" Background:
+	A Pixel Art Wallpaper Design By Timpers 
+(TimpersDesign - Reddit)
+
+\"Win\" background:
+	Goldberg's Game PIxel art/Retro Event - Backgrounds and Characters
+	(Paulo Lopes - Artstation)
+
+Sheep Bleating:
+	BBC News (yes, they have sound effects)
+
+Theme Song:
+	Void Sleep
+	(Cedar Street - itch.io)
+
+Font:
+	Digital Disco
+	(jeti - dafont.com)
+
+
+
+"
+autowrap_mode = 2
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
 [node name="Phone" type="Sprite2D" parent="."]
-position = Vector2(291, 201)
-scale = Vector2(0.119663, 0.118576)
+position = Vector2(-819, 227)
+scale = Vector2(0.19, 0.188)
 texture = ExtResource("4_5qoai")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Phone"]
 offset_left = -100.0
-offset_top = -183.333
-offset_right = -60.0
-offset_bottom = -143.333
+offset_top = -85.1064
+offset_right = 12.0
+offset_bottom = -37.1064
 scale = Vector2(1.70271, 3.21286)
 metadata/_edit_use_anchors_ = true
 
 [node name="Options" type="Button" parent="Phone/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_jpdlp")
-theme_override_styles/normal = ExtResource("6_cmrso")
-text = "Set for 8 A
-(Options)"
+focus_mode = 0
+theme_type_variation = &"phoneButton"
+text = "How to Play"
+metadata/_edit_lock_ = true
 
 [node name="Home" type="Button" parent="Phone/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_jpdlp")
-theme_override_styles/normal = ExtResource("6_cmrso")
-text = "Head to
-BEd (Home)"
+focus_mode = 0
+theme_type_variation = &"phoneButton"
+text = "Home"
+metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_lpub1")
+volume_db = 24.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(180, 175)
+position = Vector2(-637, 172)
+zoom = Vector2(0.5, 0.5)
 
 [connection signal="pressed" from="Phone/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Phone/VBoxContainer/Home" to="." method="_on_home_pressed"]

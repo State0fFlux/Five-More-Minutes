@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://pjqell4iy5hc"]
+[gd_scene load_steps=6 format=3 uid="uid://pjqell4iy5hc"]
 
 [ext_resource type="Script" uid="uid://devadgr2ibts2" path="res://Scenes/start_menu.gd" id="1_1wmxr"]
-[ext_resource type="FontFile" uid="uid://jijl7mh2tfw3" path="res://Fonts/DigitalDisco.ttf" id="1_vset1"]
-[ext_resource type="StyleBox" uid="uid://drhu1yrvc77jf" path="res://Resources/Button.tres" id="3_t7rl6"]
 [ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="3_u88ce"]
 [ext_resource type="Theme" uid="uid://cojrl4cralg3e" path="res://Resources/theme.tres" id="6_5hugr"]
 [ext_resource type="PackedScene" uid="uid://cw37p0gbimh0a" path="res://Prefabs/player.tscn" id="7_5hugr"]
+[ext_resource type="AudioStream" uid="uid://d3xfgvwm8lh1h" path="res://Audio/SFX/sfx_UI_click_01.wav" id="7_uyqt2"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -35,14 +34,16 @@ scale = Vector2(3.5919, 3.34832)
 
 [node name="Title" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 41.5272
-offset_top = 82.4016
-offset_right = 248.528
-offset_bottom = 109.402
+offset_left = -2.46918
+offset_top = 87.0702
+offset_right = 204.532
+offset_bottom = 114.071
 scale = Vector2(1.19955, 1.16918)
 theme = ExtResource("6_5hugr")
 theme_override_font_sizes/normal_font_size = 16
 text = "Five More Minutes..."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -53,7 +54,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -133.874
 offset_top = -100.654
-offset_right = -3.87482
+offset_right = -3.87485
 offset_bottom = -14.6543
 grow_horizontal = 0
 grow_vertical = 2
@@ -63,28 +64,22 @@ theme_override_constants/separation = 2
 [node name="Wake up Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("1_vset1")
-theme_override_styles/normal = ExtResource("3_t7rl6")
+focus_mode = 0
 text = "Wake up"
 metadata/_edit_lock_ = true
 
-[node name="Options Button" type="Button" parent="VBoxContainer"]
+[node name="How to play Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("1_vset1")
-theme_override_styles/normal = ExtResource("3_t7rl6")
-text = "Options
+focus_mode = 0
+text = "How to Play
 "
 metadata/_edit_lock_ = true
 
 [node name="Credits Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("1_vset1")
-theme_override_styles/normal = ExtResource("3_t7rl6")
+focus_mode = 0
 text = "Credits
 "
 metadata/_edit_lock_ = true
@@ -92,9 +87,7 @@ metadata/_edit_lock_ = true
 [node name="Quit Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("1_vset1")
-theme_override_styles/normal = ExtResource("3_t7rl6")
+focus_mode = 0
 text = "Quit
 "
 metadata/_edit_lock_ = true
@@ -104,7 +97,14 @@ position = Vector2(163.864, 152.665)
 scale = Vector2(-44.3243, -5.45491)
 zoom = Vector2(0.2, 0.2)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_uyqt2")
+volume_db = 24.0
+
+[node name="Shadow" type="CanvasModulate" parent="."]
+color = Color(0.235294, 0.309804, 0.568627, 1)
+
 [connection signal="pressed" from="VBoxContainer/Wake up Button" to="." method="_on_wake_up_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Options Button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/How to play Button" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Credits Button" to="." method="_on_meet_the_devs_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]
