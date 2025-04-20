@@ -250,7 +250,7 @@ void fragment() {
 shader = SubResource("Shader_3gbim")
 shader_parameter/center = Vector2(0.5, 0.5)
 shader_parameter/radius = 0.5
-shader_parameter/softness = 0.5
+shader_parameter/softness = 0.2
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_u27hw"]
 viewport_path = NodePath("SubViewport")

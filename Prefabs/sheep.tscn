@@ -172,8 +172,10 @@ turbulence_noise_scale = 1.0
 turbulence_noise_speed_random = 4.0
 
 [node name="Sheep" type="CharacterBody2D"]
-collision_layer = 4
-collision_mask = 3
+z_as_relative = false
+y_sort_enabled = true
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_hjbt6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -186,16 +188,19 @@ libraries = {
 }
 
 [node name="RightShadowRay" type="RayCast2D" parent="."]
+enabled = false
 target_position = Vector2(8, 14)
 collision_mask = 2
 hit_from_inside = true
 
 [node name="LeftShadowRay" type="RayCast2D" parent="."]
+enabled = false
 target_position = Vector2(-8, 14)
 collision_mask = 2
 hit_from_inside = true
 
 [node name="Shadow" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(0, 6)
 blend_mode = 2
 range_item_cull_mask = 4

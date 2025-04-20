@@ -26,12 +26,6 @@ func _ready() -> void:
 	await tween.finished
 	Soundtrack.stop()
 	Soundtrack.volume_linear = 1
-	
-func _process(_delta: float) -> void:
-	if Global.battery <= 0 or Global.minutes_since_midnight > 480 + 120: # after 10 or battery dead
-		get_tree().change_scene_to_file("res://Scenes/Lose.tscn")
-	elif Global.minutes_since_midnight >= 480: # between 8 and 10
-		get_tree().change_scene_to_file("res://Scenes/Win.tscn")
 
 func _on_sheep_crashed() -> void:
 	await get_tree().create_timer(0.5).timeout
