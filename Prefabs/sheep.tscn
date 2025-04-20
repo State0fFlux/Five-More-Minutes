@@ -1,11 +1,11 @@
 [gd_scene load_steps=19 format=3 uid="uid://boc0y80gxu823"]
 
-[ext_resource type="Script" uid="uid://da782bhlsn5bx" path="res://Prefabs/sheep.gd" id="1_hjbt6"]
-[ext_resource type="Texture2D" uid="uid://epglma4xc71u" path="res://Sprites/sheep/white.png" id="1_qsh3u"]
-[ext_resource type="Shader" uid="uid://b217v6jcdwxb2" path="res://Shaders/damage.gdshader" id="1_ut7ki"]
-[ext_resource type="Texture2D" uid="uid://8gw5ajr30rrc" path="res://Sprites/sheep/shadow.png" id="3_ouycb"]
-[ext_resource type="Texture2D" uid="uid://b2ag0h1od5am2" path="res://Sprites/sheep/snore.png" id="4_d31gs"]
-[ext_resource type="AudioStream" uid="uid://ya8gk46h7yd5" path="res://Audio/chime.mp3" id="6_pwu8p"]
+[ext_resource type="Script" uid="uid://da782bhlsn5bx" path="res://prefabs/sheep.gd" id="1_hjbt6"]
+[ext_resource type="Texture2D" uid="uid://epglma4xc71u" path="res://sprites/sheep/white.png" id="1_qsh3u"]
+[ext_resource type="Shader" uid="uid://b217v6jcdwxb2" path="res://shaders/damage.gdshader" id="1_ut7ki"]
+[ext_resource type="Texture2D" uid="uid://8gw5ajr30rrc" path="res://sprites/sheep/shadow.png" id="3_ouycb"]
+[ext_resource type="Texture2D" uid="uid://b2ag0h1od5am2" path="res://sprites/sheep/snore.png" id="4_d31gs"]
+[ext_resource type="AudioStream" uid="uid://ya8gk46h7yd5" path="res://audio/chime.mp3" id="6_pwu8p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x8kua"]
 radius = 6.0

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://jijl7mh2tfw3"
-path="res://.godot/imported/DigitalDisco.ttf-e2bf97df7d963c32844736dc8b91e8b9.fontdata"
+path="res://.godot/imported/DigitalDisco.ttf-6d82be34eb2c0ed1b63eee7530df10e2.fontdata"
 
 [deps]
 
-source_file="res://Fonts/DigitalDisco.ttf"
-dest_files=["res://.godot/imported/DigitalDisco.ttf-e2bf97df7d963c32844736dc8b91e8b9.fontdata"]
+source_file="res://fonts/DigitalDisco.ttf"
+dest_files=["res://.godot/imported/DigitalDisco.ttf-6d82be34eb2c0ed1b63eee7530df10e2.fontdata"]
 
 [params]
 

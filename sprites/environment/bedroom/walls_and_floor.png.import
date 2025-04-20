@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kd27r7erc733"
-path="res://.godot/imported/End textbook.png-5062afbd83ad11f0cbaf156411e53359.ctex"
+uid="uid://dnmel4v4cov0r"
+path="res://.godot/imported/walls_and_floor.png-e841c05f1a7bda1d87fa57f67f025658.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Options and devs/End textbook.png"
-dest_files=["res://.godot/imported/End textbook.png-5062afbd83ad11f0cbaf156411e53359.ctex"]
+source_file="res://sprites/environment/bedroom/walls_and_floor.png"
+dest_files=["res://.godot/imported/walls_and_floor.png-e841c05f1a7bda1d87fa57f67f025658.ctex"]
 
 [params]
 

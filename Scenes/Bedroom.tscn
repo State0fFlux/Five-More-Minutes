@@ -1,12 +1,12 @@
 [gd_scene load_steps=18 format=3 uid="uid://3ves8bvwoxgq"]
 
-[ext_resource type="Script" uid="uid://dlaiddotih5wb" path="res://Scenes/bedroom.gd" id="1_3gbim"]
-[ext_resource type="PackedScene" uid="uid://wgvmp0rrf62g" path="res://Prefabs/sky.tscn" id="3_0y5hw"]
-[ext_resource type="Texture2D" uid="uid://b802ue1efjmtf" path="res://Sprites/environment/room.png" id="3_cs4vd"]
-[ext_resource type="PackedScene" uid="uid://cw37p0gbimh0a" path="res://Prefabs/player.tscn" id="4_3gbim"]
-[ext_resource type="PackedScene" uid="uid://dencu3yac6vin" path="res://Prefabs/DreamCloud.tscn" id="4_bnvew"]
-[ext_resource type="Texture2D" uid="uid://bu0aiemr2hitv" path="res://Sprites/Phone/phoneInHand.png" id="6_cs4vd"]
-[ext_resource type="Theme" uid="uid://cojrl4cralg3e" path="res://Resources/theme.tres" id="7_cs4vd"]
+[ext_resource type="Script" uid="uid://dlaiddotih5wb" path="res://scenes/bedroom.gd" id="1_jx6fm"]
+[ext_resource type="PackedScene" uid="uid://wgvmp0rrf62g" path="res://prefabs/sky.tscn" id="2_kmi0g"]
+[ext_resource type="Texture2D" uid="uid://b802ue1efjmtf" path="res://sprites/environment/room.png" id="3_2id1l"]
+[ext_resource type="PackedScene" uid="uid://cw37p0gbimh0a" path="res://prefabs/player.tscn" id="4_unnaa"]
+[ext_resource type="PackedScene" uid="uid://dencu3yac6vin" path="res://prefabs/dream_cloud.tscn" id="5_ikyv6"]
+[ext_resource type="Texture2D" uid="uid://bu0aiemr2hitv" path="res://sprites/phone/phoneInHand.png" id="6_h0rdu"]
+[ext_resource type="Theme" uid="uid://cojrl4cralg3e" path="res://resources/theme.tres" id="7_xillq"]
 
 [sub_resource type="Animation" id="Animation_o633n"]
 resource_name = "CamZoomIn"
@@ -244,9 +244,9 @@ func _process(_delta: float) -> void:
 "
 
 [node name="Bedroom" type="Node2D"]
-script = ExtResource("1_3gbim")
+script = ExtResource("1_jx6fm")
 
-[node name="Sky" parent="." instance=ExtResource("3_0y5hw")]
+[node name="Sky" parent="." instance=ExtResource("2_kmi0g")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -261,15 +261,15 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Room" type="Sprite2D" parent="."]
-texture = ExtResource("3_cs4vd")
+texture = ExtResource("3_2id1l")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.3, 1.3)
 
-[node name="Player" parent="." instance=ExtResource("4_3gbim")]
+[node name="Player" parent="." instance=ExtResource("4_unnaa")]
 position = Vector2(-14, 11)
 
-[node name="dreamCloud" parent="." instance=ExtResource("4_bnvew")]
+[node name="dreamCloud" parent="." instance=ExtResource("5_ikyv6")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../hand")
@@ -280,14 +280,14 @@ libraries = {
 [node name="hand" type="Sprite2D" parent="."]
 position = Vector2(0, 114)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("6_cs4vd")
+texture = ExtResource("6_h0rdu")
 
 [node name="Time" type="RichTextLabel" parent="hand"]
 offset_left = -150.0
 offset_top = -260.0
 offset_right = 60.0
 offset_bottom = -170.0
-theme = ExtResource("7_cs4vd")
+theme = ExtResource("7_xillq")
 theme_override_constants/outline_size = 7
 theme_override_font_sizes/normal_font_size = 60
 text = "11:59"
@@ -301,7 +301,7 @@ offset_left = -290.0
 offset_top = -250.0
 offset_right = 200.0
 offset_bottom = -80.0001
-theme = ExtResource("7_cs4vd")
+theme = ExtResource("7_xillq")
 theme_override_constants/outline_size = 7
 theme_override_font_sizes/normal_font_size = 30
 text = "Battery: 69%"
@@ -317,7 +317,7 @@ offset_right = -22.0
 offset_bottom = -89.0
 scale = Vector2(1.5, 1.5)
 focus_mode = 0
-theme = ExtResource("7_cs4vd")
+theme = ExtResource("7_xillq")
 theme_type_variation = &"phoneButton"
 text = "Get Up"
 metadata/_edit_lock_ = true
@@ -329,7 +329,7 @@ offset_right = -22.0
 offset_bottom = -8.9999
 scale = Vector2(1.5, 1.5)
 focus_mode = 0
-theme = ExtResource("7_cs4vd")
+theme = ExtResource("7_xillq")
 theme_type_variation = &"phoneButton"
 text = "Snooze"
 metadata/_edit_lock_ = true
@@ -341,7 +341,7 @@ offset_right = 205.0
 offset_bottom = 67.0
 scale = Vector2(0.3, 0.3)
 mouse_filter = 2
-theme = ExtResource("7_cs4vd")
+theme = ExtResource("7_xillq")
 text = "i just asdfaedsfasdf"
 visible_characters = 0
 visible_ratio = 0.0

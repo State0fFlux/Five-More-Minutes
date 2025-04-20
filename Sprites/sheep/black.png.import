@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8ousnxvld3a0"
-path="res://.godot/imported/black.png-ac87f655dd78be9bf7cd7c525ca24c2c.ctex"
+path="res://.godot/imported/black.png-3c7fe5f22545fa4075c611d41b2c350c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/sheep/black.png"
-dest_files=["res://.godot/imported/black.png-ac87f655dd78be9bf7cd7c525ca24c2c.ctex"]
+source_file="res://sprites/sheep/black.png"
+dest_files=["res://.godot/imported/black.png-3c7fe5f22545fa4075c611d41b2c350c.ctex"]
 
 [params]
 

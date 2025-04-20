@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://ya8gk46h7yd5"
-path="res://.godot/imported/chime.mp3-f2082a582cbbb0375355999316b035ec.mp3str"
+path="res://.godot/imported/chime.mp3-13e74a94953a18789a26e41ff45da805.mp3str"
 
 [deps]
 
-source_file="res://Audio/chime.mp3"
-dest_files=["res://.godot/imported/chime.mp3-f2082a582cbbb0375355999316b035ec.mp3str"]
+source_file="res://audio/chime.mp3"
+dest_files=["res://.godot/imported/chime.mp3-13e74a94953a18789a26e41ff45da805.mp3str"]
 
 [params]
 

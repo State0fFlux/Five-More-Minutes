@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var track: int
-const SheepScene = preload("res://Prefabs/sheep.tscn")
+const SheepScene = preload("res://prefabs/sheep.tscn")
 
 @onready var chime = $Chime
 

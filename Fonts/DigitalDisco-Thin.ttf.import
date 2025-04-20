@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bka5fpx4ym5ao"
-path="res://.godot/imported/DigitalDisco-Thin.ttf-0c32bd5c663e0105fcc0ae09447189bf.fontdata"
+path="res://.godot/imported/DigitalDisco-Thin.ttf-fe7edfb0191a9134e06bc41ff4acd5f3.fontdata"
 
 [deps]
 
-source_file="res://Fonts/DigitalDisco-Thin.ttf"
-dest_files=["res://.godot/imported/DigitalDisco-Thin.ttf-0c32bd5c663e0105fcc0ae09447189bf.fontdata"]
+source_file="res://fonts/DigitalDisco-Thin.ttf"
+dest_files=["res://.godot/imported/DigitalDisco-Thin.ttf-fe7edfb0191a9134e06bc41ff4acd5f3.fontdata"]
 
 [params]
 

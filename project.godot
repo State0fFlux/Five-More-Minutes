@@ -21,9 +21,9 @@ buses/default_bus_layout="res://Audio/default_bus_layout.tres"
 
 [autoload]
 
-Global="*res://Global/Global.gd"
-Soundtrack="*res://Global/soundtrack.tscn"
-Night="*res://Global/night.tscn"
+Global="*res://global/global.gd"
+Soundtrack="*res://global/soundtrack.tscn"
+Night="*res://global/night.tscn"
 
 [display]
 
@@ -96,5 +96,6 @@ Jump={
 textures/canvas_textures/default_texture_filter=0
 textures/vram_compression/import_s3tc_bptc=true
 textures/vram_compression/import_etc2_astc=true
+textures/default_filters/use_nearest_mipmap_filter=true
 anti_aliasing/screen_space_roughness_limiter/enabled=false
 2d/snap/snap_2d_vertices_to_pixel=true

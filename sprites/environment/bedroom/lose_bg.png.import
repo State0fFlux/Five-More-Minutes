@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyy1j6a547lle"
-path="res://.godot/imported/Win_bac.jpg-419be51a14d668afb6549d0f258d4e9d.ctex"
+uid="uid://dw714vp5rdjf7"
+path="res://.godot/imported/lose_bg.png-f2760fc3c7cf7547dd5d8911b07df8f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/environment/Bedroom/Win_bac.jpg"
-dest_files=["res://.godot/imported/Win_bac.jpg-419be51a14d668afb6549d0f258d4e9d.ctex"]
+source_file="res://sprites/environment/bedroom/lose_bg.png"
+dest_files=["res://.godot/imported/lose_bg.png-f2760fc3c7cf7547dd5d8911b07df8f2.ctex"]
 
 [params]
 

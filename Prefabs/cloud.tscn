@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bygx0c73541md"]
 
-[ext_resource type="Texture2D" uid="uid://ck8ykgv80pswt" path="res://Sprites/environment/cloud.png" id="1_2g1m2"]
+[ext_resource type="Texture2D" uid="uid://ck8ykgv80pswt" path="res://sprites/environment/cloud.png" id="1_2g1m2"]
 
 [sub_resource type="Curve" id="Curve_xpgaj"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]

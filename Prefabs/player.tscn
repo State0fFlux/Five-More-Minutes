@@ -1,12 +1,12 @@
 [gd_scene load_steps=17 format=3 uid="uid://cw37p0gbimh0a"]
 
-[ext_resource type="Script" uid="uid://dgkdvb5nuti5" path="res://Prefabs/player.gd" id="1_5wxv7"]
-[ext_resource type="Texture2D" uid="uid://cp7yksgvdb53a" path="res://Sprites/environment/Bedroom/sleeping.png" id="2_5wxv7"]
-[ext_resource type="AudioStream" uid="uid://bo7mlvyc26u07" path="res://Audio/snore.mp3" id="2_juxdh"]
-[ext_resource type="Texture2D" uid="uid://cggwybsmq6pu3" path="res://Sprites/environment/Bedroom/phone.png" id="3_y5hcb"]
-[ext_resource type="Script" uid="uid://bfclp6t58fv70" path="res://Prefabs/phone.gd" id="4_2nftw"]
-[ext_resource type="AudioStream" uid="uid://huhn3rxikqys" path="res://Audio/vibrate.mp3" id="5_knrd4"]
-[ext_resource type="AudioStream" uid="uid://d3yyek1deit67" path="res://Audio/alarm.mp3" id="6_hck1p"]
+[ext_resource type="Script" uid="uid://dgkdvb5nuti5" path="res://prefabs/player.gd" id="1_5wxv7"]
+[ext_resource type="Texture2D" uid="uid://cp7yksgvdb53a" path="res://sprites/environment/bedroom/sleeping.png" id="2_5wxv7"]
+[ext_resource type="AudioStream" uid="uid://bo7mlvyc26u07" path="res://audio/snore.mp3" id="2_juxdh"]
+[ext_resource type="Texture2D" uid="uid://cggwybsmq6pu3" path="res://sprites/environment/bedroom/phone.png" id="3_y5hcb"]
+[ext_resource type="Script" uid="uid://bfclp6t58fv70" path="res://prefabs/phone.gd" id="4_2nftw"]
+[ext_resource type="AudioStream" uid="uid://huhn3rxikqys" path="res://audio/vibrate.mp3" id="5_knrd4"]
+[ext_resource type="AudioStream" uid="uid://d3yyek1deit67" path="res://audio/alarm.mp3" id="6_hck1p"]
 
 [sub_resource type="Animation" id="Animation_2nftw"]
 resource_name = "PhoneOff"

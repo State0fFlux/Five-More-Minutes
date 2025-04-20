@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://0gcemigwd7nd"]
 
-[ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="1_4tmxy"]
-[ext_resource type="Script" uid="uid://bm1nxfoqd2v5c" path="res://Scenes/options.gd" id="1_qyyw6"]
-[ext_resource type="Texture2D" uid="uid://bu0aiemr2hitv" path="res://Sprites/Phone/phoneInHand.png" id="3_ww8vx"]
-[ext_resource type="AudioStream" uid="uid://d3xfgvwm8lh1h" path="res://Audio/SFX/sfx_UI_click_01.wav" id="4_ww8vx"]
+[ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://sprites/environment/bedroom/walls_and_floor.png" id="1_4tmxy"]
+[ext_resource type="Script" uid="uid://bm1nxfoqd2v5c" path="res://scenes/options.gd" id="1_qyyw6"]
+[ext_resource type="Texture2D" uid="uid://bu0aiemr2hitv" path="res://sprites/phone/phoneInHand.png" id="3_ww8vx"]
+[ext_resource type="AudioStream" uid="uid://d3xfgvwm8lh1h" path="res://audio/clicks/sfx_UI_click_01.wav" id="4_ww8vx"]
 
 [node name="Options" type="Control"]
 layout_mode = 3

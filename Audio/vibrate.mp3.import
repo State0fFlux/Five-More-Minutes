@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://huhn3rxikqys"
-path="res://.godot/imported/vibrate.mp3-d7969f8496e6a962dce7202218afab49.mp3str"
+path="res://.godot/imported/vibrate.mp3-88cfc2421736075d95fc5f4b32040786.mp3str"
 
 [deps]
 
-source_file="res://Audio/vibrate.mp3"
-dest_files=["res://.godot/imported/vibrate.mp3-d7969f8496e6a962dce7202218afab49.mp3str"]
+source_file="res://audio/vibrate.mp3"
+dest_files=["res://.godot/imported/vibrate.mp3-88cfc2421736075d95fc5f4b32040786.mp3str"]
 
 [params]
 

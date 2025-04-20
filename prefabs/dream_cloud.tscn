@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dencu3yac6vin"]
 
-[ext_resource type="Texture2D" uid="uid://ck8ykgv80pswt" path="res://Sprites/environment/cloud.png" id="1_jk83v"]
+[ext_resource type="Texture2D" uid="uid://ck8ykgv80pswt" path="res://sprites/environment/cloud.png" id="1_jk83v"]
 
 [sub_resource type="GDScript" id="GDScript_72wsc"]
 script/source = "extends Node2D
@@ -27,7 +27,7 @@ func _process(_delta: float) -> void:
 	pass
 	
 func start_dream():
-	var new_scene = preload(\"res://Scenes/Dream.tscn\").instantiate()
+	var new_scene = preload(\"res://scenes/dream.tscn\").instantiate()
 	new_scene.modulate = \"ffffff00\"
 	$SubViewport.add_child(new_scene)
 	anim.play(\"Open\")

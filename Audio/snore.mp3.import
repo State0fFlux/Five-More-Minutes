@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://bo7mlvyc26u07"
-path="res://.godot/imported/snore.mp3-29296a86d75e1a2efa2381d45f01dabb.mp3str"
+path="res://.godot/imported/snore.mp3-5b7e66c5e947237624fcd35571ac48f1.mp3str"
 
 [deps]
 
-source_file="res://Audio/snore.mp3"
-dest_files=["res://.godot/imported/snore.mp3-29296a86d75e1a2efa2381d45f01dabb.mp3str"]
+source_file="res://audio/snore.mp3"
+dest_files=["res://.godot/imported/snore.mp3-5b7e66c5e947237624fcd35571ac48f1.mp3str"]
 
 [params]
 

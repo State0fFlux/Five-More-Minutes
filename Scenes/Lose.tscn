@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dy2oaarqi2bma"]
 
-[ext_resource type="Texture2D" uid="uid://dw714vp5rdjf7" path="res://Sprites/environment/Bedroom/Lose_bac.png" id="1_a71vo"]
-[ext_resource type="AudioStream" uid="uid://ds13d5mtrof32" path="res://Audio/SFX/sfx_UI_click_03.wav" id="1_n7fri"]
+[ext_resource type="Texture2D" uid="uid://dw714vp5rdjf7" path="res://sprites/environment/bedroom/lose_bg.png" id="1_a71vo"]
+[ext_resource type="AudioStream" uid="uid://ds13d5mtrof32" path="res://audio/clicks/sfx_UI_click_03.wav" id="1_n7fri"]
 
 [sub_resource type="GDScript" id="GDScript_5qbvn"]
 script/source = "extends Node2D

@@ -1,10 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://dn4rhfeacj3px"]
+[gd_scene load_steps=6 format=3 uid="uid://816yj6wcdx2r"]
 
-[ext_resource type="Script" uid="uid://bl8ditv3s0smk" path="res://Scenes/devs.gd" id="1_q1xvy"]
-[ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="1_tt6fu"]
-[ext_resource type="Texture2D" uid="uid://fkljb40j4csy" path="res://Sprites/HoodedCrow/pixilart-sprite.png" id="2_dys5g"]
-[ext_resource type="Texture2D" uid="uid://b3uta05m2uptg" path="res://Sprites/Phone/phone.png" id="3_as1si"]
-[ext_resource type="FontFile" uid="uid://bka5fpx4ym5ao" path="res://Fonts/DigitalDisco-Thin.ttf" id="4_jfeqj"]
+[ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://sprites/environment/bedroom/walls_and_floor.png" id="1_iqmyx"]
+[ext_resource type="Texture2D" uid="uid://b3uta05m2uptg" path="res://sprites/phone/phone.png" id="2_as1si"]
+[ext_resource type="FontFile" uid="uid://bka5fpx4ym5ao" path="res://fonts/DigitalDisco-Thin.ttf" id="3_jfeqj"]
+
+[sub_resource type="GDScript" id="GDScript_q1xvy"]
+script/source = "extends Control
+
+
+func _on_set_alarm_button_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://Scenes/options.tscn\")
+
+
+func _on_debug_home_button_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://Scenes/Start_menu.tscn\")
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfeqj"]
 bg_color = Color(1.50409e-09, 0.0541672, 0.0228085, 1)
@@ -25,18 +35,17 @@ offset_right = -208.0
 offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_q1xvy")
+script = SubResource("GDScript_q1xvy")
 
 [node name="TopDownHouseFloorsAndWalls" type="Sprite2D" parent="."]
 position = Vector2(680, 184)
 scale = Vector2(5.17596, 3.17863)
-texture = ExtResource("1_tt6fu")
+texture = ExtResource("1_iqmyx")
 metadata/_edit_lock_ = true
 
 [node name="StartTextbook" type="Sprite2D" parent="."]
 position = Vector2(176, 168)
 scale = Vector2(0.665031, 0.608437)
-texture = ExtResource("2_dys5g")
 
 [node name="Camera2D2" type="Camera2D" parent="."]
 position = Vector2(32, 88)
@@ -60,7 +69,7 @@ Avah: I'm a Comp Sci Senior at Bothell campus with my main focus being on vido g
 [node name="Phone" type="Sprite2D" parent="."]
 position = Vector2(21, -23)
 scale = Vector2(0.0267245, 0.0211771)
-texture = ExtResource("3_as1si")
+texture = ExtResource("2_as1si")
 
 [node name="Set Alarm button" type="Button" parent="Phone"]
 offset_left = -112.257
@@ -70,7 +79,7 @@ offset_bottom = -125.663
 scale = Vector2(3.09925, 3.37723)
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_jfeqj")
+theme_override_fonts/font = ExtResource("3_jfeqj")
 theme_override_font_sizes/font_size = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_jfeqj")
 text = "5 am

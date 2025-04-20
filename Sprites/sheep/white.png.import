@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://epglma4xc71u"
-path="res://.godot/imported/white.png-ad01063c8e23a54382c77d9d6e9142a5.ctex"
+path="res://.godot/imported/white.png-32001a46698ff12006aa79718b786efc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/sheep/white.png"
-dest_files=["res://.godot/imported/white.png-ad01063c8e23a54382c77d9d6e9142a5.ctex"]
+source_file="res://sprites/sheep/white.png"
+dest_files=["res://.godot/imported/white.png-32001a46698ff12006aa79718b786efc.ctex"]
 
 [params]
 

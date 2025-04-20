@@ -21,15 +21,18 @@ var chime = preload("res://Audio/chime.mp3")
 enum SheepState { WALKING, SLEEPING, DEAD }
 enum PlayerState { SLEEPING, ON_PHONE }
 
-# settings
+# fixed settings
 const BOOST = 2
 const JUMP_VELOCITY = -40
 const SPEED = 25
-const WAIT_TIME = 2
+
+# dynamic settings
+var penalty = 20
+var spawn_interval = 2
 
 # stats
 var minutes_since_midnight = 0
-var battery = 75
+var battery = 100
 var is_dreaming = false
 
 # signals
@@ -44,7 +47,7 @@ func set_dream_state(state):
 	if state == true: # entering dream
 		dream_opened.emit()
 	else: # leaving dream
-		if minutes_since_midnight > 480 + 120 or battery < 1: # after 10
+		if minutes_since_midnight > 480 + 60 or battery < 1: # after 9
 			get_tree().change_scene_to_file("res://Scenes/Lose.tscn")
 		elif minutes_since_midnight >= 480: # between 8 and 10
 			get_tree().change_scene_to_file("res://Scenes/Win.tscn")

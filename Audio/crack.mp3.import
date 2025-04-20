@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://b1doxv6a2vnxb"
-path="res://.godot/imported/crack.mp3-e110671ed1e9890f97dba095e6d0a0c3.mp3str"
+path="res://.godot/imported/crack.mp3-7b216eaedff3f54f6f5b26bb861150d9.mp3str"
 
 [deps]
 
-source_file="res://Audio/crack.mp3"
-dest_files=["res://.godot/imported/crack.mp3-e110671ed1e9890f97dba095e6d0a0c3.mp3str"]
+source_file="res://audio/crack.mp3"
+dest_files=["res://.godot/imported/crack.mp3-7b216eaedff3f54f6f5b26bb861150d9.mp3str"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyqec1vof0x3c"
-path="res://.godot/imported/Start textbook.png-f01d36762105487b40a92247605e653c.ctex"
+uid="uid://kd27r7erc733"
+path="res://.godot/imported/textbook_end.png-f5ebf1514b58a89299f47bdec3ba7e98.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Options and devs/Start textbook.png"
-dest_files=["res://.godot/imported/Start textbook.png-f01d36762105487b40a92247605e653c.ctex"]
+source_file="res://sprites/options/textbook_end.png"
+dest_files=["res://.godot/imported/textbook_end.png-f5ebf1514b58a89299f47bdec3ba7e98.ctex"]
 
 [params]
 

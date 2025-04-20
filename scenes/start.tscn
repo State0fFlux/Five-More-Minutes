@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://pjqell4iy5hc"]
 
-[ext_resource type="Script" uid="uid://devadgr2ibts2" path="res://Scenes/start_menu.gd" id="1_1wmxr"]
-[ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://Sprites/environment/Bedroom/TopDownHouse_FloorsAndWalls.png" id="3_u88ce"]
-[ext_resource type="Theme" uid="uid://cojrl4cralg3e" path="res://Resources/theme.tres" id="6_5hugr"]
-[ext_resource type="PackedScene" uid="uid://cw37p0gbimh0a" path="res://Prefabs/player.tscn" id="7_5hugr"]
-[ext_resource type="AudioStream" uid="uid://d3xfgvwm8lh1h" path="res://Audio/SFX/sfx_UI_click_01.wav" id="7_uyqt2"]
+[ext_resource type="Script" uid="uid://devadgr2ibts2" path="res://scenes/start.gd" id="1_1wmxr"]
+[ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://sprites/environment/bedroom/walls_and_floor.png" id="3_u88ce"]
+[ext_resource type="Theme" uid="uid://cojrl4cralg3e" path="res://resources/theme.tres" id="6_5hugr"]
+[ext_resource type="PackedScene" uid="uid://cw37p0gbimh0a" path="res://prefabs/player.tscn" id="7_5hugr"]
+[ext_resource type="AudioStream" uid="uid://d3xfgvwm8lh1h" path="res://audio/clicks/sfx_UI_click_01.wav" id="7_uyqt2"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3

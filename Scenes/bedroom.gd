@@ -30,7 +30,7 @@ func _ready() -> void:
 func _on_sheep_crashed() -> void:
 	await get_tree().create_timer(0.5).timeout
 	Global.set_dream_state(false)
-	Global.battery -= 25
+	Global.battery -= Global.penalty
 
 func on_dream_opened():
 	anim.play("PhoneDown")

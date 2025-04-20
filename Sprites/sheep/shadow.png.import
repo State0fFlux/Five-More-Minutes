@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8gw5ajr30rrc"
-path="res://.godot/imported/shadow.png-3f09b98306356c51fd2adbd7564b1063.ctex"
+path="res://.godot/imported/shadow.png-962d0caab0e3c6752f51fdf665593164.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/sheep/shadow.png"
-dest_files=["res://.godot/imported/shadow.png-3f09b98306356c51fd2adbd7564b1063.ctex"]
+source_file="res://sprites/sheep/shadow.png"
+dest_files=["res://.godot/imported/shadow.png-962d0caab0e3c6752f51fdf665593164.ctex"]
 
 [params]
 

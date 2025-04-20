@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3d0qbnqc8fg5"
-path="res://.godot/imported/TopDownHouse_DoorsAndWindows.png-0388aeec1e57be641f1f51cf65007f40.ctex"
+uid="uid://cquewooramv1a"
+path="res://.godot/imported/textbook_middle.png-42e97326f81ac50e3a66b92ea8157f09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/environment/Bedroom/TopDownHouse_DoorsAndWindows.png"
-dest_files=["res://.godot/imported/TopDownHouse_DoorsAndWindows.png-0388aeec1e57be641f1f51cf65007f40.ctex"]
+source_file="res://sprites/options/textbook_middle.png"
+dest_files=["res://.godot/imported/textbook_middle.png-42e97326f81ac50e3a66b92ea8157f09.ctex"]
 
 [params]
 
