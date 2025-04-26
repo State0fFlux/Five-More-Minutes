@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://chfhtxwq5i23m"]
-
-[ext_resource type="AudioStream" uid="uid://cantvbtjrikpv" path="res://audio/theme.mp3" id="1_ja0nq"]
-
-[node name="Audio" type="AudioStreamPlayer"]
-stream = ExtResource("1_ja0nq")
-volume_db = -15.0
-autoplay = true
