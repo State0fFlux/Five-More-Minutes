@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy2oaarqi2bma"]
+
+[ext_resource type="Texture2D" uid="uid://dw714vp5rdjf7" path="res://sprites/environment/bedroom/lose_bg.png" id="1_a71vo"]
+[ext_resource type="AudioStream" uid="uid://ds13d5mtrof32" path="res://audio/clicks/sfx_UI_click_03.wav" id="1_n7fri"]
+
+[sub_resource type="GDScript" id="GDScript_5qbvn"]
+script/source = "extends Node2D
+
+func _on_home_button_pressed() -> void:
+	Global.reset()
+	Soundtrack.play()
+	$AudioStreamPlayer.play()
+	get_tree().change_scene_to_file(\"res://Scenes/Start_menu.tscn\")
+"
+
+[node name="Lose" type="Node2D"]
+script = SubResource("GDScript_5qbvn")
+
+[node name="LoseBac" type="Sprite2D" parent="."]
+position = Vector2(147, 81)
+scale = Vector2(0.455, 0.455)
+texture = ExtResource("1_a71vo")
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 14.0
+offset_top = 15.0
+offset_right = 278.0
+offset_bottom = 114.0
+text = "So much for delaying the inevitable! You slept right through your alarm and missed your final exam!"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="home button" type="Button" parent="."]
+z_index = 4
+offset_left = 201.0
+offset_top = 79.0
+offset_right = 259.0
+offset_bottom = 107.0
+scale = Vector2(0.816115, 0.986659)
+focus_mode = 0
+text = "Home"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_n7fri")
+volume_db = 24.0
+
+[connection signal="pressed" from="home button" to="." method="_on_home_button_pressed"]

@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=3 uid="uid://816yj6wcdx2r"]
+
+[ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://sprites/environment/bedroom/walls_and_floor.png" id="1_iqmyx"]
+[ext_resource type="Texture2D" uid="uid://b3uta05m2uptg" path="res://sprites/phone/phone.png" id="2_as1si"]
+[ext_resource type="FontFile" uid="uid://bka5fpx4ym5ao" path="res://fonts/DigitalDisco-Thin.ttf" id="3_jfeqj"]
+
+[sub_resource type="GDScript" id="GDScript_q1xvy"]
+script/source = "extends Control
+
+
+func _on_set_alarm_button_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://Scenes/options.tscn\")
+
+
+func _on_debug_home_button_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://Scenes/Start_menu.tscn\")
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfeqj"]
+bg_color = Color(1.50409e-09, 0.0541672, 0.0228085, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.528403, 0.10172, 0.532903, 1)
+
+[node name="Devs" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = 56.0
+offset_right = -208.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_q1xvy")
+
+[node name="TopDownHouseFloorsAndWalls" type="Sprite2D" parent="."]
+position = Vector2(680, 184)
+scale = Vector2(5.17596, 3.17863)
+texture = ExtResource("1_iqmyx")
+metadata/_edit_lock_ = true
+
+[node name="StartTextbook" type="Sprite2D" parent="."]
+position = Vector2(176, 168)
+scale = Vector2(0.665031, 0.608437)
+
+[node name="Camera2D2" type="Camera2D" parent="."]
+position = Vector2(32, 88)
+anchor_mode = 0
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -14.0
+offset_top = -36.0
+offset_right = 26.0
+offset_bottom = -36.0
+scale = Vector2(0.349943, 1190.62)
+text = "Meet the Developers
+
+Hey, we're Brady and Avah!
+Brady : 
+
+Avah: I'm a Comp Sci Senior at Bothell campus with my main focus being on vido games. This game is my first time using Godot, and so far I like it! "
+
+[node name="Phone" type="Sprite2D" parent="."]
+position = Vector2(21, -23)
+scale = Vector2(0.0267245, 0.0211771)
+texture = ExtResource("2_as1si")
+
+[node name="Set Alarm button" type="Button" parent="Phone"]
+offset_left = -112.257
+offset_top = -141.663
+offset_right = -43.2567
+offset_bottom = -125.663
+scale = Vector2(3.09925, 3.37723)
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_jfeqj")
+theme_override_font_sizes/font_size = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_jfeqj")
+text = "5 am
+(Options)"
+
+[node name="Debug home button" type="Button" parent="."]
+z_index = 4
+layout_mode = 0
+offset_left = 141.0
+offset_top = 186.0
+offset_right = 199.0
+offset_bottom = 217.0
+scale = Vector2(1.93518, 1.89201)
+focus_mode = 0
+text = "Home"
+
+[connection signal="pressed" from="Phone/Set Alarm button" to="." method="_on_set_alarm_button_pressed"]
+[connection signal="pressed" from="Debug home button" to="." method="_on_debug_home_button_pressed"]

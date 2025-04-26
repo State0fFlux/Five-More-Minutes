@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://wgvmp0rrf62g"]
+
+[sub_resource type="GDScript" id="GDScript_xpgaj"]
+script/source = "extends ColorRect
+
+# Define your color stops
+@export var midnight_color = Color(0.05, 0.05, 0.2)     # Dark blue
+@export var pre_dawn_color = Color(0.3, 0.1, 0.3)       # Purple
+@export var sunrise_color = Color(1.0, 0.5, 0.2)        # Orange
+@export var morning_color = Color(0.6, 0.8, 1.0)        # Light blue
+
+func _ready():
+	color = Color.WHITE
+
+func _process(_delta):
+	update_sky_color(Global.minutes_since_midnight)
+
+func update_sky_color(minutes: int):
+	var t = clamp(float(minutes) / 480.0, 0.0, 1.0)  # Normalize time to 0.0 - 1.0
+
+	var new_color := Color.BLACK
+
+	if t < 0.4:
+		# 0:00 - 3:12 (Dark → Purple)
+		var local_t = t / 0.4
+		new_color = midnight_color.lerp(pre_dawn_color, local_t)
+	elif t < 0.7:
+		# 3:12 - 5:36 (Purple → Orange)
+		var local_t = (t - 0.4) / 0.3
+		new_color = pre_dawn_color.lerp(sunrise_color, local_t)
+	else:
+		# 5:36 - 8:00 (Orange → Morning Blue)
+		var local_t = (t - 0.7) / 0.3
+		new_color = sunrise_color.lerp(morning_color, local_t)
+
+	color = new_color
+"
+
+[node name="Sky" type="ColorRect"]
+light_mask = 16
+visibility_layer = 16
+offset_left = -207.0
+offset_top = -124.0
+offset_right = 191.0
+offset_bottom = 4.0
+script = SubResource("GDScript_xpgaj")
+pre_dawn_color = Color(0.209168, 0.132343, 0.399251, 1)
+sunrise_color = Color(0.887829, 0.415643, 0.24249, 1)
+morning_color = Color(1.80972e-05, 0.586771, 0.981367, 1)

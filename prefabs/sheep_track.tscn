@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtkqg5lpphknc"]
+
+[ext_resource type="Script" uid="uid://chnl1qrqq4d17" path="res://prefabs/sheep_track.gd" id="1_iuu8m"]
+[ext_resource type="AudioStream" uid="uid://ya8gk46h7yd5" path="res://audio/chime.mp3" id="2_d1nen"]
+[ext_resource type="Texture2D" uid="uid://cx3tx62s7txxx" path="res://sprites/environment/fencing.png" id="3_auise"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iuu8m"]
+size = Vector2(479, 10)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iuu8m"]
+radius = 3.0
+height = 74.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d1nen"]
+radius = 1.0
+height = 6.0
+
+[node name="SheepTrack" type="Node2D"]
+script = ExtResource("1_iuu8m")
+
+[node name="Track" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Track"]
+shape = SubResource("RectangleShape2D_iuu8m")
+metadata/_edit_lock_ = true
+
+[node name="PassWall" type="Area2D" parent="."]
+position = Vector2(22, -32)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PassWall"]
+shape = SubResource("CapsuleShape2D_iuu8m")
+debug_color = Color(0.525806, 0.565981, 0.257946, 0.745098)
+metadata/_edit_lock_ = true
+
+[node name="DeathWall" type="Area2D" parent="."]
+position = Vector2(1, -8)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathWall"]
+shape = SubResource("CapsuleShape2D_d1nen")
+debug_color = Color(0, 0.6, 0.701961, 0.745098)
+metadata/_edit_lock_ = true
+
+[node name="offScreenSpawn" type="Node2D" parent="."]
+position = Vector2(-202, -13)
+
+[node name="onScreenSpawn" type="Node2D" parent="."]
+position = Vector2(-97, -13)
+
+[node name="Chime" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_d1nen")
+
+[node name="DimensionalFence" type="Sprite2D" parent="."]
+z_index = -5
+z_as_relative = false
+position = Vector2(0, -6)
+texture = ExtResource("3_auise")
+hframes = 4
+vframes = 3
+frame = 1
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="PassWall" to="." method="_on_pass_wall_body_entered"]
+[connection signal="body_entered" from="DeathWall" to="." method="_on_death_wall_body_entered"]

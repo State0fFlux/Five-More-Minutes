@@ -1,0 +1,110 @@
+[gd_scene load_steps=6 format=3 uid="uid://pjqell4iy5hc"]
+
+[ext_resource type="Script" uid="uid://devadgr2ibts2" path="res://scenes/start.gd" id="1_1wmxr"]
+[ext_resource type="Texture2D" uid="uid://dnmel4v4cov0r" path="res://sprites/environment/bedroom/walls_and_floor.png" id="3_u88ce"]
+[ext_resource type="Theme" uid="uid://cojrl4cralg3e" path="res://resources/theme.tres" id="6_5hugr"]
+[ext_resource type="PackedScene" uid="uid://cw37p0gbimh0a" path="res://prefabs/player.tscn" id="7_5hugr"]
+[ext_resource type="AudioStream" uid="uid://d3xfgvwm8lh1h" path="res://audio/clicks/sfx_UI_click_01.wav" id="7_uyqt2"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 1.877
+anchor_right = 4.349
+anchor_bottom = 6.282
+offset_left = 13.0
+offset_top = -190.074
+offset_right = -749.512
+offset_bottom = -486.684
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4.45491, 4.2839)
+script = ExtResource("1_1wmxr")
+metadata/_edit_lock_ = true
+
+[node name="TopDownHouseFloorsAndWalls" type="Sprite2D" parent="."]
+position = Vector2(681.338, 188.861)
+scale = Vector2(5.17596, 3.17863)
+texture = ExtResource("3_u88ce")
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("7_5hugr")]
+position = Vector2(153, 210)
+scale = Vector2(3.5919, 3.34832)
+
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -2.46918
+offset_top = 87.0702
+offset_right = 204.532
+offset_bottom = 114.071
+scale = Vector2(1.19955, 1.16918)
+theme = ExtResource("6_5hugr")
+theme_override_font_sizes/normal_font_size = 16
+text = "Five More Minutes..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -133.874
+offset_top = -100.654
+offset_right = -3.87485
+offset_bottom = -14.6543
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.775288, 0.926547)
+theme_override_constants/separation = 2
+
+[node name="Wake up Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "Wake up"
+metadata/_edit_lock_ = true
+
+[node name="How to play Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "How to Play
+"
+metadata/_edit_lock_ = true
+
+[node name="Credits Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "Credits
+"
+metadata/_edit_lock_ = true
+
+[node name="Quit Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "Quit
+"
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(163.864, 152.665)
+scale = Vector2(-44.3243, -5.45491)
+zoom = Vector2(0.2, 0.2)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_uyqt2")
+volume_db = 24.0
+
+[node name="Shadow" type="CanvasModulate" parent="."]
+color = Color(0.235294, 0.309804, 0.568627, 1)
+
+[connection signal="pressed" from="VBoxContainer/Wake up Button" to="." method="_on_wake_up_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/How to play Button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits Button" to="." method="_on_meet_the_devs_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]
