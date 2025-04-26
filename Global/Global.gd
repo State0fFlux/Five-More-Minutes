@@ -1,21 +1,21 @@
 extends Node
 
 # code quick reference
-const VARIANT_PATH = "res://Sprites/sheep/"
+const VARIANT_PATH = "res://sprites/sheep/"
 const VARIANTS = {1: preload(VARIANT_PATH + "white.png"), 5: preload(VARIANT_PATH + "brown.png"), 10: preload(VARIANT_PATH + "black.png"), 20: preload(VARIANT_PATH + "purple.png")}
-const snore = preload("res://Sprites/sheep/snore.png")
-const heart = preload("res://Sprites/sheep/heart.png")
+const snore = preload("res://sprites/sheep/snore.png")
+const heart = preload("res://sprites/sheep/heart.png")
 var deathPoint: Vector2
 var spawnPoint: Vector2
 
 var ba_sounds = [
-	preload("res://Audio/ba1.mp3"),
-	preload("res://Audio/ba2.mp3"),
-	preload("res://Audio/ba3.mp3"),
+	preload("res://audio/ba1.mp3"),
+	preload("res://audio/ba2.mp3"),
+	preload("res://audio/ba3.mp3"),
 ]
 
-var crack = preload("res://Audio/crack.mp3")
-var chime = preload("res://Audio/chime.mp3")
+var crack = preload("res://audio/crack.mp3")
+var chime = preload("res://audio/chime.mp3")
 
 # data types
 enum SheepState { WALKING, SLEEPING, DEAD }
@@ -48,9 +48,9 @@ func set_dream_state(state):
 		dream_opened.emit()
 	else: # leaving dream
 		if minutes_since_midnight > 480 + 60 or battery < 1: # after 9
-			get_tree().change_scene_to_file("res://Scenes/Lose.tscn")
+			get_tree().change_scene_to_file("res://scenes/lose.tscn")
 		elif minutes_since_midnight >= 480: # between 8 and 10
-			get_tree().change_scene_to_file("res://Scenes/Win.tscn")
+			get_tree().change_scene_to_file("res://scenes/win.tscn")
 		else:
 			dream_closed.emit()
 
